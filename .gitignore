@@ -205,3 +205,5 @@ logs/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+msgspec_schemaorg/models/**/*.py
+!msgspec_schemaorg/models/**/__*.py
