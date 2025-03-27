@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-    {name = "Author", email = "author@example.com"},
+    {name = "Michael Deeb", email = "michael.f.deeb@gmail.com"},
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -18,13 +18,13 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "msgspec>=0.18.0",
+    "msgspec>=0.19.0",
     "requests>=2.28.0",
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/username/msgspec-schemaorg"
-"Bug Tracker" = "https://github.com/username/msgspec-schemaorg/issues"
+"Homepage" = "https://github.com/mikewolfd/msgspec-schemaorg"
+"Bug Tracker" = "https://github.com/mikewolfd/msgspec-schemaorg/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["msgspec_schemaorg"] 

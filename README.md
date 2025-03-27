@@ -2,13 +2,27 @@
 
 [![PyPI version](https://badge.fury.io/py/msgspec-schemaorg.svg)](https://badge.fury.io/py/msgspec-schemaorg) 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build and Publish](https://github.com/username/msgspec-schemaorg/actions/workflows/python-publish.yml/badge.svg)](https://github.com/username/msgspec-schemaorg/actions/workflows/python-publish.yml)
+[![Build and Publish](https://github.com/mikewolfd/msgspec-schemaorg/actions/workflows/python-publish.yml/badge.svg)](https://github.com/mikewolfd/msgspec-schemaorg/actions/workflows/python-publish.yml)
 
 Generate Python `msgspec.Struct` classes from the Schema.org vocabulary.
 
 ## Goal
 
 This project provides a tool to automatically generate efficient Python data structures based on the [Schema.org](https://schema.org/) vocabulary, using the high-performance [`msgspec`](https://github.com/jcrist/msgspec) library. This allows for easy serialization, deserialization, and validation of Schema.org structured data within Python applications.
+
+## Development Process
+
+This project was developed using a combination of  AI tools:
+
+### AI-Assisted Development
+
+- **Cursor IDE**: The primary development environment
+- **Claude 3.7 Sonnet**: Used as the primary AI coding agent
+- **Gemini 2.5**: Was used for brainstorming and architecture planning
+
+The entire project was developed using this AI-assisted workflow, from initial concept to final implementation.
+
+While AI assisted in development, all code was reviewed and tested.
 
 ## Project Status
 

@@ -3,12 +3,12 @@ from setuptools import setup, find_packages
 setup(
     name="msgspec-schemaorg",
     version="0.1.0",
-    author="Author",
-    author_email="author@example.com",
+    author="Michael Deeb",
+    author_email="michael.f.deeb@gmail.com",
     description="Generate Python msgspec.Struct classes from the Schema.org vocabulary",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/username/msgspec-schemaorg",
+    url="https://github.com/mikewolfd/msgspec-schemaorg",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
