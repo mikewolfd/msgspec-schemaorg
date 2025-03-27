@@ -2,6 +2,7 @@
 
 [![PyPI version](https://badge.fury.io/py/msgspec-schemaorg.svg)](https://badge.fury.io/py/msgspec-schemaorg) 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build and Publish](https://github.com/username/msgspec-schemaorg/actions/workflows/python-publish.yml/badge.svg)](https://github.com/username/msgspec-schemaorg/actions/workflows/python-publish.yml)
 
 Generate Python `msgspec.Struct` classes from the Schema.org vocabulary.
 
@@ -249,9 +250,28 @@ Based on our original project plan and completed items, these are the remaining 
 * **External Data Processing:** Add helpers for processing external Schema.org JSON-LD data directly from websites.
 * **Documentation:** Create more detailed documentation with usage examples, API references, and advanced customization guidance.
 
+## CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+### Automated Testing
+
+Every push to the main branch and pull request triggers automated tests that:
+- Run on multiple Python versions (3.10, 3.11, 3.12)
+- Generate the Schema.org models
+- Run the comprehensive test suite
+
+### Automated Deployment
+
+The package is automatically published to PyPI when:
+1. A tag with format `v*` (e.g., `v0.1.0`) is pushed → Published to TestPyPI
+2. A GitHub Release is created → Published to the main PyPI repository
+
+For more details on the CI/CD process, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request.
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
 
 ## License
 
