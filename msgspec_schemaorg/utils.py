@@ -2,6 +2,10 @@
 Utility functions for msgspec-schemaorg.
 """
 from datetime import date, datetime
+import re
+from urllib.parse import urlparse
+from typing import Any, Optional, Union, Annotated
+from msgspec import Struct, field, Meta
 
 
 def parse_iso8601(value):
@@ -31,4 +35,36 @@ def parse_iso8601(value):
         return datetime.fromisoformat(value)
     except ValueError:
         # If parsing fails, return the original string
-        return value 
+        return value
+
+
+# URL regex pattern - matches valid URLs with scheme and domain
+URL_PATTERN = r"^(?:http|https)://(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|localhost|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?::\d+)?(?:/?|[/?]\S+)$"
+
+# Define URL as an Annotated str with a pattern constraint
+URL = Annotated[str, Meta(pattern=URL_PATTERN)]
+
+
+def is_valid_url(value: str) -> bool:
+    """
+    Check if a string is a valid URL.
+    
+    Args:
+        value: The string to validate
+        
+    Returns:
+        True if the string is a valid URL, False otherwise
+    """
+    if not isinstance(value, str):
+        return False
+    
+    # Check URL format with regex
+    if not re.match(URL_PATTERN, value, re.IGNORECASE):
+        return False
+    
+    # More thorough check using urlparse
+    try:
+        result = urlparse(value)
+        return all([result.scheme, result.netloc])
+    except Exception:
+        return False 

@@ -10,8 +10,9 @@ import keyword
 from pathlib import Path
 from typing import Dict, List, Set, Any, Optional, Union, Tuple
 from collections import defaultdict
+from datetime import date, datetime, time
 
-from .mapping import resolve_type_reference
+from .mapping import resolve_type_reference, get_type_specificity
 
 class SchemaProcessor:
     """
@@ -155,22 +156,43 @@ class SchemaProcessor:
             property_entity: The property entity to process
             
         Returns:
-            List of Python types or class name strings for the property
+            List of Python types or class name strings for the property,
+            sorted by specificity (most specific first)
         """
         range_includes = property_entity.get('schema:rangeIncludes', [])
         if not isinstance(range_includes, list):
             range_includes = [range_includes]
             
         types = []
+        type_specs = []  # List of (type, specificity) tuples
+        
         for range_type in range_includes:
             if isinstance(range_type, dict) and '@id' in range_type:
                 type_ref = range_type['@id']
                 resolved_type = resolve_type_reference(type_ref)
-                types.append(resolved_type)
+                
+                # Get the type name for specificity lookup
+                type_name = type_ref
+                if isinstance(type_ref, str):
+                    type_name = type_ref.replace("schema:", "").replace("http://schema.org/", "")
+                
+                specificity = get_type_specificity(type_name)
+                type_specs.append((resolved_type, specificity))
+                
             elif isinstance(range_type, str):
                 # Handle direct string references
                 resolved_type = resolve_type_reference(range_type)
-                types.append(resolved_type)
+                
+                # Get specificity
+                type_name = range_type.replace("schema:", "").replace("http://schema.org/", "")
+                specificity = get_type_specificity(type_name)
+                type_specs.append((resolved_type, specificity))
+        
+        # Sort by specificity (highest first)
+        type_specs.sort(key=lambda x: x[1], reverse=True)
+        
+        # Extract just the types
+        types = [t[0] for t in type_specs]
                 
         return types or [str]  # Default to str if no type specified
     
@@ -451,6 +473,8 @@ class SchemaProcessor:
         has_date = False
         has_datetime = False
         has_time = False
+        has_url = False  # Track URL type usage
+        
         # Flag to track if this class uses date types
         needs_date_handling = False
         
@@ -468,8 +492,10 @@ class SchemaProcessor:
             # Track dependencies
             prop_type_imports = []
             
-            # Check if this property has date/datetime type
+            # Check if this property has date/datetime type or URL type
             has_date_type = False
+            has_url_type = False
+            
             for typ in types:
                 if isinstance(typ, type):
                     if typ.__name__ == 'date':
@@ -480,6 +506,9 @@ class SchemaProcessor:
                         has_date_type = True
                     elif typ.__name__ == 'time':
                         has_time = True
+                elif isinstance(typ, str) and typ == 'URL':
+                    has_url = True
+                    has_url_type = True
                 else:
                     # If it's a string (class name), find the class ID and add it to imports
                     for other_class_id, norm_name in self.normalized_class_names.items():
@@ -515,6 +544,12 @@ class SchemaProcessor:
         # Add utilities for ISO8601 parsing if needed
         if needs_date_handling:
             import_statements.append("from msgspec_schemaorg.utils import parse_iso8601")
+            
+        # Add URL imports if needed
+        if has_url:
+            import_statements.append("from msgspec_schemaorg.utils import URL")
+            import_statements.append("from typing import Annotated")
+            import_statements.append("from msgspec import Meta")
             
         # Add TYPE_CHECKING for all Schema.org types
         if typed_imports:

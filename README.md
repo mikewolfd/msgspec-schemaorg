@@ -10,6 +10,8 @@ Generate Python `msgspec.Struct` classes from the Schema.org vocabulary.
 
 This project provides a tool to automatically generate efficient Python data structures based on the [Schema.org](https://schema.org/) vocabulary, using the high-performance [`msgspec`](https://github.com/jcrist/msgspec) library. This allows for easy serialization, deserialization, and validation of Schema.org structured data within Python applications.
 
+This was inspired by [pydantic_schemaorg](https://github.com/lexiq-legal/pydantic_schemaorg)
+
 ## Development Process
 
 This project was developed using a combination of  AI tools:
@@ -36,6 +38,8 @@ The project has successfully completed all core implementation phases:
 - ✅ Circular dependency resolution
 - ✅ Python compatibility (reserved keywords)
 - ✅ ISO8601 date parsing
+- ✅ Type specificity and smart type ordering
+- ✅ URL validation
 - ✅ Comprehensive test suite
 - ✅ Runner scripts for simplified usage
 - ✅ CLI support with command-line arguments
@@ -53,6 +57,8 @@ The project has successfully completed all core implementation phases:
 * **Python Compatibility:** Handles Python reserved keywords and ensures valid identifiers for all generated classes and properties.
 * **Convenient Imports:** All generated classes can be imported directly from the main package.
 * **ISO8601 Date Handling:** Provides utility functions for parsing ISO8601 date and datetime strings.
+* **Type Specificity:** Sorts type unions by specificity, so more specific types appear first (e.g., `Integer` before `Number`).
+* **URL Validation:** Validates URL fields using pattern matching to ensure they follow proper URL format.
 * **Comprehensive Testing:** Includes test suites that validate the generated models against real Schema.org examples.
 
 ## Installation
@@ -182,6 +188,41 @@ python run.py test           # Run all tests
 
     The `parse_iso8601` function automatically determines whether the string represents a date or a datetime and returns the appropriate Python object.
 
+    ### URL Validation
+
+    The library automatically validates URL fields using pattern matching:
+
+    ```python
+    from msgspec_schemaorg.models import WebSite
+    from msgspec_schemaorg.utils import is_valid_url
+
+    # URLs must conform to proper format
+    website = WebSite(
+        name="My Website",
+        url="https://example.com"  # Valid URL
+    )
+
+    # Check URLs manually if needed
+    valid = is_valid_url("https://example.com")  # True
+    invalid = is_valid_url("not-a-url")  # False
+    ```
+
+    Invalid URLs in Schema.org fields will raise a ValidationError during decoding:
+
+    ```python
+    import msgspec
+    from msgspec_schemaorg.models import WebSite
+
+    # This will fail with a validation error
+    try:
+        invalid_website = msgspec.json.decode(
+            b'{"name":"Invalid Site", "url":"not-a-valid-url"}', 
+            type=WebSite
+        )
+    except msgspec.ValidationError as e:
+        print(f"Error: {e}")  # Error: Expected string matching regex pattern 
+    ```
+
     See `examples/advanced_example.py` for a more detailed example.
 
 ## Generated Structure
@@ -221,6 +262,40 @@ You can import classes in two ways:
    from msgspec_schemaorg.models.creativework import CreativeWork
    ```
 
+## Type System and Handling
+
+Schema.org types are mapped to Python types with the following considerations:
+
+1. **Primitive Types Mapping**:
+
+   | Schema.org Type | Python Type |
+   |-----------------|-------------|
+   | Text | str |
+   | URL | Annotated[str, Meta(pattern=URL_PATTERN)] |
+   | Number | int, float |
+   | Integer | int |
+   | Float | float |
+   | Boolean | bool |
+   | True | Literal[True] |
+   | False | Literal[False] |
+   | Date | datetime.date |
+   | DateTime | datetime.datetime |
+   | Time | datetime.time |
+
+2. **Type Specificity**:
+   When multiple types are possible for a property, we sort them by specificity to make the most specific types appear first:
+   
+   - Integer (5) is more specific than Number (3)
+   - Float (4) is more specific than Number (3)
+   - DateTime (5) is more specific than Date (4)
+   - URL (3) is more specific than Text (1)
+
+3. **Literals for Boolean Constants**:
+   We use `Literal[True]` and `Literal[False]` for boolean constants rather than just `bool` for more precise type checking.
+
+4. **URL Pattern Validation**:
+   URL fields use `typing.Annotated` with a `Meta(pattern=URL_PATTERN)` constraint to enforce a valid URL format, leveraging msgspec's validation capabilities.
+
 ## Testing
 
 The package includes a comprehensive test suite that validates the generated models against real Schema.org examples. Run the tests with:
@@ -240,9 +315,10 @@ The tests verify that:
 1. All classes can be properly imported directly from the package
 2. Classes can be instantiated with default values and nested structures
 3. Date/datetime parsing works correctly with ISO8601 strings
-4. Example scripts run without errors
+4. URL validation works correctly 
+5. Example scripts run without errors
 
-Our test system successfully validates the library's functionality including circular dependency resolution, import structure, and ISO8601 date handling.
+Our test system successfully validates the library's functionality including circular dependency resolution, import structure, ISO8601 date handling, and URL validation.
 
 ## Current Limitations
 
@@ -322,19 +398,3 @@ The generator is designed to be customizable. If you need to modify the output:
 1. The `--schema-url` parameter can be used to point to a different Schema.org definition.
 2. The code in `msgspec_schemaorg/generate.py` can be extended to add custom handling for specific classes.
 3. The `SchemaProcessor` class can be subclassed to override specific methods like `generate_struct_code()`.
-
-### Type Conversions
-
-Schema.org types are mapped to Python types as follows:
-
-| Schema.org Type | Python Type |
-|-----------------|-------------|
-| Text, URL | str |
-| Number | int | float |
-| Integer | int |
-| Float | float |
-| Boolean | bool |
-| Date | datetime.date |
-| DateTime | datetime.datetime |
-| Time | datetime.time |
-| Any combination | Union types |

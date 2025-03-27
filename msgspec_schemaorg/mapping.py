@@ -2,7 +2,9 @@
 Type mapping between Schema.org data types and Python types.
 """
 from datetime import date, datetime, time
-from typing import Union, Dict, Any, Type, TypeVar, get_origin, get_args
+from typing import Union, Dict, Any, Type, TypeVar, get_origin, get_args, Literal, Annotated
+
+from msgspec_schemaorg.utils import URL
 
 # Mapping of Schema.org primitive types to Python types
 SCHEMA_TO_PYTHON_TYPE_MAPPING = {
@@ -16,14 +18,33 @@ SCHEMA_TO_PYTHON_TYPE_MAPPING = {
     "schema:Date": date,
     "schema:DateTime": datetime,
     "schema:Time": time,
-    "schema:URL": str,
+    "schema:URL": URL,  # Now use our annotated URL type for validation
     
     # Other common types
-    "schema:True": bool,
-    "schema:False": bool,
+    "schema:True": "Literal[True]",  # Using Literal for more specific type checking
+    "schema:False": "Literal[False]",  # Using Literal for more specific type checking
     "schema:XPathType": str,
     "schema:CssSelectorType": str,
     "schema:PronounceableText": str,
+}
+
+# Type specificity ranking to handle conflicts when multiple types are available
+# Higher number = more specific type that should be preferred
+TYPE_SPECIFICITY = {
+    "Boolean": 1,
+    "False": 2,  # More specific than Boolean
+    "True": 2,   # More specific than Boolean
+    "Date": 4,
+    "DateTime": 5,
+    "Time": 4,
+    "Number": 3,
+    "Float": 4,  # More specific than Number
+    "Integer": 5,  # More specific than Number
+    "Text": 1,
+    "CssSelectorType": 2,  # More specific than Text
+    "PronounceableText": 2,  # More specific than Text
+    "URL": 3,  # More specific than Text, and now it's validated
+    "XPathType": 2,  # More specific than Text
 }
 
 # Short aliases without the schema: prefix
@@ -66,3 +87,18 @@ def resolve_type_reference(type_ref: str) -> Type:
     # Otherwise, assume it's a reference to another Schema.org class
     # and return the class name as a string (for forward reference)
     return clean_ref
+
+def get_type_specificity(type_name: str) -> int:
+    """
+    Get the specificity ranking for a type name.
+    Higher values indicate more specific types that should be preferred.
+    
+    Args:
+        type_name: A Schema.org type name without the schema: prefix
+        
+    Returns:
+        Integer specificity ranking (higher = more specific)
+    """
+    # Remove schema: prefix if present
+    clean_name = type_name.replace("schema:", "").replace("http://schema.org/", "")
+    return TYPE_SPECIFICITY.get(clean_name, 0)
