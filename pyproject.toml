@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "msgspec-schemaorg"
+version = "0.1.0"
+description = "Generate Python msgspec.Struct classes from the Schema.org vocabulary"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Author", email = "author@example.com"},
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "msgspec>=0.18.0",
+    "requests>=2.28.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/username/msgspec-schemaorg"
+"Bug Tracker" = "https://github.com/username/msgspec-schemaorg/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["msgspec_schemaorg"] 
