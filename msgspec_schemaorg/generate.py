@@ -599,7 +599,7 @@ class SchemaProcessor:
             code.append(f'    """{class_description}"""')
         
         # Add type field with this class's name as the default value
-        code.append(f'    type: Optional[str] = field(default="{class_name}", name="@type")')
+        code.append(f'    type: str = field(default_factory=lambda: "{class_name}", name="@type")')
         
         # Add fields and collect dependencies
         for prop_name, prop_info in properties.items():

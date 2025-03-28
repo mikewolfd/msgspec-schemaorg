@@ -7,7 +7,7 @@ import msgspec
 from msgspec import field
 
 
-class SchemaOrgBase(msgspec.Struct, frozen=True):
+class SchemaOrgBase(msgspec.Struct, frozen=True, omit_defaults=True):
     """
     Base class for all Schema.org models with JSON-LD fields.
     
