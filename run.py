@@ -17,27 +17,45 @@ Usage:
 
 import os
 import sys
+import argparse
 import subprocess
+from pathlib import Path
+
+PROJECT_DIR = Path(__file__).parent
 
 
-def run_command(cmd, capture=False):
-    """Run a command and return the result."""
-    if capture:
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-        return result
-    else:
-        print(f"Running: {cmd}")
-        return subprocess.run(cmd, shell=True)
+def run_command(cmd, cwd=None):
+    """Run a command and stream output."""
+    print(f"Running: {' '.join(cmd)}")
+    process = subprocess.Popen(
+        cmd,
+        cwd=cwd or PROJECT_DIR,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1,  # Line buffered
+    )
+    
+    # Stream output
+    for line in process.stdout:
+        print(line, end="")
+    
+    # Wait for process to complete
+    process.wait()
+    
+    if process.returncode != 0:
+        print(f"Command failed with return code {process.returncode}")
+        sys.exit(process.returncode)
 
 
 def generate_models():
     """Generate Schema.org models."""
-    print("Generating Schema.org models...")
-    result = run_command("python scripts/generate_models.py --clean")
-    if result.returncode != 0:
-        print("Error generating models")
-        return False
-    return True
+    run_command(["python", "scripts/generate_models.py", "--clean"])
+
+
+def generate_enums():
+    """Generate Schema.org enum classes."""
+    run_command(["python", "scripts/generate_enums.py"])
 
 
 def run_example(example_name="usage_example.py"):
@@ -53,48 +71,48 @@ def run_example(example_name="usage_example.py"):
 
 
 def run_tests():
-    """Run tests."""
-    print("Running tests...")
-    result = run_command("python run_tests.py")
-    return result.returncode == 0
+    """Run unit tests."""
+    run_command(["pytest", "tests/"])
+
+
+def run_all():
+    """Run all tasks: generate models, generate enums, and run tests."""
+    generate_models()
+    generate_enums()
+    run_tests()
 
 
 def main():
-    """Main entry point."""
-    if len(sys.argv) < 2:
-        print("Please specify a command: generate, example, advanced, test, or all")
-        return 1
-
-    command = sys.argv[1].lower()
+    """Main function to parse arguments and execute commands."""
+    parser = argparse.ArgumentParser(description='Run common tasks for msgspec-schemaorg.')
+    subparsers = parser.add_subparsers(dest='command', help='Command to run')
     
-    if command == "generate":
-        return 0 if generate_models() else 1
-        
-    elif command == "example":
-        return 0 if run_example("usage_example.py") else 1
-        
-    elif command == "advanced":
-        return 0 if run_example("advanced_example.py") else 1
-        
-    elif command == "test":
-        return 0 if run_tests() else 1
-        
-    elif command == "all":
-        if not generate_models():
-            return 1
-        if not run_example("usage_example.py"):
-            return 1
-        if not run_example("advanced_example.py"):
-            return 1
-        if not run_tests():
-            return 1
-        return 0
-        
+    # Generate models command
+    subparsers.add_parser('generate_models', help='Generate Schema.org models')
+    
+    # Generate enums command
+    subparsers.add_parser('generate_enums', help='Generate Schema.org enum classes')
+    
+    # Test command
+    subparsers.add_parser('test', help='Run unit tests')
+    
+    # All command
+    subparsers.add_parser('all', help='Generate models, generate enums, and run tests')
+    
+    args = parser.parse_args()
+    
+    if args.command == 'generate_models':
+        generate_models()
+    elif args.command == 'generate_enums':
+        generate_enums()
+    elif args.command == 'test':
+        run_tests()
+    elif args.command == 'all':
+        run_all()
     else:
-        print(f"Unknown command: {command}")
-        print("Available commands: generate, example, advanced, test, all")
-        return 1
+        parser.print_help()
+        sys.exit(1)
 
 
 if __name__ == "__main__":
-    sys.exit(main()) 
+    main() 

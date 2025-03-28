@@ -246,18 +246,42 @@ The tests cover model generation, imports, date parsing, URL validation, inherit
 Access and use Schema.org enumeration values as Python Enums:
 
 ```python
-from msgspec_schemaorg.enums.intangible import MediaManipulationRatingEnumeration, DeliveryMethod
+from msgspec_schemaorg.enums.intangible import DeliveryMethod, MediaAuthenticityCategory
+import msgspec
 
-# Create objects using enum values
-media_rating = MediaManipulationRatingEnumeration.OriginalMediaContent
+# Create an offer with enum value
+offer = {
+    "name": "Fast Delivery Package",
+    "price": 15.99,
+    "availableDeliveryMethod": DeliveryMethod.LockerDelivery,
+    "priceCurrency": "USD"
+}
 
-# All enum values from a class
-all_delivery_methods = list(DeliveryMethod)
+# Encode to JSON (enums serialize to their string values)
+json_bytes = msgspec.json.encode(offer)
+print(json_bytes.decode())
+# Output includes: "availableDeliveryMethod": "LockerDelivery"
 
-# Access metadata for an enum value
-metadata = MediaManipulationRatingEnumeration.metadata["OriginalMediaContent"]
-description = metadata["comment"]
+# List all enum values
+for method in DeliveryMethod:
+    print(f" - {method.name}: {method.value}")
+
+# Access enum metadata
+print(f"ID: {DeliveryMethod.ParcelService.__schema_id__}")
+print(f"Label: {DeliveryMethod.ParcelService.__schema_label__}")
+print(f"Comment: {DeliveryMethod.ParcelService.__schema_comment__}")
+
+# Use enums in model classes
+from msgspec_schemaorg.models import MediaReview, Person
+
+review = MediaReview(
+    name="Image Analysis",
+    author=Person(name="Media Reviewer"),
+    mediaAuthenticityCategory=MediaAuthenticityCategory.OriginalMediaContent
+)
 ```
+
+Enum classes are organized by category in the `msgspec_schemaorg.enums` package. The most commonly used enums are in the `msgspec_schemaorg.enums.intangible` module.
 
 ## Limitations
 

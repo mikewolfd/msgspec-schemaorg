@@ -44,12 +44,12 @@ __all__ = [
     'AchieveAction',
     'Action',
     'ActionAccessSpecification',
-    'ActionStatusType',
+    
     'ActivateAction',
     'AddAction',
     'AdministrativeArea',
     'AdultEntertainment',
-    'AdultOrientedEnumeration',
+    
     'AdvertiserContentArticle',
     'AggregateOffer',
     'AggregateRating',
@@ -113,15 +113,15 @@ __all__ = [
     'Blog',
     'BlogPosting',
     'BloodTest',
-    'BoardingPolicyType',
+    
     'BoatReservation',
     'BoatTerminal',
     'BoatTrip',
-    'BodyMeasurementTypeEnumeration',
+    
     'BodyOfWater',
     'Bone',
     'Book',
-    'BookFormatType',
+    
     'BookSeries',
     'BookStore',
     'BookmarkAction',
@@ -156,14 +156,14 @@ __all__ = [
     'Canal',
     'CancelAction',
     'Car',
-    'CarUsageType',
+    
     'Casino',
     'CategoryCode',
     'CategoryCodeSet',
     'CatholicChurch',
     'Cemetery',
     'Certification',
-    'CertificationStatusEnumeration',
+    
     'Chapter',
     'CheckAction',
     'CheckInAction',
@@ -205,7 +205,7 @@ __all__ = [
     'ConsumeAction',
     'ContactPage',
     'ContactPoint',
-    'ContactPointOption',
+    
     'Continent',
     'ControlAction',
     'ConvenienceStore',
@@ -238,7 +238,7 @@ __all__ = [
     'DataType',
     'Dataset',
     'DatedMoneySpecification',
-    'DayOfWeek',
+    
     'DaySpa',
     'DeactivateAction',
     'DefenceEstablishment',
@@ -248,7 +248,7 @@ __all__ = [
     'DeleteAction',
     'DeliveryChargeSpecification',
     'DeliveryEvent',
-    'DeliveryMethod',
+    
     'Demand',
     'Dentist',
     'DepartAction',
@@ -260,8 +260,8 @@ __all__ = [
     'DietarySupplement',
     'DigitalDocument',
     'DigitalDocumentPermission',
-    'DigitalDocumentPermissionType',
-    'DigitalPlatformEnumeration',
+    
+    
     'DisagreeAction',
     'DiscoverAction',
     'DiscussionForumPosting',
@@ -274,18 +274,18 @@ __all__ = [
     'DrawAction',
     'Drawing',
     'DrinkAction',
-    'DriveWheelConfigurationValue',
+    
     'Drug',
     'DrugClass',
     'DrugCost',
-    'DrugCostCategory',
+    
     'DrugLegalStatus',
-    'DrugPregnancyCategory',
-    'DrugPrescriptionStatus',
+    
+    
     'DrugStrength',
     'DryCleaningOrLaundry',
     'Duration',
-    'EUEnergyEfficiencyEnumeration',
+    
     'EatAction',
     'EducationEvent',
     'EducationalAudience',
@@ -307,17 +307,17 @@ __all__ = [
     'Energy',
     'EnergyConsumptionDetails',
     'EnergyEfficiencyEnumeration',
-    'EnergyStarEnergyEfficiencyEnumeration',
+    
     'EngineSpecification',
     'EntertainmentBusiness',
     'EntryPoint',
     'Enumeration',
     'Episode',
     'Event',
-    'EventAttendanceModeEnumeration',
+    
     'EventReservation',
     'EventSeries',
-    'EventStatusType',
+    
     'EventVenue',
     'ExchangeRateSpecification',
     'ExerciseAction',
@@ -344,19 +344,19 @@ __all__ = [
     'FoodEstablishmentReservation',
     'FoodEvent',
     'FoodService',
-    'FulfillmentTypeEnumeration',
+    
     'FundingAgency',
     'FundingScheme',
     'FurnitureStore',
     'Game',
-    'GameAvailabilityEnumeration',
-    'GamePlayMode',
+    
+    
     'GameServer',
-    'GameServerStatus',
+    
     'GardenStore',
     'GasStation',
     'GatedResidenceCommunity',
-    'GenderType',
+    
     'Gene',
     'GeneralContractor',
     'GeoCircle',
@@ -365,7 +365,7 @@ __all__ = [
     'GeospatialGeometry',
     'GiveAction',
     'GolfCourse',
-    'GovernmentBenefitsType',
+    
     'GovernmentBuilding',
     'GovernmentOffice',
     'GovernmentOrganization',
@@ -379,7 +379,7 @@ __all__ = [
     'HairSalon',
     'HardwareStore',
     'HealthAndBeautyBusiness',
-    'HealthAspectEnumeration',
+    
     'HealthClub',
     'HealthInsurancePlan',
     'HealthPlanCostSharingSpecification',
@@ -407,19 +407,19 @@ __all__ = [
     'HowToTool',
     'HyperToc',
     'HyperTocEntry',
-    'IPTCDigitalSourceEnumeration',
+    
     'IceCreamShop',
     'IgnoreAction',
     'ImageGallery',
     'ImageObject',
     'ImageObjectSnapshot',
     'ImagingTest',
-    'IncentiveQualifiedExpenseType',
-    'IncentiveStatus',
-    'IncentiveType',
+    
+    
+    
     'IndividualPhysician',
     'IndividualProduct',
-    'InfectiousAgentClass',
+    
     'InfectiousDisease',
     'InformAction',
     'InsertAction',
@@ -434,9 +434,9 @@ __all__ = [
     'InvestmentOrDeposit',
     'InviteAction',
     'Invoice',
-    'ItemAvailability',
+    
     'ItemList',
-    'ItemListOrderType',
+    
     'ItemPage',
     'JewelryStore',
     'JobPosting',
@@ -448,9 +448,9 @@ __all__ = [
     'Language',
     'LearningResource',
     'LeaveAction',
-    'LegalForceStatus',
+    
     'LegalService',
-    'LegalValueLevel',
+    
     'Legislation',
     'LegislationObject',
     'LegislativeBuilding',
@@ -476,22 +476,22 @@ __all__ = [
     'LymphaticVessel',
     'Manuscript',
     'Map',
-    'MapCategoryType',
+    
     'MarryAction',
     'Mass',
     'MathSolver',
     'MaximumDoseSchedule',
-    'MeasurementMethodEnum',
+    
     'MeasurementTypeEnumeration',
     'MediaEnumeration',
     'MediaGallery',
-    'MediaManipulationRatingEnumeration',
+    
     'MediaObject',
     'MediaReview',
     'MediaReviewItem',
     'MediaSubscription',
     'MedicalAudience',
-    'MedicalAudienceType',
+    
     'MedicalBusiness',
     'MedicalCause',
     'MedicalClinic',
@@ -500,21 +500,21 @@ __all__ = [
     'MedicalConditionStage',
     'MedicalContraindication',
     'MedicalDevice',
-    'MedicalDevicePurpose',
+    
     'MedicalEntity',
     'MedicalEnumeration',
-    'MedicalEvidenceLevel',
+    
     'MedicalGuideline',
     'MedicalGuidelineContraindication',
     'MedicalGuidelineRecommendation',
-    'MedicalImagingTechnique',
+    
     'MedicalIndication',
     'MedicalIntangible',
     'MedicalObservationalStudy',
-    'MedicalObservationalStudyDesign',
+    
     'MedicalOrganization',
     'MedicalProcedure',
-    'MedicalProcedureType',
+    
     'MedicalRiskCalculator',
     'MedicalRiskEstimator',
     'MedicalRiskFactor',
@@ -522,17 +522,17 @@ __all__ = [
     'MedicalScholarlyArticle',
     'MedicalSign',
     'MedicalSignOrSymptom',
-    'MedicalSpecialty',
+    
     'MedicalStudy',
-    'MedicalStudyStatus',
+    
     'MedicalSymptom',
     'MedicalTest',
     'MedicalTestPanel',
     'MedicalTherapy',
     'MedicalTrial',
-    'MedicalTrialDesign',
+    
     'MedicalWebPage',
-    'MedicineSystem',
+    
     'MeetingRoom',
     'MemberProgram',
     'MemberProgramTier',
@@ -540,7 +540,7 @@ __all__ = [
     'Menu',
     'MenuItem',
     'MenuSection',
-    'MerchantReturnEnumeration',
+    
     'MerchantReturnPolicy',
     'MerchantReturnPolicySeasonalOverride',
     'Message',
@@ -570,20 +570,20 @@ __all__ = [
     'Muscle',
     'Museum',
     'MusicAlbum',
-    'MusicAlbumProductionType',
-    'MusicAlbumReleaseType',
+    
+    
     'MusicComposition',
     'MusicEvent',
     'MusicGroup',
     'MusicPlaylist',
     'MusicRecording',
     'MusicRelease',
-    'MusicReleaseFormatType',
+    
     'MusicStore',
     'MusicVenue',
     'MusicVideoObject',
     'NGO',
-    'NLNonprofitType',
+    
     'NailSalon',
     'Nerve',
     'NewsArticle',
@@ -603,7 +603,7 @@ __all__ = [
     'OfferCatalog',
     'OfferForLease',
     'OfferForPurchase',
-    'OfferItemCondition',
+    
     'OfferShippingDetails',
     'OfficeEquipmentStore',
     'OnDemandEvent',
@@ -615,7 +615,7 @@ __all__ = [
     'Order',
     'OrderAction',
     'OrderItem',
-    'OrderStatus',
+    
     'Organization',
     'OrganizationRole',
     'OrganizeAction',
@@ -635,9 +635,9 @@ __all__ = [
     'PaymentCard',
     'PaymentChargeSpecification',
     'PaymentMethod',
-    'PaymentMethodType',
+    
     'PaymentService',
-    'PaymentStatusType',
+    
     'PeopleAudience',
     'PerformAction',
     'PerformanceRole',
@@ -651,6 +651,7 @@ __all__ = [
     'Photograph',
     'PhotographAction',
     'PhysicalActivity',
+    
     'PhysicalExam',
     'PhysicalTherapy',
     'Physician',
@@ -678,9 +679,9 @@ __all__ = [
     'Preschool',
     'PresentationDigitalDocument',
     'PreventionIndication',
-    'PriceComponentTypeEnumeration',
+    
     'PriceSpecification',
-    'PriceTypeEnumeration',
+    
     'Product',
     'ProductCollection',
     'ProductGroup',
@@ -700,7 +701,7 @@ __all__ = [
     'PublicationEvent',
     'PublicationIssue',
     'PublicationVolume',
-    'PurchaseType',
+    
     'QAPage',
     'QualitativeValue',
     'QuantitativeValue',
@@ -729,7 +730,7 @@ __all__ = [
     'Recommendation',
     'RecommendedDoseSchedule',
     'RecyclingCenter',
-    'RefundTypeEnumeration',
+    
     'RegisterAction',
     'RejectAction',
     'RentAction',
@@ -745,18 +746,18 @@ __all__ = [
     'Researcher',
     'Reservation',
     'ReservationPackage',
-    'ReservationStatusType',
+    
     'ReserveAction',
     'Reservoir',
     'Residence',
     'Resort',
     'Restaurant',
-    'RestrictedDiet',
+    
     'ResumeAction',
     'ReturnAction',
-    'ReturnFeesEnumeration',
-    'ReturnLabelSourceEnumeration',
-    'ReturnMethodEnumeration',
+    
+    
+    
     'Review',
     'ReviewAction',
     'ReviewNewsArticle',
@@ -765,7 +766,7 @@ __all__ = [
     'RoofingContractor',
     'Room',
     'RsvpAction',
-    'RsvpResponseType',
+    
     'SaleEvent',
     'SatiricalArticle',
     'Schedule',
@@ -802,7 +803,7 @@ __all__ = [
     'SiteNavigationElement',
     'SizeGroupEnumeration',
     'SizeSpecification',
-    'SizeSystemEnumeration',
+    
     'SkiResort',
     'SocialEvent',
     'SocialMediaPosting',
@@ -826,7 +827,7 @@ __all__ = [
     'StatisticalPopulation',
     'StatisticalVariable',
     'StatusEnumeration',
-    'SteeringPositionValue',
+    
     'Store',
     'StructuredValue',
     'SubscribeAction',
@@ -863,7 +864,7 @@ __all__ = [
     'Thing',
     'Ticket',
     'TieAction',
-    'TierBenefitEnumeration',
+    
     'TipAction',
     'TireShop',
     'TouristAttraction',
@@ -882,9 +883,9 @@ __all__ = [
     'TreatmentIndication',
     'Trip',
     'TypeAndQuantityNode',
-    'UKNonprofitType',
+    
     'URL',
-    'USNonprofitType',
+    
     'UnRegisterAction',
     'UnitPriceSpecification',
     'UpdateAction',
@@ -928,9 +929,9 @@ __all__ = [
     'WatchAction',
     'Waterfall',
     'WearAction',
-    'WearableMeasurementTypeEnumeration',
-    'WearableSizeGroupEnumeration',
-    'WearableSizeSystemEnumeration',
+    
+    
+    
     'WebAPI',
     'WebApplication',
     'WebContent',

@@ -68,6 +68,172 @@ def get_existing_enum_types():
     return enum_types
 
 
+def modify_imports_for_enums(files, enum_types):
+    """
+    Modify import statements in generated files to use enum types from the enums package.
+    
+    Args:
+        files: Dictionary mapping file paths to generated code
+        enum_types: Set of type names that have enum implementations
+    """
+    enum_locations = {}
+    
+    # First, find all enum implementations and their locations
+    for root, _, files_in_dir in os.walk(ENUMS_DIR):
+        for file in files_in_dir:
+            if file.endswith('.py') and not file.startswith('__'):
+                enum_name = os.path.splitext(file)[0]
+                # Get the category from the directory structure
+                rel_path = os.path.relpath(root, ENUMS_DIR)
+                category = rel_path if rel_path != '.' else ''
+                enum_locations[enum_name] = category
+    
+    # Now update imports in all files
+    for file_path, content in files.items():
+        if file_path.name == "__init__.py":
+            continue
+            
+        modified_content = content
+        
+        # Look for import statements for enum types
+        for enum_type in enum_types:
+            if enum_type not in enum_locations:
+                continue
+                
+            category = enum_locations[enum_type]
+            category_path = f".{category}" if category else ""
+            
+            # Patterns for imports from models (handle various potential patterns)
+            old_import_patterns = [
+                f"from msgspec_schemaorg.models.intangible.{enum_type} import {enum_type}",
+                f"from msgspec_schemaorg.models{category_path}.{enum_type} import {enum_type}"
+            ]
+            
+            # Pattern for corrected import from enums
+            new_import = f"from msgspec_schemaorg.enums{category_path}.{enum_type} import {enum_type}"
+            
+            # Replace the import statement
+            for old_pattern in old_import_patterns:
+                if old_pattern in modified_content:
+                    modified_content = modified_content.replace(old_pattern, new_import)
+                    print(f"Updated import for {enum_type} in {file_path}")
+        
+        # Update the content in the files dictionary
+        files[file_path] = modified_content
+
+
+def modify_init_files(files, enum_types):
+    """
+    Modify __init__.py files to remove imports of enum types.
+    
+    Args:
+        files: Dictionary mapping file paths to generated code
+        enum_types: Set of type names that have enum implementations
+    """
+    for file_path, content in files.items():
+        if file_path.name != "__init__.py":
+            continue
+            
+        modified_content = content
+        
+        # Remove imports for enum types
+        for enum_type in enum_types:
+            import_line = f"from .{enum_type} import {enum_type}\n"
+            if import_line in modified_content:
+                modified_content = modified_content.replace(import_line, "")
+                print(f"Removed import for {enum_type} in {file_path}")
+        
+        # Update __all__ list if present
+        if "__all__ = [" in modified_content:
+            # Find __all__ list
+            all_list_start = modified_content.find("__all__ = [")
+            all_list_end = modified_content.find("]", all_list_start)
+            all_list = modified_content[all_list_start:all_list_end+1]
+            
+            # Remove enum types from __all__ list
+            for enum_type in enum_types:
+                # Look for different patterns in __all__ list
+                patterns = [
+                    f"'{enum_type}',",
+                    f"'{enum_type}'",
+                    f"\"{enum_type}\",",
+                    f"\"{enum_type}\""
+                ]
+                
+                for pattern in patterns:
+                    if pattern in all_list:
+                        # Replace with empty string or just a space depending on location
+                        if pattern.endswith(","):
+                            all_list = all_list.replace(pattern, "")
+                        else:
+                            all_list = all_list.replace(pattern, "")
+                        print(f"Removed {enum_type} from __all__ list in {file_path}")
+            
+            # Clean up any empty commas or double commas
+            all_list = all_list.replace(",,", ",")
+            all_list = all_list.replace(", ,", ",")
+            all_list = all_list.replace("[,", "[")
+            all_list = all_list.replace(",]", "]")
+            
+            # Replace the old __all__ list with the cleaned up one
+            modified_content = modified_content.replace(
+                modified_content[all_list_start:all_list_end+1],
+                all_list
+            )
+        
+        # Update the content in the files dictionary
+        files[file_path] = modified_content
+    
+    # Also update the root models/__init__.py if it exists
+    root_init_path = Path(DEFAULT_OUTPUT_DIR) / "__init__.py"
+    if root_init_path.exists():
+        try:
+            with open(root_init_path, 'r') as f:
+                root_init_content = f.read()
+            
+            modified_root_init = root_init_content
+            
+            # Update __all__ list if present
+            if "__all__ = [" in modified_root_init:
+                # Find __all__ list
+                all_list_start = modified_root_init.find("__all__ = [")
+                all_list_end = modified_root_init.find("]", all_list_start)
+                all_list = modified_root_init[all_list_start:all_list_end+1]
+                
+                # Remove enum types from __all__ list
+                for enum_type in enum_types:
+                    patterns = [
+                        f"'{enum_type}',",
+                        f"'{enum_type}'",
+                        f"\"{enum_type}\",",
+                        f"\"{enum_type}\""
+                    ]
+                    
+                    for pattern in patterns:
+                        if pattern in all_list:
+                            # Replace with empty string
+                            all_list = all_list.replace(pattern, "")
+                            print(f"Removed {enum_type} from __all__ list in root __init__.py")
+                
+                # Clean up any empty commas or double commas
+                all_list = all_list.replace(",,", ",")
+                all_list = all_list.replace(", ,", ",")
+                all_list = all_list.replace("[,", "[")
+                all_list = all_list.replace(",]", "]")
+                
+                # Replace the old __all__ list with the cleaned up one
+                modified_root_init = modified_root_init.replace(
+                    modified_root_init[all_list_start:all_list_end+1],
+                    all_list
+                )
+                
+                # Write the modified content back to the file
+                with open(root_init_path, 'w') as f:
+                    f.write(modified_root_init)
+        except Exception as e:
+            print(f"Error updating root __init__.py: {e}")
+
+
 def save_outputs(files: dict[Path, str], enum_types: set):
     """
     Save the generated Python code to multiple files.
@@ -76,6 +242,12 @@ def save_outputs(files: dict[Path, str], enum_types: set):
         files: Dictionary mapping file paths to generated code
         enum_types: Set of type names that already have enum implementations
     """
+    # First, modify import statements to use enum types from enums package
+    modify_imports_for_enums(files, enum_types)
+    
+    # Then remove enum imports from __init__.py files
+    modify_init_files(files, enum_types)
+    
     # Count files by type for summary
     categories = {}
     skipped_enums = 0

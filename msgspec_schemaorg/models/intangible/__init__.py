@@ -176,224 +176,305 @@ from .MediaSubscription import MediaSubscription
 from .RepaymentSpecification import RepaymentSpecification
 from .HowToSupply import HowToSupply
 from .HowToItem import HowToItem
-from .MediaEnumeration import MediaEnumeration
-from .Patient import Patient
 from .ListItem import ListItem
+from .MediaEnumeration import MediaEnumeration
+from .BroadcastService import BroadcastService
+from .Patient import Patient
 from .MedicalAudience import MedicalAudience
-from .MeasurementTypeEnumeration import MeasurementTypeEnumeration
 from .Audience import Audience
+from .MeasurementTypeEnumeration import MeasurementTypeEnumeration
 from .NonprofitType import NonprofitType
-from .Quantity import Quantity
 from .Duration import Duration
-from .FinancialProduct import FinancialProduct
+from .Quantity import Quantity
 from .CurrencyConversionService import CurrencyConversionService
+from .FinancialProduct import FinancialProduct
 from .Service import Service
-from .ItemList import ItemList
 from .HowToSection import HowToSection
+from .ItemList import ItemList
 from .SizeGroupEnumeration import SizeGroupEnumeration
 from .ShippingDeliveryTime import ShippingDeliveryTime
 from .DefinedRegion import DefinedRegion
 from .StructuredValue import StructuredValue
+from .Invoice import Invoice
 from .MedicalEnumeration import MedicalEnumeration
-from .Intangible import Intangible
 from .Enumeration import Enumeration
+from .Intangible import Intangible
 
 __all__ = [
-    'EnergyConsumptionDetails',
-    'OpeningHoursSpecification',
+    'AMRadioChannel',
     'ActionAccessSpecification',
-    'ShippingService',
-    'OfferForPurchase',
-    'Order',
-    'TouristTrip',
-    'OccupationalExperienceRequirements',
-    'Observation',
-    'TrainReservation',
-    'RadioSeries',
-    'PerformanceRole',
-    'CategoryCode',
-    'DefinedTerm',
-    'LocationFeatureSpecification',
-    'Flight',
-    'BoatReservation',
-    'FoodEstablishmentReservation',
-    'BusinessEntityType',
-    'BusReservation',
-    'TypeAndQuantityNode',
-    'ServiceChannel',
-    'PodcastSeries',
-    'BusTrip',
-    'VirtualLocation',
-    'TaxiService',
-    'NutritionInformation',
-    'Researcher',
-    'HowToStep',
-    'BedDetails',
-    'Ticket',
-    'BrokerageAccount',
-    'WarrantyScope',
-    'ServicePeriod',
-    'ShippingRateSettings',
-    'JobPosting',
-    'HealthPlanCostSharingSpecification',
-    'MovieSeries',
-    'EducationalAudience',
-    'OfferCatalog',
-    'Brand',
-    'DeliveryChargeSpecification',
-    'ParentAudience',
-    'PeopleAudience',
-    'FloorPlan',
-    'SpeakableSpecification',
-    'VideoGameSeries',
-    'MerchantReturnPolicySeasonalOverride',
-    'TelevisionChannel',
-    'FlightReservation',
-    'UnitPriceSpecification',
-    'ComputerLanguage',
-    'OwnershipInfo',
-    'BusinessFunction',
-    'Energy',
-    'CableOrSatelliteService',
-    'OrderItem',
-    'Language',
-    'WebAPI',
-    'PaymentChargeSpecification',
-    'HowToTip',
-    'GeoCoordinates',
-    'Schedule',
-    'GovernmentPermit',
-    'ComicSeries',
-    'ProgramMembership',
-    'Seat',
-    'EndorsementRating',
-    'StatisticalVariable',
-    'ConstraintNode',
-    'PropertyValueSpecification',
-    'BedType',
-    'EntryPoint',
-    'Taxi',
-    'BoatTrip',
-    'ParcelDelivery',
-    'DataFeedItem',
-    'MenuItem',
-    'WarrantyPromise',
+    
+    
+    'AggregateOffer',
+    'AggregateRating',
     'AlignmentObject',
-    'LodgingReservation',
-    'HealthPlanNetwork',
-    'InteractionCounter',
-    'BreadcrumbList',
-    'RadioBroadcastService',
-    'Distance',
-    'RentalCarReservation',
+    'Audience',
+    'BankAccount',
+    'BedDetails',
+    'BedType',
+    
+    'BoatReservation',
+    'BoatTrip',
+    
+    
     'BookSeries',
-    'GovernmentService',
+    'Brand',
+    'BreadcrumbList',
+    'BroadcastChannel',
+    'BroadcastFrequencySpecification',
+    'BroadcastService',
+    'BrokerageAccount',
+    'BusReservation',
+    'BusTrip',
+    'BusinessAudience',
+    'BusinessEntityType',
+    'BusinessFunction',
+    'CDCPMDRecord',
+    'CableOrSatelliteService',
+    
+    'CategoryCode',
+    
+    'Class',
+    'ComicSeries',
+    'CompoundPriceSpecification',
+    'ComputerLanguage',
+    'ConstraintNode',
+    'ContactPoint',
+    
+    'CreativeWorkSeries',
+    'CreditCard',
+    'CurrencyConversionService',
+    'DataFeedItem',
+    'DatedMoneySpecification',
+    
+    'DefinedRegion',
+    'DefinedTerm',
+    'DeliveryChargeSpecification',
+    
+    'Demand',
+    'DepositAccount',
     'DigitalDocumentPermission',
-    'MonetaryAmount',
+    
+    
+    'Distance',
+    
+    
+    
+    
+    'Duration',
+    
+    'EducationalAudience',
+    'EducationalOccupationalProgram',
+    'EmployeeRole',
+    'EmployerAggregateRating',
+    'EndorsementRating',
+    'Energy',
+    'EnergyConsumptionDetails',
+    'EnergyEfficiencyEnumeration',
+    
+    'EngineSpecification',
+    'EntryPoint',
+    'Enumeration',
+    
+    'EventReservation',
+    
+    'ExchangeRateSpecification',
+    'FMRadioChannel',
+    'FinancialIncentive',
+    'FinancialProduct',
+    'Flight',
+    'FlightReservation',
+    'FloorPlan',
+    'FoodEstablishmentReservation',
+    'FoodService',
+    
+    
+    
+    'GameServer',
+    
+    
+    'GeoCircle',
+    'GeoCoordinates',
+    'GeoShape',
+    'GeospatialGeometry',
+    
+    'GovernmentPermit',
+    'GovernmentService',
+    'Grant',
+    
+    'HealthInsurancePlan',
+    'HealthPlanCostSharingSpecification',
+    'HealthPlanFormulary',
+    'HealthPlanNetwork',
+    'HowToDirection',
+    'HowToItem',
+    'HowToSection',
+    'HowToStep',
+    'HowToSupply',
+    'HowToTip',
+    'HowToTool',
+    
+    
+    
+    
+    
+    'Intangible',
+    'InteractionCounter',
     'InvestmentFund',
     'InvestmentOrDeposit',
-    'Property',
-    'Newspaper',
-    'Periodical',
-    'GeoCircle',
-    'AMRadioChannel',
-    'SizeSpecification',
-    'QualitativeValue',
-    'MonetaryGrant',
-    'Grant',
-    'HowToTool',
-    'WorkBasedProgram',
-    'EducationalOccupationalProgram',
-    'HowToDirection',
-    'ReservationPackage',
-    'GeospatialGeometry',
-    'HealthPlanFormulary',
-    'MonetaryAmountDistribution',
-    'TVSeries',
-    'CreativeWorkSeries',
-    'Series',
-    'MemberProgramTier',
-    'QuantitativeValue',
-    'OfferForLease',
-    'EmployeeRole',
-    'OrganizationRole',
-    'DatedMoneySpecification',
-    'ShippingConditions',
-    'GameServer',
-    'PaymentService',
-    'EmployerAggregateRating',
-    'Permit',
-    'Mass',
-    'HealthInsurancePlan',
-    'FMRadioChannel',
-    'RadioChannel',
-    'BroadcastChannel',
-    'FoodService',
-    'MortgageLoan',
+    'Invoice',
+    
+    'ItemList',
+    
+    'JobPosting',
+    'Language',
+    
+    
+    'LinkRole',
+    'ListItem',
     'LoanOrCredit',
-    'BroadcastFrequencySpecification',
-    'BusinessAudience',
+    'LocationFeatureSpecification',
+    'LodgingReservation',
+    
+    'Mass',
+    
+    'MeasurementTypeEnumeration',
+    'MediaEnumeration',
+    
+    'MediaSubscription',
+    'MedicalAudience',
+    
+    
+    'MedicalEnumeration',
+    
+    
+    
+    
+    
+    
+    
+    
+    'MemberProgram',
+    'MemberProgramTier',
+    'MenuItem',
+    
+    'MerchantReturnPolicy',
+    'MerchantReturnPolicySeasonalOverride',
+    'MonetaryAmount',
+    'MonetaryAmountDistribution',
+    'MonetaryGrant',
+    'MortgageLoan',
+    'MovieSeries',
+    
+    
+    
+    
+    'Newspaper',
+    'NonprofitType',
+    'NutritionInformation',
+    'Observation',
+    'Occupation',
+    'OccupationalExperienceRequirements',
+    'Offer',
+    'OfferCatalog',
+    'OfferForLease',
+    'OfferForPurchase',
+    
+    'OfferShippingDetails',
+    'OpeningHoursSpecification',
+    'Order',
+    'OrderItem',
+    
+    'OrganizationRole',
+    'OwnershipInfo',
+    'ParcelDelivery',
+    'ParentAudience',
+    'Patient',
+    'PaymentCard',
+    'PaymentChargeSpecification',
+    'PaymentMethod',
+    
+    'PaymentService',
+    
+    'PeopleAudience',
+    'PerformanceRole',
+    'Periodical',
+    'Permit',
+    
+    'PodcastSeries',
+    'PostalAddress',
+    'PostalCodeRangeSpecification',
+    
+    'PriceSpecification',
+    
+    'ProgramMembership',
+    'Property',
     'PropertyValue',
-    'EngineSpecification',
+    'PropertyValueSpecification',
+    
+    'QualitativeValue',
+    'QuantitativeValue',
+    'QuantitativeValueDistribution',
+    'Quantity',
+    'RadioBroadcastService',
+    'RadioChannel',
+    'RadioSeries',
+    'Rating',
+    
+    'RentalCarReservation',
+    'RepaymentSpecification',
+    'Researcher',
+    'Reservation',
+    'ReservationPackage',
+    
+    
+    
+    
+    
+    'Role',
+    
+    'Schedule',
+    'Seat',
+    'Series',
+    'Service',
+    'ServiceChannel',
+    'ServicePeriod',
+    'ShippingConditions',
+    'ShippingDeliveryTime',
+    'ShippingRateSettings',
+    'ShippingService',
+    'SizeGroupEnumeration',
+    'SizeSpecification',
+    
+    'SpeakableSpecification',
+    'Specialty',
+    'StatisticalPopulation',
+    'StatisticalVariable',
+    'StatusEnumeration',
+    
+    'StructuredValue',
+    'TVSeries',
+    'Taxi',
+    'TaxiReservation',
+    'TaxiService',
+    'TelevisionChannel',
+    'Ticket',
+    
+    'TouristTrip',
+    'TrainReservation',
     'TrainTrip',
     'Trip',
-    'Demand',
-    'TaxiReservation',
-    'CDCPMDRecord',
-    'StatisticalPopulation',
-    'QuantitativeValueDistribution',
-    'Occupation',
-    'LinkRole',
-    'Role',
-    'EventReservation',
-    'Reservation',
-    'DepositAccount',
-    'BankAccount',
-    'MemberProgram',
-    'FinancialIncentive',
-    'CompoundPriceSpecification',
-    'PriceSpecification',
-    'AggregateRating',
-    'Rating',
-    'Class',
-    'OfferShippingDetails',
-    'AggregateOffer',
-    'Offer',
-    'StatusEnumeration',
-    'GeoShape',
-    'ExchangeRateSpecification',
-    'CreditCard',
-    'PaymentCard',
-    'PaymentMethod',
-    'PostalCodeRangeSpecification',
-    'EnergyEfficiencyEnumeration',
-    'PostalAddress',
-    'ContactPoint',
-    'MerchantReturnPolicy',
-    'Specialty',
-    'MediaSubscription',
-    'RepaymentSpecification',
-    'HowToSupply',
-    'HowToItem',
-    'MediaEnumeration',
-    'Patient',
-    'ListItem',
-    'MedicalAudience',
-    'MeasurementTypeEnumeration',
-    'Audience',
-    'NonprofitType',
-    'Quantity',
-    'Duration',
-    'FinancialProduct',
-    'CurrencyConversionService',
-    'Service',
-    'ItemList',
-    'HowToSection',
-    'SizeGroupEnumeration',
-    'ShippingDeliveryTime',
-    'DefinedRegion',
-    'StructuredValue',
-    'MedicalEnumeration',
-    'Intangible',
-    'Enumeration'
+    'TypeAndQuantityNode',
+    
+    
+    'UnitPriceSpecification',
+    'VideoGameSeries',
+    'VirtualLocation',
+    'WarrantyPromise',
+    'WarrantyScope',
+    
+    
+    
+    'WebAPI',
+    'WorkBasedProgram',
 ]
