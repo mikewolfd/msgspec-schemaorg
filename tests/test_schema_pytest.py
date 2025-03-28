@@ -4,6 +4,9 @@ Test Schema.org models against real examples using pytest.
 """
 
 import importlib
+import importlib.util
+import importlib.machinery
+from pkgutil import iter_modules
 import json
 import os
 import re
@@ -49,7 +52,7 @@ def get_msgspec_classes() -> Iterator[Any]:
         # Get all modules in the package
         if hasattr(package, "__path__"):
             package_path = package.__path__
-            for _, module_name, is_pkg in importlib.iter_modules(package_path):
+            for _, module_name, is_pkg in iter_modules(package_path):
                 full_module_name = f"{package_name}.{module_name}"
                 try:
                     module = importlib.import_module(full_module_name)

@@ -651,7 +651,6 @@ __all__ = [
     'Photograph',
     'PhotographAction',
     'PhysicalActivity',
-    'PhysicalActivityCategory',
     'PhysicalExam',
     'PhysicalTherapy',
     'Physician',
