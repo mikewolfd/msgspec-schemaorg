@@ -634,15 +634,18 @@ class SchemaProcessor:
             
             # Create type annotation string
             if len(types) > 1:
-                # Use Union for multiple types
-                type_str = " | ".join(self._get_string_type_annotation(t) for t in types)
+                # Use Union for multiple types, ensuring proper quotes for forward references
+                type_parts = [self._get_string_type_annotation(t) for t in types]
+                type_str = ", ".join(type_parts)
+                # Use Union[] syntax instead of | for compatibility
+                type_str = f"Union[{type_str}]"
             elif len(types) == 1:
                 type_str = self._get_string_type_annotation(types[0])
             else:
                 type_str = "str"  # Default
                 
-            # Make all fields optional for now
-            code.append(f"    {prop_name}: {type_str} | None = None")
+            # Add support for multiple values (cardinality) - in Schema.org, properties can have multiple values by default
+            code.append(f"    {prop_name}: Union[List[{type_str}], {type_str}, None] = None")
             
             # Mark if we need date handling
             if has_date_type:
@@ -700,7 +703,15 @@ class SchemaProcessor:
             # Check if it's a Schema.org type (one of our model classes)
             for norm_name in self.normalized_class_names.values():
                 if norm_name == type_obj:
-                    return f"'{type_obj}'"  # Use string literal for all Schema.org types
+                    # Already a string (likely a class name for forward reference)
+                    # Strip quotes if already quoted to prevent double quoting
+                    clean_type = str(type_obj).strip("'\"")
+                    return f"'{clean_type}'"
+            
+            # Handle special case for Union and List types
+            if str(type_obj).startswith(('Union[', 'List[')):
+                return str(type_obj)
+            
             # It's a primitive type or unknown
             return str(type_obj)
     

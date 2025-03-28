@@ -31,6 +31,7 @@ While AI assisted in development, all code was reviewed and tested.
 *   **Code Generation:** Creates `msgspec.Struct` definitions from Schema.org types, including type hints and docstrings.
 *   **Proper Inheritance:** Preserves the Schema.org class hierarchy using Python inheritance (`Book` inherits from `CreativeWork`, which inherits from `Thing`).
 *   **JSON-LD Compatibility:** All models support JSON-LD fields (`@id`, `@type`, `@context`) that serialize correctly.
+*   **Property Cardinality:** Implements Schema.org's multiple-value property model, where properties can take both single values and lists of values.
 *   **Category Organization:** Organizes generated classes into subdirectories (CreativeWork, Person, etc.).
 *   **Circular Dependency Resolution:** Uses forward references (`"TypeName"`) and `TYPE_CHECKING` imports.
 *   **Python Compatibility:** Handles reserved keywords.
