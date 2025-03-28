@@ -17,6 +17,7 @@ from msgspec_schemaorg.generate import fetch_and_generate
 # Default Schema.org URL and output file
 DEFAULT_SCHEMA_URL = "https://schema.org/version/latest/schemaorg-current-https.jsonld"
 DEFAULT_OUTPUT_DIR = Path(__file__).parent.parent / "msgspec_schemaorg" / "models"
+ENUMS_DIR = Path(__file__).parent.parent / "msgspec_schemaorg" / "enums"
 
 
 def ensure_dir_exists(directory: Path):
@@ -44,17 +45,48 @@ def download_schema(url: str = DEFAULT_SCHEMA_URL) -> dict:
     return response.json()
 
 
-def save_outputs(files: dict[Path, str]):
+def get_existing_enum_types():
+    """
+    Get a list of types that already have enum implementations.
+    
+    Returns:
+        A set of type names (without namespace) that have enum implementations
+    """
+    enum_types = set()
+    
+    if not ENUMS_DIR.exists():
+        return enum_types
+        
+    # Walk through the enums directory to find all enum files
+    for root, _, files in os.walk(ENUMS_DIR):
+        for file in files:
+            if file.endswith('.py') and not file.startswith('__'):
+                # Remove the .py extension to get the type name
+                enum_name = os.path.splitext(file)[0]
+                enum_types.add(enum_name)
+                
+    return enum_types
+
+
+def save_outputs(files: dict[Path, str], enum_types: set):
     """
     Save the generated Python code to multiple files.
     
     Args:
         files: Dictionary mapping file paths to generated code
+        enum_types: Set of type names that already have enum implementations
     """
     # Count files by type for summary
     categories = {}
+    skipped_enums = 0
     
     for file_path, content in files.items():
+        # Skip if this is an enum type that already has an implementation
+        if file_path.name != "__init__.py" and file_path.stem in enum_types:
+            print(f"Skipping {file_path.stem} as it already has an enum implementation")
+            skipped_enums += 1
+            continue
+            
         ensure_dir_exists(file_path.parent)
         
         with open(file_path, 'w') as f:
@@ -72,6 +104,9 @@ def save_outputs(files: dict[Path, str]):
     print(f"Generated {total_files} class files across {len(categories)} categories:")
     for category, count in sorted(categories.items()):
         print(f"  - {category}: {count} classes")
+    
+    if skipped_enums > 0:
+        print(f"Skipped {skipped_enums} classes that already have enum implementations")
 
 
 def main():
@@ -85,6 +120,8 @@ def main():
                        help='Save the downloaded Schema.org data to a JSON file')
     parser.add_argument('--clean', action='store_true',
                        help='Clean output directory before generating files')
+    parser.add_argument('--include-enums', action='store_true',
+                       help='Generate Struct classes even for types that have enum implementations')
     
     args = parser.parse_args()
     
@@ -110,12 +147,15 @@ def main():
                 json.dump(schema_data, f, indent=2)
             print(f"Saved schema data to {schema_file}")
         
+        # Get types that already have enum implementations
+        enum_types = set() if args.include_enums else get_existing_enum_types()
+        
         # Generate Python code
         print("Generating Python code...")
         generated_files = fetch_and_generate(schema_data, args.output_dir)
         
         # Save generated files
-        save_outputs(generated_files)
+        save_outputs(generated_files, enum_types)
         
         print(f"Code generation completed successfully.")
         
