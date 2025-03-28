@@ -11,7 +11,7 @@ Features:
 - Maintains type safety with modern Python type annotations
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 # Import the key functions and classes to expose at the package level
 from .generate import fetch_and_generate, SchemaProcessor
