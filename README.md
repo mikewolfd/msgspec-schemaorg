@@ -239,6 +239,25 @@ The tests cover model generation, imports, date parsing, URL validation, inherit
 *   **URLs:** Validated using a consistent `URL` type with pattern validation.
 *   **Inheritance:** Schema.org hierarchy is preserved through Python class inheritance.
 *   **JSON-LD:** All models support standard JSON-LD fields (`@id`, `@type`, `@context`).
+*   **Enumerations:** Schema.org enumerations are available as Python Enum classes in the `msgspec_schemaorg.enums` package, organized by category (e.g., `msgspec_schemaorg.enums.intangible`).
+
+### Using Enumerations
+
+Access and use Schema.org enumeration values as Python Enums:
+
+```python
+from msgspec_schemaorg.enums.intangible import MediaManipulationRatingEnumeration, DeliveryMethod
+
+# Create objects using enum values
+media_rating = MediaManipulationRatingEnumeration.OriginalMediaContent
+
+# All enum values from a class
+all_delivery_methods = list(DeliveryMethod)
+
+# Access metadata for an enum value
+metadata = MediaManipulationRatingEnumeration.metadata["OriginalMediaContent"]
+description = metadata["comment"]
+```
 
 ## Limitations
 
