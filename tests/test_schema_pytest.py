@@ -19,7 +19,18 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 # Try to import models
 try:
-    from msgspec_schemaorg.models import *
+    # Import model classes directly without importing enums through wildcard imports
+    from msgspec_schemaorg.models.creativework import Book, CreativeWork, Article, BlogPosting
+    from msgspec_schemaorg.models.person import Person
+    from msgspec_schemaorg.models.organization import Organization
+    from msgspec_schemaorg.models.place import Place
+    from msgspec_schemaorg.models.event import Event
+    from msgspec_schemaorg.models.product import Product
+    from msgspec_schemaorg.models.intangible import Offer, PostalAddress, PropertyValue
+    from msgspec_schemaorg.models.thing import Thing
+    
+    # Import enums separately if needed
+    import msgspec_schemaorg.enums
 except ImportError:
     pytest.skip("Models not found. Please generate them first by running scripts/generate_models.py", allow_module_level=True)
 
@@ -31,16 +42,41 @@ def get_msgspec_classes() -> Iterator[Any]:
     Returns:
         An iterator of all classes in the package.
     """
-    package = importlib.import_module("msgspec_schemaorg.models")
+    # Function to recursively get classes from a package
+    def get_classes_from_package(package_name: str) -> Iterator[Any]:
+        package = importlib.import_module(package_name)
+        
+        # Get all modules in the package
+        if hasattr(package, "__path__"):
+            package_path = package.__path__
+            for _, module_name, is_pkg in importlib.iter_modules(package_path):
+                full_module_name = f"{package_name}.{module_name}"
+                try:
+                    module = importlib.import_module(full_module_name)
+                    
+                    # If this is a package, recursively get classes
+                    if is_pkg:
+                        yield from get_classes_from_package(full_module_name)
+                    
+                    # Get all classes from this module
+                    for name in dir(module):
+                        attr = getattr(module, name)
+                        if isinstance(attr, type) and issubclass(attr, msgspec.Struct) and attr.__module__ == module.__name__:
+                            yield attr
+                except ImportError:
+                    continue
+                except Exception as e:
+                    print(f"Error importing {full_module_name}: {e}")
+                    continue
+        else:
+            # This is a module, not a package
+            for name in dir(package):
+                attr = getattr(package, name)
+                if isinstance(attr, type) and issubclass(attr, msgspec.Struct) and attr.__module__ == package.__name__:
+                    yield attr
     
-    # Get all the classes defined in __all__
-    for attr_name in getattr(package, "__all__", []):
-        try:
-            cls = getattr(package, attr_name)
-            if isinstance(cls, type) and issubclass(cls, msgspec.Struct):
-                yield cls
-        except (AttributeError, TypeError):
-            continue
+    # Get all classes from the models package
+    yield from get_classes_from_package("msgspec_schemaorg.models")
 
 
 def get_schema_examples() -> List[Dict[str, Any]]:

@@ -1,25 +1,26 @@
 """
-msgspec-schemaorg: Generate Python msgspec.Struct classes from the Schema.org vocabulary.
-
-This package provides tools to generate efficient Python data structures based
-on the Schema.org vocabulary, using the high-performance msgspec library.
-
-Features:
-- Generates msgspec.Struct classes from Schema.org
-- Auto-converts ISO8601 date/datetime strings
-- Handles circular dependencies
-- Maintains type safety with modern Python type annotations
+msgspec_schemaorg - Schema.org models generated using msgspec.
 """
 
-__version__ = "0.1.5"
+__version__ = "0.1.0"
 
-# Import the key functions and classes to expose at the package level
-from .generate import fetch_and_generate, SchemaProcessor
-from .utils import parse_iso8601
+from .base import SchemaOrgBase
 
-# Optional: Import any generated models if they exist
-try:
-    from . import models
-except ImportError:
-    # Models haven't been generated yet or couldn't be imported
-    pass
+# Import modules conditionally to avoid circular dependencies
+__all__ = [
+    "SchemaOrgBase",
+    "models",
+    "enums",
+]
+
+# These imports are deferred to avoid circular dependencies when using just one part
+def __getattr__(name):
+    if name == "models":
+        from . import models as _models
+        globals()["models"] = _models
+        return _models
+    elif name == "enums":
+        from . import enums as _enums
+        globals()["enums"] = _enums
+        return _enums
+    raise AttributeError(f"module '{__name__}' has no attribute '{name}'")
