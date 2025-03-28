@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="msgspec-schemaorg",
-    version="0.1.1",
+    version="0.1.2",
     author="Michael Deeb",
     author_email="michael.f.deeb@gmail.com",
     description="Generate Python msgspec.Struct classes from the Schema.org vocabulary",
