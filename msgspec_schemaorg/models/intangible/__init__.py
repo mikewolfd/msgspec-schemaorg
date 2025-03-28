@@ -1,268 +1,281 @@
 """Generated Schema.org intangible models using msgspec."""
 
-from .AMRadioChannel import AMRadioChannel
-from .ActionAccessSpecification import ActionAccessSpecification
-from .ActionStatusType import ActionStatusType
-from .AdultOrientedEnumeration import AdultOrientedEnumeration
-from .AggregateOffer import AggregateOffer
-from .AggregateRating import AggregateRating
-from .AlignmentObject import AlignmentObject
-from .Audience import Audience
-from .BankAccount import BankAccount
-from .BedDetails import BedDetails
-from .BedType import BedType
-from .BoardingPolicyType import BoardingPolicyType
-from .BoatReservation import BoatReservation
-from .BoatTrip import BoatTrip
-from .BodyMeasurementTypeEnumeration import BodyMeasurementTypeEnumeration
-from .BookFormatType import BookFormatType
-from .Brand import Brand
-from .BreadcrumbList import BreadcrumbList
-from .BroadcastChannel import BroadcastChannel
-from .BroadcastFrequencySpecification import BroadcastFrequencySpecification
-from .BroadcastService import BroadcastService
-from .BrokerageAccount import BrokerageAccount
-from .BusReservation import BusReservation
-from .BusTrip import BusTrip
-from .BusinessAudience import BusinessAudience
-from .BusinessEntityType import BusinessEntityType
-from .BusinessFunction import BusinessFunction
-from .CDCPMDRecord import CDCPMDRecord
-from .CableOrSatelliteService import CableOrSatelliteService
-from .CarUsageType import CarUsageType
-from .CategoryCode import CategoryCode
-from .CertificationStatusEnumeration import CertificationStatusEnumeration
-from .Class import Class
-from .CompoundPriceSpecification import CompoundPriceSpecification
-from .ComputerLanguage import ComputerLanguage
-from .ConstraintNode import ConstraintNode
-from .ContactPoint import ContactPoint
-from .ContactPointOption import ContactPointOption
-from .CreditCard import CreditCard
-from .CurrencyConversionService import CurrencyConversionService
-from .DataFeedItem import DataFeedItem
-from .DatedMoneySpecification import DatedMoneySpecification
-from .DayOfWeek import DayOfWeek
-from .DefinedRegion import DefinedRegion
-from .DefinedTerm import DefinedTerm
-from .DeliveryChargeSpecification import DeliveryChargeSpecification
-from .DeliveryMethod import DeliveryMethod
-from .Demand import Demand
-from .DepositAccount import DepositAccount
-from .DigitalDocumentPermission import DigitalDocumentPermission
-from .DigitalDocumentPermissionType import DigitalDocumentPermissionType
-from .DigitalPlatformEnumeration import DigitalPlatformEnumeration
-from .Distance import Distance
-from .DriveWheelConfigurationValue import DriveWheelConfigurationValue
-from .DrugCostCategory import DrugCostCategory
 from .DrugPregnancyCategory import DrugPregnancyCategory
-from .DrugPrescriptionStatus import DrugPrescriptionStatus
-from .Duration import Duration
-from .EUEnergyEfficiencyEnumeration import EUEnergyEfficiencyEnumeration
-from .EducationalAudience import EducationalAudience
-from .EducationalOccupationalProgram import EducationalOccupationalProgram
-from .EmployeeRole import EmployeeRole
-from .EmployerAggregateRating import EmployerAggregateRating
-from .EndorsementRating import EndorsementRating
-from .Energy import Energy
+from .PurchaseType import PurchaseType
 from .EnergyConsumptionDetails import EnergyConsumptionDetails
-from .EnergyEfficiencyEnumeration import EnergyEfficiencyEnumeration
-from .EnergyStarEnergyEfficiencyEnumeration import EnergyStarEnergyEfficiencyEnumeration
-from .EngineSpecification import EngineSpecification
-from .EntryPoint import EntryPoint
-from .Enumeration import Enumeration
-from .EventAttendanceModeEnumeration import EventAttendanceModeEnumeration
-from .EventReservation import EventReservation
-from .EventStatusType import EventStatusType
-from .ExchangeRateSpecification import ExchangeRateSpecification
-from .FMRadioChannel import FMRadioChannel
-from .FinancialIncentive import FinancialIncentive
-from .FinancialProduct import FinancialProduct
-from .Flight import Flight
-from .FlightReservation import FlightReservation
-from .FloorPlan import FloorPlan
-from .FoodEstablishmentReservation import FoodEstablishmentReservation
-from .FoodService import FoodService
-from .FulfillmentTypeEnumeration import FulfillmentTypeEnumeration
+from .OpeningHoursSpecification import OpeningHoursSpecification
+from .ActionAccessSpecification import ActionAccessSpecification
+from .ContactPointOption import ContactPointOption
+from .ShippingService import ShippingService
+from .PaymentMethodType import PaymentMethodType
+from .PriceComponentTypeEnumeration import PriceComponentTypeEnumeration
+from .DigitalPlatformEnumeration import DigitalPlatformEnumeration
+from .OfferForPurchase import OfferForPurchase
 from .GameAvailabilityEnumeration import GameAvailabilityEnumeration
-from .GamePlayMode import GamePlayMode
-from .GameServer import GameServer
-from .GameServerStatus import GameServerStatus
-from .GenderType import GenderType
-from .GeoCircle import GeoCircle
-from .GeoCoordinates import GeoCoordinates
-from .GeoShape import GeoShape
-from .GeospatialGeometry import GeospatialGeometry
-from .GovernmentBenefitsType import GovernmentBenefitsType
-from .GovernmentPermit import GovernmentPermit
-from .GovernmentService import GovernmentService
-from .Grant import Grant
-from .HealthAspectEnumeration import HealthAspectEnumeration
-from .HealthInsurancePlan import HealthInsurancePlan
+from .Order import Order
+from .MedicalEvidenceLevel import MedicalEvidenceLevel
+from .TouristTrip import TouristTrip
+from .OccupationalExperienceRequirements import OccupationalExperienceRequirements
+from .Observation import Observation
+from .MedicalDevicePurpose import MedicalDevicePurpose
+from .TrainReservation import TrainReservation
+from .BookFormatType import BookFormatType
+from .RadioSeries import RadioSeries
+from .DriveWheelConfigurationValue import DriveWheelConfigurationValue
+from .PerformanceRole import PerformanceRole
+from .CategoryCode import CategoryCode
+from .DefinedTerm import DefinedTerm
+from .LocationFeatureSpecification import LocationFeatureSpecification
+from .Flight import Flight
+from .BoatReservation import BoatReservation
+from .FoodEstablishmentReservation import FoodEstablishmentReservation
+from .BusinessEntityType import BusinessEntityType
+from .BusReservation import BusReservation
+from .TypeAndQuantityNode import TypeAndQuantityNode
+from .ServiceChannel import ServiceChannel
+from .NLNonprofitType import NLNonprofitType
+from .PodcastSeries import PodcastSeries
+from .DigitalDocumentPermissionType import DigitalDocumentPermissionType
+from .BusTrip import BusTrip
+from .VirtualLocation import VirtualLocation
+from .RefundTypeEnumeration import RefundTypeEnumeration
+from .TaxiService import TaxiService
+from .NutritionInformation import NutritionInformation
+from .Researcher import Researcher
+from .HowToStep import HowToStep
+from .EUEnergyEfficiencyEnumeration import EUEnergyEfficiencyEnumeration
+from .BedDetails import BedDetails
+from .Ticket import Ticket
+from .BrokerageAccount import BrokerageAccount
+from .UKNonprofitType import UKNonprofitType
+from .ItemAvailability import ItemAvailability
+from .WarrantyScope import WarrantyScope
+from .BodyMeasurementTypeEnumeration import BodyMeasurementTypeEnumeration
+from .ServicePeriod import ServicePeriod
+from .ShippingRateSettings import ShippingRateSettings
+from .WearableMeasurementTypeEnumeration import WearableMeasurementTypeEnumeration
+from .JobPosting import JobPosting
+from .MerchantReturnEnumeration import MerchantReturnEnumeration
 from .HealthPlanCostSharingSpecification import HealthPlanCostSharingSpecification
-from .HealthPlanFormulary import HealthPlanFormulary
-from .HealthPlanNetwork import HealthPlanNetwork
-from .HowToItem import HowToItem
-from .HowToSupply import HowToSupply
-from .HowToTool import HowToTool
-from .IPTCDigitalSourceEnumeration import IPTCDigitalSourceEnumeration
-from .IncentiveQualifiedExpenseType import IncentiveQualifiedExpenseType
-from .IncentiveStatus import IncentiveStatus
-from .IncentiveType import IncentiveType
+from .MovieSeries import MovieSeries
+from .GameServerStatus import GameServerStatus
+from .ReturnMethodEnumeration import ReturnMethodEnumeration
+from .EducationalAudience import EducationalAudience
 from .InfectiousAgentClass import InfectiousAgentClass
-from .Intangible import Intangible
+from .OfferCatalog import OfferCatalog
+from .DayOfWeek import DayOfWeek
+from .ActionStatusType import ActionStatusType
+from .Brand import Brand
+from .DeliveryChargeSpecification import DeliveryChargeSpecification
+from .ParentAudience import ParentAudience
+from .PeopleAudience import PeopleAudience
+from .FloorPlan import FloorPlan
+from .SpeakableSpecification import SpeakableSpecification
+from .VideoGameSeries import VideoGameSeries
+from .MerchantReturnPolicySeasonalOverride import MerchantReturnPolicySeasonalOverride
+from .USNonprofitType import USNonprofitType
+from .DeliveryMethod import DeliveryMethod
+from .TelevisionChannel import TelevisionChannel
+from .FlightReservation import FlightReservation
+from .UnitPriceSpecification import UnitPriceSpecification
+from .CarUsageType import CarUsageType
+from .ComputerLanguage import ComputerLanguage
+from .AdultOrientedEnumeration import AdultOrientedEnumeration
+from .OwnershipInfo import OwnershipInfo
+from .CertificationStatusEnumeration import CertificationStatusEnumeration
+from .BusinessFunction import BusinessFunction
+from .Energy import Energy
+from .CableOrSatelliteService import CableOrSatelliteService
+from .MedicalStudyStatus import MedicalStudyStatus
+from .HealthAspectEnumeration import HealthAspectEnumeration
+from .OrderItem import OrderItem
+from .Language import Language
+from .TierBenefitEnumeration import TierBenefitEnumeration
+from .IncentiveType import IncentiveType
+from .WebAPI import WebAPI
+from .RestrictedDiet import RestrictedDiet
+from .PaymentChargeSpecification import PaymentChargeSpecification
+from .HowToTip import HowToTip
+from .GeoCoordinates import GeoCoordinates
+from .ReturnLabelSourceEnumeration import ReturnLabelSourceEnumeration
+from .Schedule import Schedule
+from .GovernmentPermit import GovernmentPermit
+from .ComicSeries import ComicSeries
+from .WearableSizeGroupEnumeration import WearableSizeGroupEnumeration
+from .MedicalObservationalStudyDesign import MedicalObservationalStudyDesign
+from .MusicAlbumReleaseType import MusicAlbumReleaseType
+from .ProgramMembership import ProgramMembership
+from .MedicalAudienceType import MedicalAudienceType
+from .Seat import Seat
+from .RsvpResponseType import RsvpResponseType
+from .OfferItemCondition import OfferItemCondition
+from .IncentiveQualifiedExpenseType import IncentiveQualifiedExpenseType
+from .EndorsementRating import EndorsementRating
+from .MusicAlbumProductionType import MusicAlbumProductionType
+from .MedicalTrialDesign import MedicalTrialDesign
+from .StatisticalVariable import StatisticalVariable
+from .ConstraintNode import ConstraintNode
+from .MedicalProcedureType import MedicalProcedureType
+from .PropertyValueSpecification import PropertyValueSpecification
+from .BedType import BedType
+from .SteeringPositionValue import SteeringPositionValue
+from .EntryPoint import EntryPoint
+from .Taxi import Taxi
+from .BoatTrip import BoatTrip
+from .ParcelDelivery import ParcelDelivery
+from .PhysicalActivityCategory import PhysicalActivityCategory
+from .DataFeedItem import DataFeedItem
+from .MenuItem import MenuItem
+from .WarrantyPromise import WarrantyPromise
+from .DrugPrescriptionStatus import DrugPrescriptionStatus
+from .GamePlayMode import GamePlayMode
+from .AlignmentObject import AlignmentObject
+from .PriceTypeEnumeration import PriceTypeEnumeration
+from .LodgingReservation import LodgingReservation
+from .HealthPlanNetwork import HealthPlanNetwork
 from .InteractionCounter import InteractionCounter
+from .BreadcrumbList import BreadcrumbList
+from .RadioBroadcastService import RadioBroadcastService
+from .Distance import Distance
+from .LegalForceStatus import LegalForceStatus
+from .RentalCarReservation import RentalCarReservation
+from .BookSeries import BookSeries
+from .ItemListOrderType import ItemListOrderType
+from .GovernmentService import GovernmentService
+from .DigitalDocumentPermission import DigitalDocumentPermission
+from .MonetaryAmount import MonetaryAmount
+from .LegalValueLevel import LegalValueLevel
+from .GenderType import GenderType
 from .InvestmentFund import InvestmentFund
 from .InvestmentOrDeposit import InvestmentOrDeposit
-from .Invoice import Invoice
-from .ItemAvailability import ItemAvailability
-from .ItemList import ItemList
-from .ItemListOrderType import ItemListOrderType
-from .JobPosting import JobPosting
-from .Language import Language
-from .LegalForceStatus import LegalForceStatus
-from .LegalValueLevel import LegalValueLevel
-from .LinkRole import LinkRole
-from .ListItem import ListItem
-from .LoanOrCredit import LoanOrCredit
-from .LocationFeatureSpecification import LocationFeatureSpecification
-from .LodgingReservation import LodgingReservation
-from .MapCategoryType import MapCategoryType
-from .Mass import Mass
-from .MeasurementMethodEnum import MeasurementMethodEnum
-from .MeasurementTypeEnumeration import MeasurementTypeEnumeration
-from .MediaEnumeration import MediaEnumeration
-from .MediaManipulationRatingEnumeration import MediaManipulationRatingEnumeration
-from .MediaSubscription import MediaSubscription
-from .MedicalAudience import MedicalAudience
-from .MedicalAudienceType import MedicalAudienceType
-from .MedicalCode import MedicalCode
-from .MedicalDevicePurpose import MedicalDevicePurpose
-from .MedicalEnumeration import MedicalEnumeration
-from .MedicalEvidenceLevel import MedicalEvidenceLevel
-from .MedicalImagingTechnique import MedicalImagingTechnique
-from .MedicalObservationalStudyDesign import MedicalObservationalStudyDesign
-from .MedicalProcedureType import MedicalProcedureType
-from .MedicalSpecialty import MedicalSpecialty
-from .MedicalStudyStatus import MedicalStudyStatus
-from .MedicalTrialDesign import MedicalTrialDesign
-from .MedicineSystem import MedicineSystem
-from .MemberProgram import MemberProgram
-from .MemberProgramTier import MemberProgramTier
-from .MenuItem import MenuItem
-from .MerchantReturnEnumeration import MerchantReturnEnumeration
-from .MerchantReturnPolicy import MerchantReturnPolicy
-from .MerchantReturnPolicySeasonalOverride import MerchantReturnPolicySeasonalOverride
-from .MonetaryAmount import MonetaryAmount
-from .MonetaryAmountDistribution import MonetaryAmountDistribution
-from .MonetaryGrant import MonetaryGrant
-from .MortgageLoan import MortgageLoan
-from .MusicAlbumProductionType import MusicAlbumProductionType
-from .MusicAlbumReleaseType import MusicAlbumReleaseType
-from .MusicReleaseFormatType import MusicReleaseFormatType
-from .NLNonprofitType import NLNonprofitType
-from .NonprofitType import NonprofitType
-from .NutritionInformation import NutritionInformation
-from .Observation import Observation
-from .Occupation import Occupation
-from .OccupationalExperienceRequirements import OccupationalExperienceRequirements
-from .Offer import Offer
-from .OfferCatalog import OfferCatalog
-from .OfferForLease import OfferForLease
-from .OfferForPurchase import OfferForPurchase
-from .OfferItemCondition import OfferItemCondition
-from .OfferShippingDetails import OfferShippingDetails
-from .OpeningHoursSpecification import OpeningHoursSpecification
-from .Order import Order
-from .OrderItem import OrderItem
-from .OrderStatus import OrderStatus
-from .OrganizationRole import OrganizationRole
-from .OwnershipInfo import OwnershipInfo
-from .ParcelDelivery import ParcelDelivery
-from .ParentAudience import ParentAudience
-from .PaymentCard import PaymentCard
-from .PaymentChargeSpecification import PaymentChargeSpecification
-from .PaymentMethod import PaymentMethod
-from .PaymentMethodType import PaymentMethodType
-from .PaymentService import PaymentService
-from .PaymentStatusType import PaymentStatusType
-from .PeopleAudience import PeopleAudience
-from .PerformanceRole import PerformanceRole
-from .Permit import Permit
-from .PhysicalActivityCategory import PhysicalActivityCategory
-from .PhysicalExam import PhysicalExam
-from .PostalAddress import PostalAddress
-from .PostalCodeRangeSpecification import PostalCodeRangeSpecification
-from .PriceComponentTypeEnumeration import PriceComponentTypeEnumeration
-from .PriceSpecification import PriceSpecification
-from .PriceTypeEnumeration import PriceTypeEnumeration
-from .ProgramMembership import ProgramMembership
 from .Property import Property
-from .PropertyValue import PropertyValue
-from .PropertyValueSpecification import PropertyValueSpecification
-from .PurchaseType import PurchaseType
-from .QualitativeValue import QualitativeValue
-from .QuantitativeValue import QuantitativeValue
-from .QuantitativeValueDistribution import QuantitativeValueDistribution
-from .Quantity import Quantity
-from .RadioBroadcastService import RadioBroadcastService
-from .RadioChannel import RadioChannel
-from .Rating import Rating
-from .RefundTypeEnumeration import RefundTypeEnumeration
-from .RentalCarReservation import RentalCarReservation
-from .RepaymentSpecification import RepaymentSpecification
-from .Researcher import Researcher
-from .Reservation import Reservation
-from .ReservationPackage import ReservationPackage
-from .ReservationStatusType import ReservationStatusType
-from .RestrictedDiet import RestrictedDiet
-from .ReturnFeesEnumeration import ReturnFeesEnumeration
-from .ReturnLabelSourceEnumeration import ReturnLabelSourceEnumeration
-from .ReturnMethodEnumeration import ReturnMethodEnumeration
-from .Role import Role
-from .RsvpResponseType import RsvpResponseType
-from .Schedule import Schedule
-from .Seat import Seat
-from .Series import Series
-from .Service import Service
-from .ServiceChannel import ServiceChannel
-from .ServicePeriod import ServicePeriod
-from .ShippingConditions import ShippingConditions
-from .ShippingDeliveryTime import ShippingDeliveryTime
-from .ShippingRateSettings import ShippingRateSettings
-from .ShippingService import ShippingService
-from .SizeGroupEnumeration import SizeGroupEnumeration
+from .Newspaper import Newspaper
+from .Periodical import Periodical
+from .GovernmentBenefitsType import GovernmentBenefitsType
+from .GeoCircle import GeoCircle
+from .AMRadioChannel import AMRadioChannel
 from .SizeSpecification import SizeSpecification
-from .SizeSystemEnumeration import SizeSystemEnumeration
-from .SpeakableSpecification import SpeakableSpecification
-from .Specialty import Specialty
-from .StatisticalPopulation import StatisticalPopulation
-from .StatisticalVariable import StatisticalVariable
-from .StatusEnumeration import StatusEnumeration
-from .SteeringPositionValue import SteeringPositionValue
-from .StructuredValue import StructuredValue
-from .Taxi import Taxi
-from .TaxiReservation import TaxiReservation
-from .TaxiService import TaxiService
-from .TelevisionChannel import TelevisionChannel
-from .Ticket import Ticket
-from .TierBenefitEnumeration import TierBenefitEnumeration
-from .TouristTrip import TouristTrip
-from .TrainReservation import TrainReservation
+from .QualitativeValue import QualitativeValue
+from .BoardingPolicyType import BoardingPolicyType
+from .MonetaryGrant import MonetaryGrant
+from .Grant import Grant
+from .HowToTool import HowToTool
+from .WorkBasedProgram import WorkBasedProgram
+from .EducationalOccupationalProgram import EducationalOccupationalProgram
+from .HowToDirection import HowToDirection
+from .MusicReleaseFormatType import MusicReleaseFormatType
+from .WearableSizeSystemEnumeration import WearableSizeSystemEnumeration
+from .ReservationPackage import ReservationPackage
+from .GeospatialGeometry import GeospatialGeometry
+from .MedicineSystem import MedicineSystem
+from .HealthPlanFormulary import HealthPlanFormulary
+from .FulfillmentTypeEnumeration import FulfillmentTypeEnumeration
+from .ReservationStatusType import ReservationStatusType
+from .MonetaryAmountDistribution import MonetaryAmountDistribution
+from .TVSeries import TVSeries
+from .CreativeWorkSeries import CreativeWorkSeries
+from .Series import Series
+from .MemberProgramTier import MemberProgramTier
+from .QuantitativeValue import QuantitativeValue
+from .EventStatusType import EventStatusType
+from .OfferForLease import OfferForLease
+from .EmployeeRole import EmployeeRole
+from .OrganizationRole import OrganizationRole
+from .DatedMoneySpecification import DatedMoneySpecification
+from .ShippingConditions import ShippingConditions
+from .OrderStatus import OrderStatus
+from .GameServer import GameServer
+from .PaymentService import PaymentService
+from .EmployerAggregateRating import EmployerAggregateRating
+from .Permit import Permit
+from .Mass import Mass
+from .HealthInsurancePlan import HealthInsurancePlan
+from .MapCategoryType import MapCategoryType
+from .FMRadioChannel import FMRadioChannel
+from .RadioChannel import RadioChannel
+from .BroadcastChannel import BroadcastChannel
+from .FoodService import FoodService
+from .MortgageLoan import MortgageLoan
+from .LoanOrCredit import LoanOrCredit
+from .BroadcastFrequencySpecification import BroadcastFrequencySpecification
+from .BusinessAudience import BusinessAudience
+from .PropertyValue import PropertyValue
+from .EngineSpecification import EngineSpecification
+from .MediaManipulationRatingEnumeration import MediaManipulationRatingEnumeration
 from .TrainTrip import TrainTrip
 from .Trip import Trip
-from .TypeAndQuantityNode import TypeAndQuantityNode
-from .UKNonprofitType import UKNonprofitType
-from .USNonprofitType import USNonprofitType
-from .UnitPriceSpecification import UnitPriceSpecification
-from .VirtualLocation import VirtualLocation
-from .WarrantyPromise import WarrantyPromise
-from .WarrantyScope import WarrantyScope
-from .WearableMeasurementTypeEnumeration import WearableMeasurementTypeEnumeration
-from .WearableSizeGroupEnumeration import WearableSizeGroupEnumeration
-from .WearableSizeSystemEnumeration import WearableSizeSystemEnumeration
-from .WebAPI import WebAPI
-from .WorkBasedProgram import WorkBasedProgram
+from .Demand import Demand
+from .TaxiReservation import TaxiReservation
+from .IncentiveStatus import IncentiveStatus
+from .CDCPMDRecord import CDCPMDRecord
+from .MeasurementMethodEnum import MeasurementMethodEnum
+from .StatisticalPopulation import StatisticalPopulation
+from .QuantitativeValueDistribution import QuantitativeValueDistribution
+from .Occupation import Occupation
+from .LinkRole import LinkRole
+from .Role import Role
+from .EventReservation import EventReservation
+from .Reservation import Reservation
+from .DepositAccount import DepositAccount
+from .BankAccount import BankAccount
+from .MemberProgram import MemberProgram
+from .FinancialIncentive import FinancialIncentive
+from .CompoundPriceSpecification import CompoundPriceSpecification
+from .PriceSpecification import PriceSpecification
+from .AggregateRating import AggregateRating
+from .Rating import Rating
+from .Class import Class
+from .OfferShippingDetails import OfferShippingDetails
+from .AggregateOffer import AggregateOffer
+from .Offer import Offer
+from .PaymentStatusType import PaymentStatusType
+from .StatusEnumeration import StatusEnumeration
+from .GeoShape import GeoShape
+from .ExchangeRateSpecification import ExchangeRateSpecification
+from .CreditCard import CreditCard
+from .PaymentCard import PaymentCard
+from .PaymentMethod import PaymentMethod
+from .PostalCodeRangeSpecification import PostalCodeRangeSpecification
+from .EnergyStarEnergyEfficiencyEnumeration import EnergyStarEnergyEfficiencyEnumeration
+from .EnergyEfficiencyEnumeration import EnergyEfficiencyEnumeration
+from .PostalAddress import PostalAddress
+from .ContactPoint import ContactPoint
+from .SizeSystemEnumeration import SizeSystemEnumeration
+from .MerchantReturnPolicy import MerchantReturnPolicy
+from .MedicalSpecialty import MedicalSpecialty
+from .Specialty import Specialty
+from .MediaSubscription import MediaSubscription
+from .RepaymentSpecification import RepaymentSpecification
+from .HowToSupply import HowToSupply
+from .HowToItem import HowToItem
+from .ListItem import ListItem
+from .IPTCDigitalSourceEnumeration import IPTCDigitalSourceEnumeration
+from .MediaEnumeration import MediaEnumeration
+from .BroadcastService import BroadcastService
+from .Patient import Patient
+from .MedicalAudience import MedicalAudience
+from .Audience import Audience
+from .MeasurementTypeEnumeration import MeasurementTypeEnumeration
+from .NonprofitType import NonprofitType
+from .Duration import Duration
+from .Quantity import Quantity
+from .CurrencyConversionService import CurrencyConversionService
+from .FinancialProduct import FinancialProduct
+from .Service import Service
+from .HowToSection import HowToSection
+from .ItemList import ItemList
+from .DrugCostCategory import DrugCostCategory
+from .SizeGroupEnumeration import SizeGroupEnumeration
+from .ShippingDeliveryTime import ShippingDeliveryTime
+from .ReturnFeesEnumeration import ReturnFeesEnumeration
+from .DefinedRegion import DefinedRegion
+from .StructuredValue import StructuredValue
+from .Invoice import Invoice
+from .MedicalImagingTechnique import MedicalImagingTechnique
+from .MedicalEnumeration import MedicalEnumeration
+from .EventAttendanceModeEnumeration import EventAttendanceModeEnumeration
+from .Enumeration import Enumeration
+from .Intangible import Intangible
 
 __all__ = [
     'AMRadioChannel',
@@ -281,6 +294,7 @@ __all__ = [
     'BoatTrip',
     'BodyMeasurementTypeEnumeration',
     'BookFormatType',
+    'BookSeries',
     'Brand',
     'BreadcrumbList',
     'BroadcastChannel',
@@ -298,11 +312,13 @@ __all__ = [
     'CategoryCode',
     'CertificationStatusEnumeration',
     'Class',
+    'ComicSeries',
     'CompoundPriceSpecification',
     'ComputerLanguage',
     'ConstraintNode',
     'ContactPoint',
     'ContactPointOption',
+    'CreativeWorkSeries',
     'CreditCard',
     'CurrencyConversionService',
     'DataFeedItem',
@@ -367,8 +383,12 @@ __all__ = [
     'HealthPlanCostSharingSpecification',
     'HealthPlanFormulary',
     'HealthPlanNetwork',
+    'HowToDirection',
     'HowToItem',
+    'HowToSection',
+    'HowToStep',
     'HowToSupply',
+    'HowToTip',
     'HowToTool',
     'IPTCDigitalSourceEnumeration',
     'IncentiveQualifiedExpenseType',
@@ -401,7 +421,6 @@ __all__ = [
     'MediaSubscription',
     'MedicalAudience',
     'MedicalAudienceType',
-    'MedicalCode',
     'MedicalDevicePurpose',
     'MedicalEnumeration',
     'MedicalEvidenceLevel',
@@ -422,10 +441,12 @@ __all__ = [
     'MonetaryAmountDistribution',
     'MonetaryGrant',
     'MortgageLoan',
+    'MovieSeries',
     'MusicAlbumProductionType',
     'MusicAlbumReleaseType',
     'MusicReleaseFormatType',
     'NLNonprofitType',
+    'Newspaper',
     'NonprofitType',
     'NutritionInformation',
     'Observation',
@@ -445,6 +466,7 @@ __all__ = [
     'OwnershipInfo',
     'ParcelDelivery',
     'ParentAudience',
+    'Patient',
     'PaymentCard',
     'PaymentChargeSpecification',
     'PaymentMethod',
@@ -453,9 +475,10 @@ __all__ = [
     'PaymentStatusType',
     'PeopleAudience',
     'PerformanceRole',
+    'Periodical',
     'Permit',
     'PhysicalActivityCategory',
-    'PhysicalExam',
+    'PodcastSeries',
     'PostalAddress',
     'PostalCodeRangeSpecification',
     'PriceComponentTypeEnumeration',
@@ -472,6 +495,7 @@ __all__ = [
     'Quantity',
     'RadioBroadcastService',
     'RadioChannel',
+    'RadioSeries',
     'Rating',
     'RefundTypeEnumeration',
     'RentalCarReservation',
@@ -506,6 +530,7 @@ __all__ = [
     'StatusEnumeration',
     'SteeringPositionValue',
     'StructuredValue',
+    'TVSeries',
     'Taxi',
     'TaxiReservation',
     'TaxiService',
@@ -520,6 +545,7 @@ __all__ = [
     'UKNonprofitType',
     'USNonprofitType',
     'UnitPriceSpecification',
+    'VideoGameSeries',
     'VirtualLocation',
     'WarrantyPromise',
     'WarrantyScope',

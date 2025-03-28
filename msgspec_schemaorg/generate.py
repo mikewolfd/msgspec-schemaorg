@@ -13,6 +13,7 @@ from collections import defaultdict
 from datetime import date, datetime, time
 
 from .mapping import resolve_type_reference, get_type_specificity
+from .base import SchemaOrgBase
 
 class SchemaProcessor:
     """
@@ -21,6 +22,9 @@ class SchemaProcessor:
     
     # List of Python keywords and other reserved names that can't be used as identifiers
     PYTHON_RESERVED_KEYWORDS = set(keyword.kwlist) | {"None", "True", "False"}
+    
+    # The root type in Schema.org, where we'll start inheritance from SchemaOrgBase
+    ROOT_TYPE = "http://schema.org/Thing"
     
     def __init__(self, schema_data: Dict[str, Any]):
         """
@@ -42,11 +46,17 @@ class SchemaProcessor:
         # Map to store properties for each class (including inherited ones)
         self.class_properties: Dict[str, Dict[str, Dict[str, Any]]] = defaultdict(dict)
         
+        # Map to store direct properties for each class (excluding inherited ones)
+        self.direct_class_properties: Dict[str, Dict[str, Dict[str, Any]]] = defaultdict(dict)
+        
         # Processed classes to avoid duplicate processing
         self.processed_classes: Set[str] = set()
         
         # Store all class hierarchies for reference
         self.class_hierarchies: Dict[str, List[str]] = {}
+        
+        # Store immediate parent for each class (for inheritance)
+        self.immediate_parents: Dict[str, str] = {}
         
         # Track class categories/namespaces for file organization
         self.class_categories: Dict[str, str] = {}
@@ -61,7 +71,10 @@ class SchemaProcessor:
         self.classes = self._collect_classes()
         self.properties = self._collect_properties()
         
-        # Then process class properties (including inheritance)
+        # Process immediate parents for all classes (for inheritance)
+        self._process_immediate_parents()
+        
+        # Then process class properties
         self._process_all_class_properties()
         
         # Determine class categories
@@ -75,6 +88,9 @@ class SchemaProcessor:
         
         # Detect circular dependencies
         self.circular_dependencies = self._detect_circular_dependencies()
+        
+        # Topologically sort classes based on inheritance
+        self.sorted_classes = self._topologically_sort_classes()
     
     def _collect_classes(self) -> Dict[str, Dict[str, Any]]:
         """
@@ -106,47 +122,58 @@ class SchemaProcessor:
                     properties[prop_id] = entity
         return properties
     
-    def _get_parent_classes(self, class_id: str) -> List[str]:
+    def _process_immediate_parents(self):
         """
-        Find all parent classes using rdfs:subClassOf, recursively.
+        Process immediate parents for all classes for inheritance purposes.
+        Each class will inherit from its most specific parent.
+        """
+        for class_id in self.classes:
+            immediate_parent = self._get_immediate_parent(class_id)
+            if immediate_parent:
+                self.immediate_parents[class_id] = immediate_parent
+    
+    def _get_immediate_parent(self, class_id: str) -> Optional[str]:
+        """
+        Get the most specific immediate parent for a class.
         
         Args:
-            class_id: ID of the class to find parents for
+            class_id: ID of the class to find the immediate parent for
             
         Returns:
-            List of parent class IDs
+            The class ID of the immediate parent, or None if there is no parent
         """
-        if class_id in self.class_hierarchies:
-            return self.class_hierarchies[class_id]
-            
-        parents = []
         class_entity = self.entity_map.get(class_id, {})
         
         # Get immediate parent(s)
         sub_class_of = class_entity.get('rdfs:subClassOf', [])
         if not isinstance(sub_class_of, list):
             sub_class_of = [sub_class_of]
-            
+        
+        # Filter out empty values and get parent IDs
+        parent_ids = []
         for parent in sub_class_of:
+            parent_id = None
             if isinstance(parent, dict) and '@id' in parent:
                 parent_id = parent['@id']
-                parents.append(parent_id)
-                # Recursively get grandparents
-                parents.extend(self._get_parent_classes(parent_id))
             elif isinstance(parent, str):
-                parents.append(parent)
-                # Recursively get grandparents
-                parents.extend(self._get_parent_classes(parent))
-                
-        # Remove duplicates while preserving order
-        unique_parents = []
-        for p in parents:
-            if p not in unique_parents:
-                unique_parents.append(p)
-                
-        # Cache for future use
-        self.class_hierarchies[class_id] = unique_parents
-        return unique_parents
+                parent_id = parent
+            
+            if parent_id and parent_id != class_id:  # Avoid self-inheritance
+                parent_ids.append(parent_id)
+        
+        if not parent_ids:
+            return None
+        
+        # If there's only one parent, return it
+        if len(parent_ids) == 1:
+            return parent_ids[0]
+        
+        # If there are multiple parents, try to find the most specific one
+        # This is a simplified approach - in a real system, you might need more complex
+        # logic to handle multiple inheritance or choose the best parent
+        
+        # For now, we'll just take the first one as the primary parent
+        return parent_ids[0]
     
     def _process_property_types(self, property_entity: Dict[str, Any]) -> List[Union[type, str]]:
         """
@@ -169,7 +196,12 @@ class SchemaProcessor:
         for range_type in range_includes:
             if isinstance(range_type, dict) and '@id' in range_type:
                 type_ref = range_type['@id']
-                resolved_type = resolve_type_reference(type_ref)
+                
+                # Handle URL type specifically
+                if type_ref == 'http://schema.org/URL' or type_ref == 'schema:URL':
+                    resolved_type = 'URL'  # Use our URL type
+                else:
+                    resolved_type = resolve_type_reference(type_ref)
                 
                 # Get the type name for specificity lookup
                 type_name = type_ref
@@ -181,7 +213,10 @@ class SchemaProcessor:
                 
             elif isinstance(range_type, str):
                 # Handle direct string references
-                resolved_type = resolve_type_reference(range_type)
+                if range_type == 'http://schema.org/URL' or range_type == 'schema:URL':
+                    resolved_type = 'URL'  # Use our URL type
+                else:
+                    resolved_type = resolve_type_reference(range_type)
                 
                 # Get specificity
                 type_name = range_type.replace("schema:", "").replace("http://schema.org/", "")
@@ -221,7 +256,7 @@ class SchemaProcessor:
     
     def _process_class_properties(self, class_id: str):
         """
-        Process properties for a class, including inherited ones.
+        Process properties for a class, separating direct and inherited properties.
         
         Args:
             class_id: ID of the class to process properties for
@@ -236,7 +271,7 @@ class SchemaProcessor:
         for parent_id in parent_classes:
             self._process_class_properties(parent_id)
             
-        # Inherit properties from parents
+        # Inherit properties from parents (for full flattened property listing)
         for parent_id in parent_classes:
             if parent_id in self.class_properties:
                 for prop_name, prop_info in self.class_properties[parent_id].items():
@@ -244,7 +279,7 @@ class SchemaProcessor:
                     if prop_name not in self.class_properties[class_id]:
                         self.class_properties[class_id][prop_name] = prop_info
         
-        # Find properties for this class
+        # Find direct properties for this class
         for prop_id, prop_entity in self.properties.items():
             domain_includes = prop_entity.get('schema:domainIncludes', [])
             if not isinstance(domain_includes, list):
@@ -261,12 +296,16 @@ class SchemaProcessor:
                     py_prop_name = self._normalize_property_name(prop_name)
                     
                     # Store property info
-                    self.class_properties[class_id][py_prop_name] = {
+                    prop_info = {
                         'id': prop_id,
                         'name': prop_name,
                         'types': self._process_property_types(prop_entity),
                         'description': prop_entity.get('rdfs:comment', ''),
                     }
+                    
+                    # Store both in full property map and direct property map
+                    self.class_properties[class_id][py_prop_name] = prop_info
+                    self.direct_class_properties[class_id][py_prop_name] = prop_info
     
     def _determine_class_categories(self):
         """
@@ -440,14 +479,59 @@ class SchemaProcessor:
         docstring = docstring.replace('\\', '\\\\')
         return docstring
     
-    def generate_struct_code(self, schema_class_id: str) -> tuple[list[str], str]:
+    def _topologically_sort_classes(self) -> List[str]:
+        """
+        Sort classes in topological order based on inheritance, 
+        so that parent classes are processed before child classes.
+        
+        Returns:
+            List of class IDs sorted in topological order
+        """
+        # Create a directed graph of class dependencies
+        graph = {}
+        for class_id in self.classes:
+            graph[class_id] = set()
+            parent = self.immediate_parents.get(class_id)
+            if parent:
+                graph[class_id].add(parent)
+        
+        # Perform topological sort
+        visited = set()
+        temp_visited = set()
+        order = []
+        
+        def visit(node):
+            if node in temp_visited:
+                # Cyclic dependency found, handle gracefully
+                return
+            if node in visited:
+                return
+            
+            temp_visited.add(node)
+            
+            for neighbor in graph.get(node, set()):
+                visit(neighbor)
+            
+            temp_visited.remove(node)
+            visited.add(node)
+            order.append(node)
+        
+        # Visit all nodes
+        for node in graph:
+            if node not in visited:
+                visit(node)
+        
+        # Reverse to get the correct order
+        return list(reversed(order))
+    
+    def generate_struct_code(self, schema_class_id: str) -> tuple[str, list[str]]:
         """Generate a msgspec.Struct definition for a Schema.org class.
 
         Args:
             schema_class_id: The Schema.org class ID.
 
         Returns:
-            A tuple of (import_statements, class_code).
+            A tuple of (class_code, import_statements).
         """
         class_entity = self.entity_map.get(schema_class_id, {})
         if not class_entity:
@@ -459,31 +543,63 @@ class SchemaProcessor:
         # Get class description and escape it
         class_description = self._escape_docstring(class_entity.get('rdfs:comment', ''))
         
-        # Get properties for this class
-        properties = self.class_properties.get(schema_class_id, {})
+        # Get parent class for inheritance
+        parent_id = self.immediate_parents.get(schema_class_id)
+        parent_name = None
+        parent_category = None
+        
+        if parent_id:
+            parent_name = self.normalized_class_names.get(parent_id)
+            parent_category = self.class_categories.get(parent_id, 'thing')
+        
+        # If this is the root "Thing" class, inherit from SchemaOrgBase
+        is_root = schema_class_id == self.ROOT_TYPE or not parent_name
+        
+        # Get only direct properties for this class (not inherited)
+        properties = self.direct_class_properties.get(schema_class_id, {})
         
         # Get circular dependencies for this class
         circular_deps = self.circular_dependencies.get(schema_class_id, set())
         
         # Collect imports needed
-        imports = set()
+        imports = []
         typed_imports = set()
         
         # Add imports for primitive types
         has_date = False
         has_datetime = False
         has_time = False
-        has_url = False  # Track URL type usage
+        has_url = False
+        
+        # Add basic imports
+        imports.append("from __future__ import annotations")
+        imports.append("from msgspec import Struct, field")
+        
+        # If this is the root class, import SchemaOrgBase
+        if is_root:
+            imports.append("from msgspec_schemaorg.base import SchemaOrgBase")
+        else:
+            # Import the parent class
+            if parent_name and parent_category:
+                imports.append(f"from msgspec_schemaorg.models.{parent_category}.{parent_name} import {parent_name}")
         
         # Flag to track if this class uses date types
         needs_date_handling = False
         
         # Generate code
-        code = [f"class {class_name}(Struct, frozen=True):"]
+        if is_root:
+            # Root class inherits from SchemaOrgBase
+            code = [f"class {class_name}(SchemaOrgBase):"]
+        else:
+            # Other classes inherit from their parent
+            code = [f"class {class_name}({parent_name}):"]
         
         # Add docstring
         if class_description:
             code.append(f'    """{class_description}"""')
+        
+        # Add type field with this class's name as the default value
+        code.append(f'    type: Optional[str] = field(default="{class_name}", name="@type")')
         
         # Add fields and collect dependencies
         for prop_name, prop_info in properties.items():
@@ -494,8 +610,6 @@ class SchemaProcessor:
             
             # Check if this property has date/datetime type or URL type
             has_date_type = False
-            has_url_type = False
-            
             for typ in types:
                 if isinstance(typ, type):
                     if typ.__name__ == 'date':
@@ -506,17 +620,17 @@ class SchemaProcessor:
                         has_date_type = True
                     elif typ.__name__ == 'time':
                         has_time = True
-                elif isinstance(typ, str) and typ == 'URL':
-                    has_url = True
-                    has_url_type = True
-                else:
-                    # If it's a string (class name), find the class ID and add it to imports
-                    for other_class_id, norm_name in self.normalized_class_names.items():
-                        if norm_name == typ:
-                            # For all Schema.org types, use string annotations and put imports under TYPE_CHECKING
-                            other_category = self.class_categories.get(other_class_id, 'misc')
-                            typed_imports.add(f"from msgspec_schemaorg.models.{other_category}.{norm_name} import {norm_name}")
-                            break
+                elif isinstance(typ, str):
+                    if typ == 'URL':
+                        has_url = True
+                    else:
+                        # If it's a string (class name), find the class ID and add it to imports
+                        for other_class_id, norm_name in self.normalized_class_names.items():
+                            if norm_name == typ:
+                                # For all Schema.org types, use string annotations and put imports under TYPE_CHECKING
+                                other_category = self.class_categories.get(other_class_id, 'misc')
+                                typed_imports.add(f"from msgspec_schemaorg.models.{other_category}.{norm_name} import {norm_name}")
+                                break
             
             # Create type annotation string
             if len(types) > 1:
@@ -534,29 +648,24 @@ class SchemaProcessor:
             if has_date_type:
                 needs_date_handling = True
         
-        # Add empty class if no properties
-        if len(code) == 1:
+        # If no properties (other than type), add pass
+        if len(code) == 2:  # Just class definition and type field
             code.append("    pass")
-        
-        # Build imports list
-        import_statements = ["from __future__ import annotations", "from msgspec import Struct, field"]
         
         # Add utilities for ISO8601 parsing if needed
         if needs_date_handling:
-            import_statements.append("from msgspec_schemaorg.utils import parse_iso8601")
+            imports.append("from msgspec_schemaorg.utils import parse_iso8601")
             
         # Add URL imports if needed
         if has_url:
-            import_statements.append("from msgspec_schemaorg.utils import URL")
-            import_statements.append("from typing import Annotated")
-            import_statements.append("from msgspec import Meta")
+            imports.append("from msgspec_schemaorg.utils import URL")
             
-        # Add TYPE_CHECKING for all Schema.org types
+        # Add TYPE_CHECKING for circular dependencies
         if typed_imports:
-            import_statements.append("from typing import TYPE_CHECKING")
-            import_statements.append("\nif TYPE_CHECKING:")
+            imports.append("from typing import TYPE_CHECKING")
+            imports.append("\nif TYPE_CHECKING:")
             for typed_import in sorted(typed_imports):
-                import_statements.append(f"    {typed_import}")
+                imports.append(f"    {typed_import}")
         
         # Add datetime imports if needed
         if has_date or has_datetime or has_time:
@@ -567,10 +676,13 @@ class SchemaProcessor:
                 date_imports.append("datetime")
             if has_time:
                 date_imports.append("time")
-            import_statements.append(f"from datetime import {', '.join(date_imports)}")
+            imports.append(f"from datetime import {', '.join(date_imports)}")
+        
+        # Add typing imports
+        imports.append("from typing import Optional, Union, Dict, List, Any")
         
         # Combine imports and code
-        return "\n".join(code), import_statements
+        return "\n".join(code), imports
     
     def _get_string_type_annotation(self, type_obj: Union[type, str]) -> str:
         """
@@ -610,8 +722,9 @@ class SchemaProcessor:
         # Map to store generated files
         files = {}
         
-        # Create one file per class, organized by category
-        for class_id in sorted(self.classes.keys()):
+        # Create one file per class, in topological order by inheritance
+        # This ensures parent classes are processed before child classes
+        for class_id in self.sorted_classes:
             category = self.class_categories.get(class_id, 'misc')
             class_name = self.normalized_class_names.get(class_id, 'Unknown')
             
@@ -703,6 +816,35 @@ class SchemaProcessor:
         files[main_init_path] = main_init_content
         
         return files
+    
+    def _get_parent_classes(self, class_id: str) -> List[str]:
+        """
+        Find all parent classes using rdfs:subClassOf, recursively.
+        
+        Args:
+            class_id: ID of the class to find parents for
+            
+        Returns:
+            List of parent class IDs
+        """
+        if class_id in self.class_hierarchies:
+            return self.class_hierarchies[class_id]
+            
+        parents = []
+        current = class_id
+        
+        # Follow the chain of immediate parents
+        while current:
+            immediate_parent = self.immediate_parents.get(current)
+            if immediate_parent:
+                parents.append(immediate_parent)
+                current = immediate_parent
+            else:
+                current = None
+                
+        # Cache for future use
+        self.class_hierarchies[class_id] = parents
+        return parents
 
 
 def fetch_and_generate(schema_data: Dict[str, Any], output_dir: Path) -> Dict[str, str]:

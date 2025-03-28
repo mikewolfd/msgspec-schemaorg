@@ -1,178 +1,162 @@
 """Generated Schema.org creativework models using msgspec."""
 
-from .Model3DModel import Model3DModel
-from .APIReference import APIReference
-from .AboutPage import AboutPage
-from .AdvertiserContentArticle import AdvertiserContentArticle
-from .AmpStory import AmpStory
-from .AnalysisNewsArticle import AnalysisNewsArticle
-from .Answer import Answer
-from .ArchiveComponent import ArchiveComponent
-from .Article import Article
-from .AskPublicNewsArticle import AskPublicNewsArticle
-from .Atlas import Atlas
-from .AudioObject import AudioObject
-from .AudioObjectSnapshot import AudioObjectSnapshot
-from .Audiobook import Audiobook
-from .BackgroundNewsArticle import BackgroundNewsArticle
-from .Barcode import Barcode
-from .Blog import Blog
-from .BlogPosting import BlogPosting
-from .Book import Book
-from .BookSeries import BookSeries
-from .CategoryCodeSet import CategoryCodeSet
-from .Certification import Certification
-from .Chapter import Chapter
-from .CheckoutPage import CheckoutPage
-from .Claim import Claim
-from .ClaimReview import ClaimReview
-from .Clip import Clip
-from .Code import Code
-from .Collection import Collection
-from .CollectionPage import CollectionPage
-from .ComicCoverArt import ComicCoverArt
-from .ComicIssue import ComicIssue
-from .ComicSeries import ComicSeries
-from .ComicStory import ComicStory
-from .Comment import Comment
-from .CompleteDataFeed import CompleteDataFeed
-from .ContactPage import ContactPage
-from .Conversation import Conversation
-from .CorrectionComment import CorrectionComment
-from .Course import Course
-from .CoverArt import CoverArt
-from .CreativeWork import CreativeWork
-from .CreativeWorkSeason import CreativeWorkSeason
-from .CreativeWorkSeries import CreativeWorkSeries
-from .CriticReview import CriticReview
-from .DataCatalog import DataCatalog
-from .DataDownload import DataDownload
-from .DataFeed import DataFeed
-from .Dataset import Dataset
-from .DefinedTermSet import DefinedTermSet
-from .Diet import Diet
-from .DigitalDocument import DigitalDocument
-from .DiscussionForumPosting import DiscussionForumPosting
-from .Drawing import Drawing
-from .EducationalOccupationalCredential import EducationalOccupationalCredential
-from .EmailMessage import EmailMessage
-from .EmployerReview import EmployerReview
-from .Episode import Episode
-from .ExercisePlan import ExercisePlan
-from .FAQPage import FAQPage
-from .Game import Game
-from .Guide import Guide
 from .HealthTopicContent import HealthTopicContent
-from .HowTo import HowTo
-from .HowToDirection import HowToDirection
-from .HowToSection import HowToSection
-from .HowToStep import HowToStep
-from .HowToTip import HowToTip
-from .HyperToc import HyperToc
-from .HyperTocEntry import HyperTocEntry
-from .ImageGallery import ImageGallery
-from .ImageObject import ImageObject
-from .ImageObjectSnapshot import ImageObjectSnapshot
-from .ItemPage import ItemPage
-from .LearningResource import LearningResource
-from .Legislation import Legislation
-from .LegislationObject import LegislationObject
-from .LiveBlogPosting import LiveBlogPosting
-from .Manuscript import Manuscript
-from .Map import Map
-from .MathSolver import MathSolver
-from .MediaGallery import MediaGallery
-from .MediaObject import MediaObject
-from .MediaReview import MediaReview
-from .MediaReviewItem import MediaReviewItem
-from .MedicalScholarlyArticle import MedicalScholarlyArticle
-from .MedicalWebPage import MedicalWebPage
-from .Menu import Menu
-from .MenuSection import MenuSection
-from .Message import Message
-from .MobileApplication import MobileApplication
-from .Movie import Movie
-from .MovieClip import MovieClip
-from .MovieSeries import MovieSeries
-from .MusicAlbum import MusicAlbum
-from .MusicComposition import MusicComposition
-from .MusicPlaylist import MusicPlaylist
-from .MusicRecording import MusicRecording
-from .MusicRelease import MusicRelease
-from .MusicVideoObject import MusicVideoObject
-from .NewsArticle import NewsArticle
-from .Newspaper import Newspaper
-from .NoteDigitalDocument import NoteDigitalDocument
-from .OpinionNewsArticle import OpinionNewsArticle
-from .Painting import Painting
-from .Periodical import Periodical
-from .Photograph import Photograph
-from .Play import Play
-from .PodcastEpisode import PodcastEpisode
-from .PodcastSeason import PodcastSeason
-from .PodcastSeries import PodcastSeries
-from .Poster import Poster
-from .PresentationDigitalDocument import PresentationDigitalDocument
-from .ProductCollection import ProductCollection
-from .ProfilePage import ProfilePage
-from .PublicationIssue import PublicationIssue
-from .PublicationVolume import PublicationVolume
-from .QAPage import QAPage
-from .Question import Question
-from .Quiz import Quiz
-from .Quotation import Quotation
-from .RadioClip import RadioClip
-from .RadioEpisode import RadioEpisode
-from .RadioSeason import RadioSeason
-from .RadioSeries import RadioSeries
-from .RealEstateListing import RealEstateListing
-from .Recipe import Recipe
-from .Recommendation import Recommendation
+from .Syllabus import Syllabus
 from .Report import Report
-from .ReportageNewsArticle import ReportageNewsArticle
-from .Review import Review
+from .AmpStory import AmpStory
+from .OpinionNewsArticle import OpinionNewsArticle
+from .Recipe import Recipe
+from .TextObject import TextObject
+from .PublicationVolume import PublicationVolume
+from .LiveBlogPosting import LiveBlogPosting
+from .HyperToc import HyperToc
+from .LegislationObject import LegislationObject
+from .RadioSeason import RadioSeason
+from .Movie import Movie
+from .Poster import Poster
 from .ReviewNewsArticle import ReviewNewsArticle
 from .SatiricalArticle import SatiricalArticle
-from .ScholarlyArticle import ScholarlyArticle
-from .Sculpture import Sculpture
-from .SearchResultsPage import SearchResultsPage
-from .Season import Season
+from .MedicalScholarlyArticle import MedicalScholarlyArticle
+from .ProfilePage import ProfilePage
+from .MediaReviewItem import MediaReviewItem
 from .SheetMusic import SheetMusic
-from .ShortStory import ShortStory
-from .SiteNavigationElement import SiteNavigationElement
-from .SocialMediaPosting import SocialMediaPosting
-from .SoftwareApplication import SoftwareApplication
-from .SoftwareSourceCode import SoftwareSourceCode
-from .SpecialAnnouncement import SpecialAnnouncement
-from .SpreadsheetDigitalDocument import SpreadsheetDigitalDocument
-from .Statement import Statement
-from .Syllabus import Syllabus
-from .TVClip import TVClip
 from .TVEpisode import TVEpisode
-from .TVSeason import TVSeason
-from .TVSeries import TVSeries
-from .Table import Table
-from .TechArticle import TechArticle
-from .TextDigitalDocument import TextDigitalDocument
-from .TextObject import TextObject
-from .Thesis import Thesis
-from .UserReview import UserReview
-from .VideoGallery import VideoGallery
-from .VideoGame import VideoGame
-from .VideoGameClip import VideoGameClip
-from .VideoGameSeries import VideoGameSeries
-from .VideoObject import VideoObject
-from .VideoObjectSnapshot import VideoObjectSnapshot
-from .VisualArtwork import VisualArtwork
-from .WPAdBlock import WPAdBlock
+from .MobileApplication import MobileApplication
+from .FAQPage import FAQPage
 from .WPFooter import WPFooter
+from .MathSolver import MathSolver
+from .SoftwareSourceCode import SoftwareSourceCode
+from .Code import Code
+from .MusicComposition import MusicComposition
+from .ComicIssue import ComicIssue
+from .ContactPage import ContactPage
+from .Photograph import Photograph
+from .MovieClip import MovieClip
+from .VideoGameClip import VideoGameClip
+from .PodcastSeason import PodcastSeason
+from .CreativeWorkSeason import CreativeWorkSeason
+from .Map import Map
+from .EducationalOccupationalCredential import EducationalOccupationalCredential
+from .RadioEpisode import RadioEpisode
+from .Guide import Guide
 from .WPHeader import WPHeader
-from .WPSideBar import WPSideBar
+from .TVClip import TVClip
+from .Certification import Certification
+from .Collection import Collection
+from .SpecialAnnouncement import SpecialAnnouncement
+from .VideoGallery import VideoGallery
+from .Menu import Menu
+from .AskPublicNewsArticle import AskPublicNewsArticle
+from .QAPage import QAPage
+from .Chapter import Chapter
+from .ClaimReview import ClaimReview
+from .Book import Book
+from .CompleteDataFeed import CompleteDataFeed
+from .WPAdBlock import WPAdBlock
+from .Statement import Statement
+from .HyperTocEntry import HyperTocEntry
+from .CheckoutPage import CheckoutPage
+from .ComicCoverArt import ComicCoverArt
+from .MusicRecording import MusicRecording
 from .WebApplication import WebApplication
-from .WebContent import WebContent
-from .WebPage import WebPage
-from .WebPageElement import WebPageElement
+from .CategoryCodeSet import CategoryCodeSet
+from .DefinedTermSet import DefinedTermSet
+from .ItemPage import ItemPage
+from .RealEstateListing import RealEstateListing
+from .Answer import Answer
+from .MedicalWebPage import MedicalWebPage
+from .EmployerReview import EmployerReview
+from .MenuSection import MenuSection
+from .Play import Play
+from .DataCatalog import DataCatalog
+from .ArchiveComponent import ArchiveComponent
+from .PublicationIssue import PublicationIssue
+from .Claim import Claim
+from .SpreadsheetDigitalDocument import SpreadsheetDigitalDocument
+from .SoftwareApplication import SoftwareApplication
+from .WPSideBar import WPSideBar
+from .ImageGallery import ImageGallery
+from .Audiobook import Audiobook
+from .PodcastEpisode import PodcastEpisode
+from .Episode import Episode
+from .MediaGallery import MediaGallery
+from .Painting import Painting
 from .WebSite import WebSite
+from .Atlas import Atlas
+from .Season import Season
+from .AboutPage import AboutPage
+from .DiscussionForumPosting import DiscussionForumPosting
+from .ComicStory import ComicStory
+from .DataDownload import DataDownload
+from .MusicAlbum import MusicAlbum
+from .CorrectionComment import CorrectionComment
+from .EmailMessage import EmailMessage
+from .Message import Message
+from .VideoGame import VideoGame
+from .Game import Game
+from .PresentationDigitalDocument import PresentationDigitalDocument
+from .Quiz import Quiz
+from .LearningResource import LearningResource
+from .Question import Question
+from .Comment import Comment
+from .CriticReview import CriticReview
+from .Course import Course
+from .WebContent import WebContent
+from .ReportageNewsArticle import ReportageNewsArticle
+from .AnalysisNewsArticle import AnalysisNewsArticle
+from .UserReview import UserReview
+from .TVSeason import TVSeason
+from .AudioObjectSnapshot import AudioObjectSnapshot
+from .AudioObject import AudioObject
+from .Drawing import Drawing
+from .MusicRelease import MusicRelease
+from .BackgroundNewsArticle import BackgroundNewsArticle
+from .NewsArticle import NewsArticle
+from .CollectionPage import CollectionPage
+from .SiteNavigationElement import SiteNavigationElement
+from .TextDigitalDocument import TextDigitalDocument
+from .ExercisePlan import ExercisePlan
+from .Thesis import Thesis
+from .AdvertiserContentArticle import AdvertiserContentArticle
+from .ShortStory import ShortStory
+from .Recommendation import Recommendation
+from .Barcode import Barcode
+from .BlogPosting import BlogPosting
+from .SocialMediaPosting import SocialMediaPosting
+from .DataFeed import DataFeed
+from .VideoObjectSnapshot import VideoObjectSnapshot
+from .Conversation import Conversation
+from .APIReference import APIReference
+from .Manuscript import Manuscript
+from .VideoObject import VideoObject
+from .NoteDigitalDocument import NoteDigitalDocument
+from .DigitalDocument import DigitalDocument
+from .MediaReview import MediaReview
+from .Review import Review
+from .HowTo import HowTo
+from .MusicVideoObject import MusicVideoObject
+from .SearchResultsPage import SearchResultsPage
+from .WebPage import WebPage
+from .MusicPlaylist import MusicPlaylist
+from .Blog import Blog
+from .Dataset import Dataset
+from .Table import Table
+from .WebPageElement import WebPageElement
+from .RadioClip import RadioClip
+from .Clip import Clip
+from .Legislation import Legislation
+from .Quotation import Quotation
+from .Model3DModel import Model3DModel
+from .CoverArt import CoverArt
+from .VisualArtwork import VisualArtwork
+from .ScholarlyArticle import ScholarlyArticle
+from .ImageObjectSnapshot import ImageObjectSnapshot
+from .ImageObject import ImageObject
+from .MediaObject import MediaObject
+from .TechArticle import TechArticle
+from .Article import Article
+from .Sculpture import Sculpture
+from .CreativeWork import CreativeWork
 
 __all__ = [
     'APIReference',
@@ -193,7 +177,6 @@ __all__ = [
     'Blog',
     'BlogPosting',
     'Book',
-    'BookSeries',
     'CategoryCodeSet',
     'Certification',
     'Chapter',
@@ -206,7 +189,6 @@ __all__ = [
     'CollectionPage',
     'ComicCoverArt',
     'ComicIssue',
-    'ComicSeries',
     'ComicStory',
     'Comment',
     'CompleteDataFeed',
@@ -217,14 +199,12 @@ __all__ = [
     'CoverArt',
     'CreativeWork',
     'CreativeWorkSeason',
-    'CreativeWorkSeries',
     'CriticReview',
     'DataCatalog',
     'DataDownload',
     'DataFeed',
     'Dataset',
     'DefinedTermSet',
-    'Diet',
     'DigitalDocument',
     'DiscussionForumPosting',
     'Drawing',
@@ -238,10 +218,6 @@ __all__ = [
     'Guide',
     'HealthTopicContent',
     'HowTo',
-    'HowToDirection',
-    'HowToSection',
-    'HowToStep',
-    'HowToTip',
     'HyperToc',
     'HyperTocEntry',
     'ImageGallery',
@@ -268,7 +244,6 @@ __all__ = [
     'Model3DModel',
     'Movie',
     'MovieClip',
-    'MovieSeries',
     'MusicAlbum',
     'MusicComposition',
     'MusicPlaylist',
@@ -276,19 +251,15 @@ __all__ = [
     'MusicRelease',
     'MusicVideoObject',
     'NewsArticle',
-    'Newspaper',
     'NoteDigitalDocument',
     'OpinionNewsArticle',
     'Painting',
-    'Periodical',
     'Photograph',
     'Play',
     'PodcastEpisode',
     'PodcastSeason',
-    'PodcastSeries',
     'Poster',
     'PresentationDigitalDocument',
-    'ProductCollection',
     'ProfilePage',
     'PublicationIssue',
     'PublicationVolume',
@@ -299,7 +270,6 @@ __all__ = [
     'RadioClip',
     'RadioEpisode',
     'RadioSeason',
-    'RadioSeries',
     'RealEstateListing',
     'Recipe',
     'Recommendation',
@@ -325,7 +295,6 @@ __all__ = [
     'TVClip',
     'TVEpisode',
     'TVSeason',
-    'TVSeries',
     'Table',
     'TechArticle',
     'TextDigitalDocument',
@@ -335,7 +304,6 @@ __all__ = [
     'VideoGallery',
     'VideoGame',
     'VideoGameClip',
-    'VideoGameSeries',
     'VideoObject',
     'VideoObjectSnapshot',
     'VisualArtwork',

@@ -27,17 +27,18 @@ While AI assisted in development, all code was reviewed and tested.
 ## Features
 
 *   **Schema Acquisition:** Downloads the latest Schema.org vocabulary (JSON-LD).
-*   **Type Mapping:** Maps Schema.org types (Text, Number, Date, URL, etc.) to Python types (`str`, `int | float`, `datetime.date`, `Annotated[str, Meta(pattern=...)]`, `bool`).
+*   **Type Mapping:** Maps Schema.org types (Text, Number, Date, URL, etc.) to Python types (`str`, `int | float`, `datetime.date`, `URL`, `bool`).
 *   **Code Generation:** Creates `msgspec.Struct` definitions from Schema.org types, including type hints and docstrings.
-*   **Inheritance Handling:** Resolves the class hierarchy (`rdfs:subClassOf`) and includes parent properties.
+*   **Proper Inheritance:** Preserves the Schema.org class hierarchy using Python inheritance (`Book` inherits from `CreativeWork`, which inherits from `Thing`).
+*   **JSON-LD Compatibility:** All models support JSON-LD fields (`@id`, `@type`, `@context`) that serialize correctly.
 *   **Category Organization:** Organizes generated classes into subdirectories (CreativeWork, Person, etc.).
 *   **Circular Dependency Resolution:** Uses forward references (`"TypeName"`) and `TYPE_CHECKING` imports.
 *   **Python Compatibility:** Handles reserved keywords.
 *   **Convenient Imports:** All generated classes are importable from `msgspec_schemaorg.models`.
 *   **ISO8601 Date Handling:** Utility function `parse_iso8601` for date/datetime strings.
 *   **Type Specificity:** Sorts type unions to prioritize more specific types (e.g., `Integer` before `Number`).
-*   **URL Validation:** Validates URL fields using `msgspec` pattern matching.
-*   **Comprehensive Testing:** Includes tests for model generation, validation, and usage.
+*   **URL Validation:** Validates URL fields using a centralized `URL` type with pattern validation.
+*   **Comprehensive Testing:** Includes tests for model generation, validation, inheritance, and usage.
 
 ## Installation
 
@@ -70,13 +71,16 @@ address = PostalAddress(
 person = Person(
     name="Jane Doe",
     jobTitle="Software Engineer",
-    address=address
+    address=address,
+    # JSON-LD fields
+    id="https://example.com/people/jane",
+    context="https://schema.org"
 )
 
 # Encode to JSON
 json_bytes = msgspec.json.encode(person)
 print(json_bytes.decode())
-# Output: {"name":"Jane Doe","jobTitle":"Software Engineer","address":{"streetAddress":"123 Main St","addressLocality":"Anytown","postalCode":"12345","addressCountry":"US"}}
+# Output: {"name":"Jane Doe","jobTitle":"Software Engineer","address":{"streetAddress":"123 Main St","addressLocality":"Anytown","postalCode":"12345","addressCountry":"US"},"@id":"https://example.com/people/jane","@context":"https://schema.org","@type":"Person"}
 ```
 
 ## Usage
@@ -110,8 +114,54 @@ blog_post = BlogPosting(
     author=Person(name="Jane Author"),
     publisher=Organization(name="TechMedia Inc."),
     image=ImageObject(url="https://example.com/images/header.jpg"),
-    datePublished="2023-09-15" # ISO8601 date string
+    datePublished="2023-09-15",  # ISO8601 date string
+    # JSON-LD fields
+    id="https://example.com/blog/schema-org-python",
+    context="https://schema.org"
 )
+```
+
+### Inheritance Structure
+
+All Schema.org models preserve the original class hierarchy:
+
+```python
+from msgspec_schemaorg.models import Thing, CreativeWork, Book
+
+# All Schema.org types inherit ultimately from Thing
+isinstance(Book(), Thing)  # True
+isinstance(Book(), CreativeWork)  # True
+
+# Properties are inherited
+book = Book(name="The Great Gatsby")
+print(book.name)  # Inherited from Thing
+```
+
+### JSON-LD Compatibility
+
+All models have JSON-LD fields for linked data integration:
+
+```python
+from msgspec_schemaorg.models import Product
+import msgspec
+import json
+
+# Create a product with JSON-LD fields
+product = Product(
+    name="Smartphone",
+    id="https://example.com/products/123",  # Maps to @id
+    context="https://schema.org",  # Maps to @context  
+    type="Product"  # Maps to @type (usually has default value)
+)
+
+# Encode to JSON
+json_bytes = msgspec.json.encode(product)
+data = json.loads(json_bytes)
+
+# JSON-LD fields are properly serialized with @ prefix
+print(data["@id"])  # https://example.com/products/123
+print(data["@context"])  # https://schema.org
+print(data["@type"])  # Product
 ```
 
 ### Handling Dates
@@ -131,7 +181,7 @@ print(post.datePublished.year) # 2023
 
 ### URL Validation
 
-URL fields are automatically validated using a regex pattern via `msgspec`.
+URL fields are automatically validated using a centralized URL type:
 
 ```python
 import msgspec
@@ -175,16 +225,19 @@ Or run specific test groups:
 python run_tests.py unittest
 python run_tests.py examples
 python run_tests.py imports
+python run_tests.py inheritance  # Test the inheritance structure
 ```
 
-The tests cover model generation, imports, date parsing, URL validation, and example script execution.
+The tests cover model generation, imports, date parsing, URL validation, inheritance, and example script execution.
 
 ## Type System
 
-*   **Primitives:** Schema.org types like `Text`, `Number`, `Date`, `URL` are mapped to Python types (`str`, `int | float`, `datetime.date`, `Annotated[str, Meta(pattern=...)]`).
+*   **Primitives:** Schema.org types like `Text`, `Number`, `Date`, `URL` are mapped to Python types (`str`, `int | float`, `datetime.date`, `URL`, `bool`).
 *   **Specificity:** Type unions are sorted (e.g., `Integer` before `Number`).
 *   **Literals:** `Boolean` constants use `Literal[True]` / `Literal[False]`.
-*   **URLs:** Validated using `typing.Annotated` and `msgspec.Meta(pattern=...)`.
+*   **URLs:** Validated using a consistent `URL` type with pattern validation.
+*   **Inheritance:** Schema.org hierarchy is preserved through Python class inheritance.
+*   **JSON-LD:** All models support standard JSON-LD fields (`@id`, `@type`, `@context`).
 
 ## Limitations
 

@@ -1,12 +1,12 @@
 """Generated Schema.org misc models using msgspec."""
 
-from .CssSelectorType import CssSelectorType
-from .DataType import DataType
-from .Float import Float
 from .Integer import Integer
-from .PronounceableText import PronounceableText
-from .URL import URL
 from .XPathType import XPathType
+from .PronounceableText import PronounceableText
+from .Float import Float
+from .CssSelectorType import CssSelectorType
+from .URL import URL
+from .DataType import DataType
 
 __all__ = [
     'CssSelectorType',
