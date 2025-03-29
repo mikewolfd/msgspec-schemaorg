@@ -47,7 +47,7 @@ version = "0.2.1"
 packages = [{include = "msgspec_schemaorg"}]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.10"
 msgspec = ">=0.16.0"
 pydantic = ">=2.0.0"
 requests = ">=2.28.2"
