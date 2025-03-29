@@ -11,12 +11,12 @@ class CertificationStatusEnumeration(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "CertificationActive": {
             "id": "schema:CertificationActive",
-            "comment": "Specifies that a certification is active.",
+            "comment": """Specifies that a certification is active.""",
             "label": "CertificationActive",
         },
         "CertificationInactive": {
             "id": "schema:CertificationInactive",
-            "comment": "Specifies that a certification is inactive (no longer in effect).",
+            "comment": """Specifies that a certification is inactive (no longer in effect).""",
             "label": "CertificationInactive",
         },
     }

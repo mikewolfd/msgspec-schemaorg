@@ -12,17 +12,17 @@ class RefundTypeEnumeration(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "ExchangeRefund": {
             "id": "schema:ExchangeRefund",
-            "comment": "Specifies that a refund can be done as an exchange for the same product.",
+            "comment": """Specifies that a refund can be done as an exchange for the same product.""",
             "label": "ExchangeRefund",
         },
         "FullRefund": {
             "id": "schema:FullRefund",
-            "comment": "Specifies that a refund can be done in the full amount the customer paid for the product.",
+            "comment": """Specifies that a refund can be done in the full amount the customer paid for the product.""",
             "label": "FullRefund",
         },
         "StoreCreditRefund": {
             "id": "schema:StoreCreditRefund",
-            "comment": "Specifies that the customer receives a store credit as refund when returning a product.",
+            "comment": """Specifies that the customer receives a store credit as refund when returning a product.""",
             "label": "StoreCreditRefund",
         },
     }

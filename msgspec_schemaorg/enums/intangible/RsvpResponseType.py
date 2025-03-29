@@ -12,17 +12,17 @@ class RsvpResponseType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "RsvpResponseMaybe": {
             "id": "schema:RsvpResponseMaybe",
-            "comment": "The invitee may or may not attend.",
+            "comment": """The invitee may or may not attend.""",
             "label": "RsvpResponseMaybe",
         },
         "RsvpResponseNo": {
             "id": "schema:RsvpResponseNo",
-            "comment": "The invitee will not attend.",
+            "comment": """The invitee will not attend.""",
             "label": "RsvpResponseNo",
         },
         "RsvpResponseYes": {
             "id": "schema:RsvpResponseYes",
-            "comment": "The invitee will attend.",
+            "comment": """The invitee will attend.""",
             "label": "RsvpResponseYes",
         },
     }

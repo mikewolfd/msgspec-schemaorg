@@ -12,17 +12,17 @@ class CarUsageType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "DrivingSchoolVehicleUsage": {
             "id": "schema:DrivingSchoolVehicleUsage",
-            "comment": "Indicates the usage of the vehicle for driving school.",
+            "comment": """Indicates the usage of the vehicle for driving school.""",
             "label": "DrivingSchoolVehicleUsage",
         },
         "RentalVehicleUsage": {
             "id": "schema:RentalVehicleUsage",
-            "comment": "Indicates the usage of the vehicle as a rental car.",
+            "comment": """Indicates the usage of the vehicle as a rental car.""",
             "label": "RentalVehicleUsage",
         },
         "TaxiVehicleUsage": {
             "id": "schema:TaxiVehicleUsage",
-            "comment": "Indicates the usage of the car as a taxi.",
+            "comment": """Indicates the usage of the car as a taxi.""",
             "label": "TaxiVehicleUsage",
         },
     }

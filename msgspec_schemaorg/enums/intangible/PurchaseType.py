@@ -13,22 +13,22 @@ class PurchaseType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "PurchaseTypeLease": {
             "id": "schema:PurchaseTypeLease",
-            "comment": "This is a lease of an item.",
+            "comment": """This is a lease of an item.""",
             "label": "PurchaseTypeLease",
         },
         "PurchaseTypeNewPurchase": {
             "id": "schema:PurchaseTypeNewPurchase",
-            "comment": "This is a purchase of a new item.",
+            "comment": """This is a purchase of a new item.""",
             "label": "PurchaseTypeNewPurchase",
         },
         "PurchaseTypeTradeIn": {
             "id": "schema:PurchaseTypeTradeIn",
-            "comment": "This is a trade-in for an item.",
+            "comment": """This is a trade-in for an item.""",
             "label": "PurchaseTypeTradeIn",
         },
         "PurchaseTypeUsedPurchase": {
             "id": "schema:PurchaseTypeUsedPurchase",
-            "comment": "This is a purchase of a used item.",
+            "comment": """This is a purchase of a used item.""",
             "label": "PurchaseTypeUsedPurchase",
         },
     }

@@ -12,17 +12,17 @@ class DrugCostCategory(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "ReimbursementCap": {
             "id": "schema:ReimbursementCap",
-            "comment": "The drug's cost represents the maximum reimbursement paid by an insurer for the drug.",
+            "comment": """The drug's cost represents the maximum reimbursement paid by an insurer for the drug.""",
             "label": "ReimbursementCap",
         },
         "Retail": {
             "id": "schema:Retail",
-            "comment": "The drug's cost represents the retail cost of the drug.",
+            "comment": """The drug's cost represents the retail cost of the drug.""",
             "label": "Retail",
         },
         "Wholesale": {
             "id": "schema:Wholesale",
-            "comment": "The drug's cost represents the wholesale acquisition cost of the drug.",
+            "comment": """The drug's cost represents the wholesale acquisition cost of the drug.""",
             "label": "Wholesale",
         },
     }

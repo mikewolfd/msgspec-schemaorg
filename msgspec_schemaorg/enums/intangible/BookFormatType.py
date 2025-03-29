@@ -14,27 +14,27 @@ class BookFormatType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "AudiobookFormat": {
             "id": "schema:AudiobookFormat",
-            "comment": "Book format: Audiobook. This is an enumerated value for use with the bookFormat property. There is also a type 'Audiobook' in the bib extension which includes Audiobook specific properties.",
+            "comment": """Book format: Audiobook. This is an enumerated value for use with the bookFormat property. There is also a type 'Audiobook' in the bib extension which includes Audiobook specific properties.""",
             "label": "AudiobookFormat",
         },
         "EBook": {
             "id": "schema:EBook",
-            "comment": "Book format: Ebook.",
+            "comment": """Book format: Ebook.""",
             "label": "EBook",
         },
         "GraphicNovel": {
             "id": "schema:GraphicNovel",
-            "comment": "Book format: GraphicNovel. May represent a bound collection of ComicIssue instances.",
+            "comment": """Book format: GraphicNovel. May represent a bound collection of ComicIssue instances.""",
             "label": "GraphicNovel",
         },
         "Hardcover": {
             "id": "schema:Hardcover",
-            "comment": "Book format: Hardcover.",
+            "comment": """Book format: Hardcover.""",
             "label": "Hardcover",
         },
         "Paperback": {
             "id": "schema:Paperback",
-            "comment": "Book format: Paperback.",
+            "comment": """Book format: Paperback.""",
             "label": "Paperback",
         },
     }

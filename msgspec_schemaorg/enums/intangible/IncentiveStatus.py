@@ -13,22 +13,22 @@ class IncentiveStatus(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "IncentiveStatusActive": {
             "id": "schema:IncentiveStatusActive",
-            "comment": "This incentive is currently active.",
+            "comment": """This incentive is currently active.""",
             "label": "IncentiveStatusActive",
         },
         "IncentiveStatusInDevelopment": {
             "id": "schema:IncentiveStatusInDevelopment",
-            "comment": "This incentive is currently being developed, and may become active/retired in the future.",
+            "comment": """This incentive is currently being developed, and may become active/retired in the future.""",
             "label": "IncentiveStatusInDevelopment",
         },
         "IncentiveStatusOnHold": {
             "id": "schema:IncentiveStatusOnHold",
-            "comment": "This incentive is currently active, but may not be accepting new applicants (e.g. max number of redemptions reached for a year)",
+            "comment": """This incentive is currently active, but may not be accepting new applicants (e.g. max number of redemptions reached for a year)""",
             "label": "IncentiveStatusOnHold",
         },
         "IncentiveStatusRetired": {
             "id": "schema:IncentiveStatusRetired",
-            "comment": "This incentive is not longer available.",
+            "comment": """This incentive is not longer available.""",
             "label": "IncentiveStatusRetired",
         },
     }

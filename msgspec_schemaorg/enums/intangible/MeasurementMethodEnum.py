@@ -10,7 +10,7 @@ class MeasurementMethodEnum(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "ExampleMeasurementMethodEnum": {
             "id": "schema:ExampleMeasurementMethodEnum",
-            "comment": "An example [[MeasurementMethodEnum]] (to remove when real enums are added).",
+            "comment": """An example [[MeasurementMethodEnum]] (to remove when real enums are added).""",
             "label": "ExampleMeasurementMethodEnum",
         },
     }

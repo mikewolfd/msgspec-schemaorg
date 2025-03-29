@@ -13,22 +13,22 @@ class MapCategoryType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "ParkingMap": {
             "id": "schema:ParkingMap",
-            "comment": "A parking map.",
+            "comment": """A parking map.""",
             "label": "ParkingMap",
         },
         "SeatingMap": {
             "id": "schema:SeatingMap",
-            "comment": "A seating map.",
+            "comment": """A seating map.""",
             "label": "SeatingMap",
         },
         "TransitMap": {
             "id": "schema:TransitMap",
-            "comment": "A transit map.",
+            "comment": """A transit map.""",
             "label": "TransitMap",
         },
         "VenueMap": {
             "id": "schema:VenueMap",
-            "comment": "A venue map (e.g. for malls, auditoriums, museums, etc.).",
+            "comment": """A venue map (e.g. for malls, auditoriums, museums, etc.).""",
             "label": "VenueMap",
         },
     }

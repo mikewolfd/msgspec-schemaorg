@@ -11,12 +11,12 @@ class MedicalDevicePurpose(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "Diagnostic": {
             "id": "schema:Diagnostic",
-            "comment": "A medical device used for diagnostic purposes.",
+            "comment": """A medical device used for diagnostic purposes.""",
             "label": "Diagnostic",
         },
         "Therapeutic": {
             "id": "schema:Therapeutic",
-            "comment": "A medical device used for therapeutic purposes.",
+            "comment": """A medical device used for therapeutic purposes.""",
             "label": "Therapeutic",
         },
     }

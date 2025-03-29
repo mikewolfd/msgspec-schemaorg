@@ -11,12 +11,12 @@ class NLNonprofitType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "NonprofitANBI": {
             "id": "schema:NonprofitANBI",
-            "comment": "NonprofitANBI: Non-profit type referring to a Public Benefit Organization (NL).",
+            "comment": """NonprofitANBI: Non-profit type referring to a Public Benefit Organization (NL).""",
             "label": "NonprofitANBI",
         },
         "NonprofitSBBI": {
             "id": "schema:NonprofitSBBI",
-            "comment": "NonprofitSBBI: Non-profit type referring to a Social Interest Promoting Institution (NL).",
+            "comment": """NonprofitSBBI: Non-profit type referring to a Social Interest Promoting Institution (NL).""",
             "label": "NonprofitSBBI",
         },
     }

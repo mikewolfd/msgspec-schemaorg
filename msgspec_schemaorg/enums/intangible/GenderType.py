@@ -11,12 +11,12 @@ class GenderType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "Female": {
             "id": "schema:Female",
-            "comment": "The female gender.",
+            "comment": """The female gender.""",
             "label": "Female",
         },
         "Male": {
             "id": "schema:Male",
-            "comment": "The male gender.",
+            "comment": """The male gender.""",
             "label": "Male",
         },
     }

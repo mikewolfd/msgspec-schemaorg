@@ -15,32 +15,32 @@ class MedicalImagingTechnique(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "CT": {
             "id": "schema:CT",
-            "comment": "X-ray computed tomography imaging.",
+            "comment": """X-ray computed tomography imaging.""",
             "label": "CT",
         },
         "MRI": {
             "id": "schema:MRI",
-            "comment": "Magnetic resonance imaging.",
+            "comment": """Magnetic resonance imaging.""",
             "label": "MRI",
         },
         "PET": {
             "id": "schema:PET",
-            "comment": "Positron emission tomography imaging.",
+            "comment": """Positron emission tomography imaging.""",
             "label": "PET",
         },
         "Radiography": {
             "id": "schema:Radiography",
-            "comment": "Radiography is an imaging technique that uses electromagnetic radiation other than visible light, especially X-rays, to view the internal structure of a non-uniformly composed and opaque object such as the human body.",
+            "comment": """Radiography is an imaging technique that uses electromagnetic radiation other than visible light, especially X-rays, to view the internal structure of a non-uniformly composed and opaque object such as the human body.""",
             "label": "Radiography",
         },
         "Ultrasound": {
             "id": "schema:Ultrasound",
-            "comment": "Ultrasound imaging.",
+            "comment": """Ultrasound imaging.""",
             "label": "Ultrasound",
         },
         "XRay": {
             "id": "schema:XRay",
-            "comment": "X-ray imaging.",
+            "comment": """X-ray imaging.""",
             "label": "XRay",
         },
     }

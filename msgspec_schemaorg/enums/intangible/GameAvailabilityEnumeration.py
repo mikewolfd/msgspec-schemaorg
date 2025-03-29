@@ -11,12 +11,12 @@ class GameAvailabilityEnumeration(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "DemoGameAvailability": {
             "id": "schema:DemoGameAvailability",
-            "comment": "Indicates demo game availability, i.e. a somehow limited demonstration of the full game.",
+            "comment": """Indicates demo game availability, i.e. a somehow limited demonstration of the full game.""",
             "label": "DemoGameAvailability",
         },
         "FullGameAvailability": {
             "id": "schema:FullGameAvailability",
-            "comment": "Indicates full game availability.",
+            "comment": """Indicates full game availability.""",
             "label": "FullGameAvailability",
         },
     }

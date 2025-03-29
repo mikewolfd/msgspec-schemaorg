@@ -11,12 +11,12 @@ class ContactPointOption(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "HearingImpairedSupported": {
             "id": "schema:HearingImpairedSupported",
-            "comment": "Uses devices to support users with hearing impairments.",
+            "comment": """Uses devices to support users with hearing impairments.""",
             "label": "HearingImpairedSupported",
         },
         "TollFree": {
             "id": "schema:TollFree",
-            "comment": "The associated telephone number is toll free.",
+            "comment": """The associated telephone number is toll free.""",
             "label": "TollFree",
         },
     }

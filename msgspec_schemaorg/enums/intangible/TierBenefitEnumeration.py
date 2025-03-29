@@ -13,22 +13,22 @@ class TierBenefitEnumeration(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "TierBenefitLoyaltyPoints": {
             "id": "schema:TierBenefitLoyaltyPoints",
-            "comment": "Benefit of the tier is earning of loyalty points.",
+            "comment": """Benefit of the tier is earning of loyalty points.""",
             "label": "TierBenefitLoyaltyPoints",
         },
         "TierBenefitLoyaltyPrice": {
             "id": "schema:TierBenefitLoyaltyPrice",
-            "comment": "Benefit of the tier is a members-only price.",
+            "comment": """Benefit of the tier is a members-only price.""",
             "label": "TierBenefitLoyaltyPrice",
         },
         "TierBenefitLoyaltyReturns": {
             "id": "schema:TierBenefitLoyaltyReturns",
-            "comment": "Benefit of the tier is members-only returns, for example free unlimited returns.",
+            "comment": """Benefit of the tier is members-only returns, for example free unlimited returns.""",
             "label": "TierBenefitLoyaltyReturns",
         },
         "TierBenefitLoyaltyShipping": {
             "id": "schema:TierBenefitLoyaltyShipping",
-            "comment": "Benefit of the tier is a members-only shipping price or speed (for example free shipping or 1-day shipping).",
+            "comment": """Benefit of the tier is a members-only shipping price or speed (for example free shipping or 1-day shipping).""",
             "label": "TierBenefitLoyaltyShipping",
         },
     }

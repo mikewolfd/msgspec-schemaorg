@@ -22,67 +22,67 @@ class BodyMeasurementTypeEnumeration(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "BodyMeasurementArm": {
             "id": "schema:BodyMeasurementArm",
-            "comment": "Arm length (measured between arms/shoulder line intersection and the prominent wrist bone). Used, for example, to fit shirts.",
+            "comment": """Arm length (measured between arms/shoulder line intersection and the prominent wrist bone). Used, for example, to fit shirts.""",
             "label": "BodyMeasurementArm",
         },
         "BodyMeasurementBust": {
             "id": "schema:BodyMeasurementBust",
-            "comment": "Maximum girth of bust. Used, for example, to fit women's suits.",
+            "comment": """Maximum girth of bust. Used, for example, to fit women's suits.""",
             "label": "BodyMeasurementBust",
         },
         "BodyMeasurementChest": {
             "id": "schema:BodyMeasurementChest",
-            "comment": "Maximum girth of chest. Used, for example, to fit men's suits.",
+            "comment": """Maximum girth of chest. Used, for example, to fit men's suits.""",
             "label": "BodyMeasurementChest",
         },
         "BodyMeasurementFoot": {
             "id": "schema:BodyMeasurementFoot",
-            "comment": "Foot length (measured between end of the most prominent toe and the most prominent part of the heel). Used, for example, to measure socks.",
+            "comment": """Foot length (measured between end of the most prominent toe and the most prominent part of the heel). Used, for example, to measure socks.""",
             "label": "BodyMeasurementFoot",
         },
         "BodyMeasurementHand": {
             "id": "schema:BodyMeasurementHand",
-            "comment": "Maximum hand girth (measured over the knuckles of the open right hand excluding thumb, fingers together). Used, for example, to fit gloves.",
+            "comment": """Maximum hand girth (measured over the knuckles of the open right hand excluding thumb, fingers together). Used, for example, to fit gloves.""",
             "label": "BodyMeasurementHand",
         },
         "BodyMeasurementHead": {
             "id": "schema:BodyMeasurementHead",
-            "comment": "Maximum girth of head above the ears. Used, for example, to fit hats.",
+            "comment": """Maximum girth of head above the ears. Used, for example, to fit hats.""",
             "label": "BodyMeasurementHead",
         },
         "BodyMeasurementHeight": {
             "id": "schema:BodyMeasurementHeight",
-            "comment": "Body height (measured between crown of head and soles of feet). Used, for example, to fit jackets.",
+            "comment": """Body height (measured between crown of head and soles of feet). Used, for example, to fit jackets.""",
             "label": "BodyMeasurementHeight",
         },
         "BodyMeasurementHips": {
             "id": "schema:BodyMeasurementHips",
-            "comment": "Girth of hips (measured around the buttocks). Used, for example, to fit skirts.",
+            "comment": """Girth of hips (measured around the buttocks). Used, for example, to fit skirts.""",
             "label": "BodyMeasurementHips",
         },
         "BodyMeasurementInsideLeg": {
             "id": "schema:BodyMeasurementInsideLeg",
-            "comment": "Inside leg (measured between crotch and soles of feet). Used, for example, to fit pants.",
+            "comment": """Inside leg (measured between crotch and soles of feet). Used, for example, to fit pants.""",
             "label": "BodyMeasurementInsideLeg",
         },
         "BodyMeasurementNeck": {
             "id": "schema:BodyMeasurementNeck",
-            "comment": "Girth of neck. Used, for example, to fit shirts.",
+            "comment": """Girth of neck. Used, for example, to fit shirts.""",
             "label": "BodyMeasurementNeck",
         },
         "BodyMeasurementUnderbust": {
             "id": "schema:BodyMeasurementUnderbust",
-            "comment": "Girth of body just below the bust. Used, for example, to fit women's swimwear.",
+            "comment": """Girth of body just below the bust. Used, for example, to fit women's swimwear.""",
             "label": "BodyMeasurementUnderbust",
         },
         "BodyMeasurementWaist": {
             "id": "schema:BodyMeasurementWaist",
-            "comment": "Girth of natural waistline (between hip bones and lower ribs). Used, for example, to fit pants.",
+            "comment": """Girth of natural waistline (between hip bones and lower ribs). Used, for example, to fit pants.""",
             "label": "BodyMeasurementWaist",
         },
         "BodyMeasurementWeight": {
             "id": "schema:BodyMeasurementWeight",
-            "comment": "Body weight. Used, for example, to measure pantyhose.",
+            "comment": """Body weight. Used, for example, to measure pantyhose.""",
             "label": "BodyMeasurementWeight",
         },
     }

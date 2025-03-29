@@ -14,27 +14,27 @@ class FulfillmentTypeEnumeration(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "FulfillmentTypeCollectionPoint": {
             "id": "schema:FulfillmentTypeCollectionPoint",
-            "comment": "Fulfillment to a collection point location.",
+            "comment": """Fulfillment to a collection point location.""",
             "label": "FulfillmentTypeCollectionPoint",
         },
         "FulfillmentTypeDelivery": {
             "id": "schema:FulfillmentTypeDelivery",
-            "comment": "Fulfillment to a customer selected address.",
+            "comment": """Fulfillment to a customer selected address.""",
             "label": "FulfillmentTypeDelivery",
         },
         "FulfillmentTypePickupDropoff": {
             "id": "schema:FulfillmentTypePickupDropoff",
-            "comment": "Fulfillment through pick-up drop-off locations.",
+            "comment": """Fulfillment through pick-up drop-off locations.""",
             "label": "FulfillmentTypePickupDropoff",
         },
         "FulfillmentTypePickupInStore": {
             "id": "schema:FulfillmentTypePickupInStore",
-            "comment": "Fulfillment through pick-up in a store.",
+            "comment": """Fulfillment through pick-up in a store.""",
             "label": "FulfillmentTypePickupInStore",
         },
         "FulfillmentTypeScheduledDelivery": {
             "id": "schema:FulfillmentTypeScheduledDelivery",
-            "comment": "Fulfillment to a customer selected address after scheduling with the customer.",
+            "comment": """Fulfillment to a customer selected address after scheduling with the customer.""",
             "label": "FulfillmentTypeScheduledDelivery",
         },
     }

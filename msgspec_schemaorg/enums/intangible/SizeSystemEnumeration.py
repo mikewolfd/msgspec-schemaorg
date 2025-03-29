@@ -11,12 +11,12 @@ class SizeSystemEnumeration(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "SizeSystemImperial": {
             "id": "schema:SizeSystemImperial",
-            "comment": "Imperial size system.",
+            "comment": """Imperial size system.""",
             "label": "SizeSystemImperial",
         },
         "SizeSystemMetric": {
             "id": "schema:SizeSystemMetric",
-            "comment": "Metric size system.",
+            "comment": """Metric size system.""",
             "label": "SizeSystemMetric",
         },
     }

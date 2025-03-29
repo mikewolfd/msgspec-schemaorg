@@ -12,17 +12,17 @@ class LegalForceStatus(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "InForce": {
             "id": "schema:InForce",
-            "comment": "Indicates that a legislation is in force.",
+            "comment": """Indicates that a legislation is in force.""",
             "label": "InForce",
         },
         "NotInForce": {
             "id": "schema:NotInForce",
-            "comment": "Indicates that a legislation is currently not in force.",
+            "comment": """Indicates that a legislation is currently not in force.""",
             "label": "NotInForce",
         },
         "PartiallyInForce": {
             "id": "schema:PartiallyInForce",
-            "comment": "Indicates that parts of the legislation are in force, and parts are not.",
+            "comment": """Indicates that parts of the legislation are in force, and parts are not.""",
             "label": "PartiallyInForce",
         },
     }

@@ -21,62 +21,62 @@ class ItemAvailability(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "BackOrder": {
             "id": "schema:BackOrder",
-            "comment": "Indicates that the item is available on back order.",
+            "comment": """Indicates that the item is available on back order.""",
             "label": "BackOrder",
         },
         "Discontinued": {
             "id": "schema:Discontinued",
-            "comment": "Indicates that the item has been discontinued.",
+            "comment": """Indicates that the item has been discontinued.""",
             "label": "Discontinued",
         },
         "InStock": {
             "id": "schema:InStock",
-            "comment": "Indicates that the item is in stock.",
+            "comment": """Indicates that the item is in stock.""",
             "label": "InStock",
         },
         "InStoreOnly": {
             "id": "schema:InStoreOnly",
-            "comment": "Indicates that the item is available only at physical locations.",
+            "comment": """Indicates that the item is available only at physical locations.""",
             "label": "InStoreOnly",
         },
         "LimitedAvailability": {
             "id": "schema:LimitedAvailability",
-            "comment": "Indicates that the item has limited availability.",
+            "comment": """Indicates that the item has limited availability.""",
             "label": "LimitedAvailability",
         },
         "MadeToOrder": {
             "id": "schema:MadeToOrder",
-            "comment": "Indicates that the item is made to order (custom made).",
+            "comment": """Indicates that the item is made to order (custom made).""",
             "label": "MadeToOrder",
         },
         "OnlineOnly": {
             "id": "schema:OnlineOnly",
-            "comment": "Indicates that the item is available only online.",
+            "comment": """Indicates that the item is available only online.""",
             "label": "OnlineOnly",
         },
         "OutOfStock": {
             "id": "schema:OutOfStock",
-            "comment": "Indicates that the item is out of stock.",
+            "comment": """Indicates that the item is out of stock.""",
             "label": "OutOfStock",
         },
         "PreOrder": {
             "id": "schema:PreOrder",
-            "comment": "Indicates that the item is available for pre-order.",
+            "comment": """Indicates that the item is available for pre-order.""",
             "label": "PreOrder",
         },
         "PreSale": {
             "id": "schema:PreSale",
-            "comment": "Indicates that the item is available for ordering and delivery before general availability.",
+            "comment": """Indicates that the item is available for ordering and delivery before general availability.""",
             "label": "PreSale",
         },
         "Reserved": {
             "id": "schema:Reserved",
-            "comment": "Indicates that the item is reserved and therefore not available.",
+            "comment": """Indicates that the item is reserved and therefore not available.""",
             "label": "Reserved",
         },
         "SoldOut": {
             "id": "schema:SoldOut",
-            "comment": "Indicates that the item has sold out.",
+            "comment": """Indicates that the item has sold out.""",
             "label": "SoldOut",
         },
     }

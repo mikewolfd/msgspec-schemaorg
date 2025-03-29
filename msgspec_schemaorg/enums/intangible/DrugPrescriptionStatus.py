@@ -11,12 +11,12 @@ class DrugPrescriptionStatus(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "OTC": {
             "id": "schema:OTC",
-            "comment": "The character of a medical substance, typically a medicine, of being available over the counter or not.",
+            "comment": """The character of a medical substance, typically a medicine, of being available over the counter or not.""",
             "label": "OTC",
         },
         "PrescriptionOnly": {
             "id": "schema:PrescriptionOnly",
-            "comment": "Available by prescription only.",
+            "comment": """Available by prescription only.""",
             "label": "PrescriptionOnly",
         },
     }

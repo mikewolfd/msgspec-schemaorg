@@ -11,12 +11,12 @@ class BoardingPolicyType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "GroupBoardingPolicy": {
             "id": "schema:GroupBoardingPolicy",
-            "comment": "The airline boards by groups based on check-in time, priority, etc.",
+            "comment": """The airline boards by groups based on check-in time, priority, etc.""",
             "label": "GroupBoardingPolicy",
         },
         "ZoneBoardingPolicy": {
             "id": "schema:ZoneBoardingPolicy",
-            "comment": "The airline boards by zones of the plane.",
+            "comment": """The airline boards by zones of the plane.""",
             "label": "ZoneBoardingPolicy",
         },
     }

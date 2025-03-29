@@ -19,52 +19,52 @@ class MedicalStudyStatus(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "ActiveNotRecruiting": {
             "id": "schema:ActiveNotRecruiting",
-            "comment": "Active, but not recruiting new participants.",
+            "comment": """Active, but not recruiting new participants.""",
             "label": "ActiveNotRecruiting",
         },
         "Completed": {
             "id": "schema:Completed",
-            "comment": "Completed.",
+            "comment": """Completed.""",
             "label": "Completed",
         },
         "EnrollingByInvitation": {
             "id": "schema:EnrollingByInvitation",
-            "comment": "Enrolling participants by invitation only.",
+            "comment": """Enrolling participants by invitation only.""",
             "label": "EnrollingByInvitation",
         },
         "NotYetRecruiting": {
             "id": "schema:NotYetRecruiting",
-            "comment": "Not yet recruiting.",
+            "comment": """Not yet recruiting.""",
             "label": "NotYetRecruiting",
         },
         "Recruiting": {
             "id": "schema:Recruiting",
-            "comment": "Recruiting participants.",
+            "comment": """Recruiting participants.""",
             "label": "Recruiting",
         },
         "ResultsAvailable": {
             "id": "schema:ResultsAvailable",
-            "comment": "Results are available.",
+            "comment": """Results are available.""",
             "label": "ResultsAvailable",
         },
         "ResultsNotAvailable": {
             "id": "schema:ResultsNotAvailable",
-            "comment": "Results are not available.",
+            "comment": """Results are not available.""",
             "label": "ResultsNotAvailable",
         },
         "Suspended": {
             "id": "schema:Suspended",
-            "comment": "Suspended.",
+            "comment": """Suspended.""",
             "label": "Suspended",
         },
         "Terminated": {
             "id": "schema:Terminated",
-            "comment": "Terminated.",
+            "comment": """Terminated.""",
             "label": "Terminated",
         },
         "Withdrawn": {
             "id": "schema:Withdrawn",
-            "comment": "Withdrawn.",
+            "comment": """Withdrawn.""",
             "label": "Withdrawn",
         },
     }

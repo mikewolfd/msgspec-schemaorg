@@ -11,12 +11,12 @@ class MedicalProcedureType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "NoninvasiveProcedure": {
             "id": "schema:NoninvasiveProcedure",
-            "comment": "A type of medical procedure that involves noninvasive techniques.",
+            "comment": """A type of medical procedure that involves noninvasive techniques.""",
             "label": "NoninvasiveProcedure",
         },
         "PercutaneousProcedure": {
             "id": "schema:PercutaneousProcedure",
-            "comment": "A type of medical procedure that involves percutaneous techniques, where access to organs or tissue is achieved via needle-puncture of the skin. For example, catheter-based procedures like stent delivery.",
+            "comment": """A type of medical procedure that involves percutaneous techniques, where access to organs or tissue is achieved via needle-puncture of the skin. For example, catheter-based procedures like stent delivery.""",
             "label": "PercutaneousProcedure",
         },
     }

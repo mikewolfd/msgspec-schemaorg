@@ -18,47 +18,47 @@ class MusicAlbumProductionType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "CompilationAlbum": {
             "id": "schema:CompilationAlbum",
-            "comment": "CompilationAlbum.",
+            "comment": """CompilationAlbum.""",
             "label": "CompilationAlbum",
         },
         "DJMixAlbum": {
             "id": "schema:DJMixAlbum",
-            "comment": "DJMixAlbum.",
+            "comment": """DJMixAlbum.""",
             "label": "DJMixAlbum",
         },
         "DemoAlbum": {
             "id": "schema:DemoAlbum",
-            "comment": "DemoAlbum.",
+            "comment": """DemoAlbum.""",
             "label": "DemoAlbum",
         },
         "LiveAlbum": {
             "id": "schema:LiveAlbum",
-            "comment": "LiveAlbum.",
+            "comment": """LiveAlbum.""",
             "label": "LiveAlbum",
         },
         "MixtapeAlbum": {
             "id": "schema:MixtapeAlbum",
-            "comment": "MixtapeAlbum.",
+            "comment": """MixtapeAlbum.""",
             "label": "MixtapeAlbum",
         },
         "RemixAlbum": {
             "id": "schema:RemixAlbum",
-            "comment": "RemixAlbum.",
+            "comment": """RemixAlbum.""",
             "label": "RemixAlbum",
         },
         "SoundtrackAlbum": {
             "id": "schema:SoundtrackAlbum",
-            "comment": "SoundtrackAlbum.",
+            "comment": """SoundtrackAlbum.""",
             "label": "SoundtrackAlbum",
         },
         "SpokenWordAlbum": {
             "id": "schema:SpokenWordAlbum",
-            "comment": "SpokenWordAlbum.",
+            "comment": """SpokenWordAlbum.""",
             "label": "SpokenWordAlbum",
         },
         "StudioAlbum": {
             "id": "schema:StudioAlbum",
-            "comment": "StudioAlbum.",
+            "comment": """StudioAlbum.""",
             "label": "StudioAlbum",
         },
     }

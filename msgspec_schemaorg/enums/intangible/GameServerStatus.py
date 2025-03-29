@@ -13,22 +13,22 @@ class GameServerStatus(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "OfflinePermanently": {
             "id": "schema:OfflinePermanently",
-            "comment": "Game server status: OfflinePermanently. Server is offline and not available.",
+            "comment": """Game server status: OfflinePermanently. Server is offline and not available.""",
             "label": "OfflinePermanently",
         },
         "OfflineTemporarily": {
             "id": "schema:OfflineTemporarily",
-            "comment": "Game server status: OfflineTemporarily. Server is offline now but it can be online soon.",
+            "comment": """Game server status: OfflineTemporarily. Server is offline now but it can be online soon.""",
             "label": "OfflineTemporarily",
         },
         "Online": {
             "id": "schema:Online",
-            "comment": "Game server status: Online. Server is available.",
+            "comment": """Game server status: Online. Server is available.""",
             "label": "Online",
         },
         "OnlineFull": {
             "id": "schema:OnlineFull",
-            "comment": "Game server status: OnlineFull. Server is online but unavailable. The maximum number of players has reached.",
+            "comment": """Game server status: OnlineFull. Server is online but unavailable. The maximum number of players has reached.""",
             "label": "OnlineFull",
         },
     }

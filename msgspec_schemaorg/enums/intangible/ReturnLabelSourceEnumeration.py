@@ -12,17 +12,17 @@ class ReturnLabelSourceEnumeration(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "ReturnLabelCustomerResponsibility": {
             "id": "schema:ReturnLabelCustomerResponsibility",
-            "comment": "Indicated that creating a return label is the responsibility of the customer.",
+            "comment": """Indicated that creating a return label is the responsibility of the customer.""",
             "label": "ReturnLabelCustomerResponsibility",
         },
         "ReturnLabelDownloadAndPrint": {
             "id": "schema:ReturnLabelDownloadAndPrint",
-            "comment": "Indicated that a return label must be downloaded and printed by the customer.",
+            "comment": """Indicated that a return label must be downloaded and printed by the customer.""",
             "label": "ReturnLabelDownloadAndPrint",
         },
         "ReturnLabelInBox": {
             "id": "schema:ReturnLabelInBox",
-            "comment": "Specifies that a return label will be provided by the seller in the shipping box.",
+            "comment": """Specifies that a return label will be provided by the seller in the shipping box.""",
             "label": "ReturnLabelInBox",
         },
     }

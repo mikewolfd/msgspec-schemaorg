@@ -14,27 +14,27 @@ class PaymentStatusType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "PaymentAutomaticallyApplied": {
             "id": "schema:PaymentAutomaticallyApplied",
-            "comment": "An automatic payment system is in place and will be used.",
+            "comment": """An automatic payment system is in place and will be used.""",
             "label": "PaymentAutomaticallyApplied",
         },
         "PaymentComplete": {
             "id": "schema:PaymentComplete",
-            "comment": "The payment has been received and processed.",
+            "comment": """The payment has been received and processed.""",
             "label": "PaymentComplete",
         },
         "PaymentDeclined": {
             "id": "schema:PaymentDeclined",
-            "comment": "The payee received the payment, but it was declined for some reason.",
+            "comment": """The payee received the payment, but it was declined for some reason.""",
             "label": "PaymentDeclined",
         },
         "PaymentDue": {
             "id": "schema:PaymentDue",
-            "comment": "The payment is due, but still within an acceptable time to be received.",
+            "comment": """The payment is due, but still within an acceptable time to be received.""",
             "label": "PaymentDue",
         },
         "PaymentPastDue": {
             "id": "schema:PaymentPastDue",
-            "comment": "The payment is due and considered late.",
+            "comment": """The payment is due and considered late.""",
             "label": "PaymentPastDue",
         },
     }

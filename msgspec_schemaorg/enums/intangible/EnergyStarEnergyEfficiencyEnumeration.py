@@ -10,7 +10,7 @@ class EnergyStarEnergyEfficiencyEnumeration(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "EnergyStarCertified": {
             "id": "schema:EnergyStarCertified",
-            "comment": "Represents EnergyStar certification.",
+            "comment": """Represents EnergyStar certification.""",
             "label": "EnergyStarCertified",
         },
     }

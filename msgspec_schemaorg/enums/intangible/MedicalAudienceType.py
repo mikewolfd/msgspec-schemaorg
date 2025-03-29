@@ -11,12 +11,12 @@ class MedicalAudienceType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "Clinician": {
             "id": "schema:Clinician",
-            "comment": "Medical clinicians, including practicing physicians and other medical professionals involved in clinical practice.",
+            "comment": """Medical clinicians, including practicing physicians and other medical professionals involved in clinical practice.""",
             "label": "Clinician",
         },
         "MedicalResearcher": {
             "id": "schema:MedicalResearcher",
-            "comment": "Medical researchers.",
+            "comment": """Medical researchers.""",
             "label": "MedicalResearcher",
         },
     }

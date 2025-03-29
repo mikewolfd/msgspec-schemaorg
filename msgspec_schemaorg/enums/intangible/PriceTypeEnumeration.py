@@ -17,42 +17,42 @@ class PriceTypeEnumeration(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "InvoicePrice": {
             "id": "schema:InvoicePrice",
-            "comment": "Represents the invoice price of an offered product.",
+            "comment": """Represents the invoice price of an offered product.""",
             "label": "InvoicePrice",
         },
         "ListPrice": {
             "id": "schema:ListPrice",
-            "comment": "Represents the list price of an offered product. Typically the same as the [MSRP](https://schema.org/MSRP).",
+            "comment": """Represents the list price of an offered product. Typically the same as the [MSRP](https://schema.org/MSRP).""",
             "label": "ListPrice",
         },
         "MSRP": {
             "id": "schema:MSRP",
-            "comment": "Represents the manufacturer suggested retail price (\"MSRP\") of an offered product.",
+            "comment": """Represents the manufacturer suggested retail price ("MSRP") of an offered product.""",
             "label": "MSRP",
         },
         "MinimumAdvertisedPrice": {
             "id": "schema:MinimumAdvertisedPrice",
-            "comment": "Represents the minimum advertised price (\"MAP\") (as dictated by the manufacturer) of an offered product.",
+            "comment": """Represents the minimum advertised price ("MAP") (as dictated by the manufacturer) of an offered product.""",
             "label": "MinimumAdvertisedPrice",
         },
         "RegularPrice": {
             "id": "schema:RegularPrice",
-            "comment": "Represents the regular price of an offered product. This is usually the advertised price before a temporary sale. Once the sale period ends the advertised price will go back to the regular price.",
+            "comment": """Represents the regular price of an offered product. This is usually the advertised price before a temporary sale. Once the sale period ends the advertised price will go back to the regular price.""",
             "label": "RegularPrice",
         },
         "SRP": {
             "id": "schema:SRP",
-            "comment": "Represents the suggested retail price (\"SRP\") of an offered product.",
+            "comment": """Represents the suggested retail price ("SRP") of an offered product.""",
             "label": "SRP",
         },
         "SalePrice": {
             "id": "schema:SalePrice",
-            "comment": "Represents a sale price (usually active for a limited period) of an offered product.",
+            "comment": """Represents a sale price (usually active for a limited period) of an offered product.""",
             "label": "SalePrice",
         },
         "StrikethroughPrice": {
             "id": "schema:StrikethroughPrice",
-            "comment": "Represents the strikethrough price (the previous advertised price) of an offered product.",
+            "comment": """Represents the strikethrough price (the previous advertised price) of an offered product.""",
             "label": "StrikethroughPrice",
         },
     }

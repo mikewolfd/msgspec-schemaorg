@@ -20,57 +20,57 @@ class RestrictedDiet(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "DiabeticDiet": {
             "id": "schema:DiabeticDiet",
-            "comment": "A diet appropriate for people with diabetes.",
+            "comment": """A diet appropriate for people with diabetes.""",
             "label": "DiabeticDiet",
         },
         "GlutenFreeDiet": {
             "id": "schema:GlutenFreeDiet",
-            "comment": "A diet exclusive of gluten.",
+            "comment": """A diet exclusive of gluten.""",
             "label": "GlutenFreeDiet",
         },
         "HalalDiet": {
             "id": "schema:HalalDiet",
-            "comment": "A diet conforming to Islamic dietary practices.",
+            "comment": """A diet conforming to Islamic dietary practices.""",
             "label": "HalalDiet",
         },
         "HinduDiet": {
             "id": "schema:HinduDiet",
-            "comment": "A diet conforming to Hindu dietary practices, in particular, beef-free.",
+            "comment": """A diet conforming to Hindu dietary practices, in particular, beef-free.""",
             "label": "HinduDiet",
         },
         "KosherDiet": {
             "id": "schema:KosherDiet",
-            "comment": "A diet conforming to Jewish dietary practices.",
+            "comment": """A diet conforming to Jewish dietary practices.""",
             "label": "KosherDiet",
         },
         "LowCalorieDiet": {
             "id": "schema:LowCalorieDiet",
-            "comment": "A diet focused on reduced calorie intake.",
+            "comment": """A diet focused on reduced calorie intake.""",
             "label": "LowCalorieDiet",
         },
         "LowFatDiet": {
             "id": "schema:LowFatDiet",
-            "comment": "A diet focused on reduced fat and cholesterol intake.",
+            "comment": """A diet focused on reduced fat and cholesterol intake.""",
             "label": "LowFatDiet",
         },
         "LowLactoseDiet": {
             "id": "schema:LowLactoseDiet",
-            "comment": "A diet appropriate for people with lactose intolerance.",
+            "comment": """A diet appropriate for people with lactose intolerance.""",
             "label": "LowLactoseDiet",
         },
         "LowSaltDiet": {
             "id": "schema:LowSaltDiet",
-            "comment": "A diet focused on reduced sodium intake.",
+            "comment": """A diet focused on reduced sodium intake.""",
             "label": "LowSaltDiet",
         },
         "VeganDiet": {
             "id": "schema:VeganDiet",
-            "comment": "A diet exclusive of all animal products.",
+            "comment": """A diet exclusive of all animal products.""",
             "label": "VeganDiet",
         },
         "VegetarianDiet": {
             "id": "schema:VegetarianDiet",
-            "comment": "A diet exclusive of animal meat.",
+            "comment": """A diet exclusive of animal meat.""",
             "label": "VegetarianDiet",
         },
     }

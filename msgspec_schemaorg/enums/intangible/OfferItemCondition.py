@@ -13,22 +13,22 @@ class OfferItemCondition(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "DamagedCondition": {
             "id": "schema:DamagedCondition",
-            "comment": "Indicates that the item is damaged.",
+            "comment": """Indicates that the item is damaged.""",
             "label": "DamagedCondition",
         },
         "NewCondition": {
             "id": "schema:NewCondition",
-            "comment": "Indicates that the item is new.",
+            "comment": """Indicates that the item is new.""",
             "label": "NewCondition",
         },
         "RefurbishedCondition": {
             "id": "schema:RefurbishedCondition",
-            "comment": "Indicates that the item is refurbished.",
+            "comment": """Indicates that the item is refurbished.""",
             "label": "RefurbishedCondition",
         },
         "UsedCondition": {
             "id": "schema:UsedCondition",
-            "comment": "Indicates that the item is used.",
+            "comment": """Indicates that the item is used.""",
             "label": "UsedCondition",
         },
     }

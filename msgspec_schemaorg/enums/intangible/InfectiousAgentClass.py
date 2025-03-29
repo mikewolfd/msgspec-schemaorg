@@ -15,32 +15,32 @@ class InfectiousAgentClass(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "Bacteria": {
             "id": "schema:Bacteria",
-            "comment": "Pathogenic bacteria that cause bacterial infection.",
+            "comment": """Pathogenic bacteria that cause bacterial infection.""",
             "label": "Bacteria",
         },
         "Fungus": {
             "id": "schema:Fungus",
-            "comment": "Pathogenic fungus.",
+            "comment": """Pathogenic fungus.""",
             "label": "Fungus",
         },
         "MulticellularParasite": {
             "id": "schema:MulticellularParasite",
-            "comment": "Multicellular parasite that causes an infection.",
+            "comment": """Multicellular parasite that causes an infection.""",
             "label": "MulticellularParasite",
         },
         "Prion": {
             "id": "schema:Prion",
-            "comment": "A prion is an infectious agent composed of protein in a misfolded form.",
+            "comment": """A prion is an infectious agent composed of protein in a misfolded form.""",
             "label": "Prion",
         },
         "Protozoa": {
             "id": "schema:Protozoa",
-            "comment": "Single-celled organism that causes an infection.",
+            "comment": """Single-celled organism that causes an infection.""",
             "label": "Protozoa",
         },
         "Virus": {
             "id": "schema:Virus",
-            "comment": "Pathogenic virus that causes viral infection.",
+            "comment": """Pathogenic virus that causes viral infection.""",
             "label": "Virus",
         },
     }

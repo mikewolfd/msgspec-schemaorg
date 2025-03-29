@@ -23,72 +23,72 @@ class WearableSizeSystemEnumeration(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "WearableSizeSystemAU": {
             "id": "schema:WearableSizeSystemAU",
-            "comment": "Australian size system for wearables.",
+            "comment": """Australian size system for wearables.""",
             "label": "WearableSizeSystemAU",
         },
         "WearableSizeSystemBR": {
             "id": "schema:WearableSizeSystemBR",
-            "comment": "Brazilian size system for wearables.",
+            "comment": """Brazilian size system for wearables.""",
             "label": "WearableSizeSystemBR",
         },
         "WearableSizeSystemCN": {
             "id": "schema:WearableSizeSystemCN",
-            "comment": "Chinese size system for wearables.",
+            "comment": """Chinese size system for wearables.""",
             "label": "WearableSizeSystemCN",
         },
         "WearableSizeSystemContinental": {
             "id": "schema:WearableSizeSystemContinental",
-            "comment": "Continental size system for wearables.",
+            "comment": """Continental size system for wearables.""",
             "label": "WearableSizeSystemContinental",
         },
         "WearableSizeSystemDE": {
             "id": "schema:WearableSizeSystemDE",
-            "comment": "German size system for wearables.",
+            "comment": """German size system for wearables.""",
             "label": "WearableSizeSystemDE",
         },
         "WearableSizeSystemEN13402": {
             "id": "schema:WearableSizeSystemEN13402",
-            "comment": "EN 13402 (joint European standard for size labelling of clothes).",
+            "comment": """EN 13402 (joint European standard for size labelling of clothes).""",
             "label": "WearableSizeSystemEN13402",
         },
         "WearableSizeSystemEurope": {
             "id": "schema:WearableSizeSystemEurope",
-            "comment": "European size system for wearables.",
+            "comment": """European size system for wearables.""",
             "label": "WearableSizeSystemEurope",
         },
         "WearableSizeSystemFR": {
             "id": "schema:WearableSizeSystemFR",
-            "comment": "French size system for wearables.",
+            "comment": """French size system for wearables.""",
             "label": "WearableSizeSystemFR",
         },
         "WearableSizeSystemGS1": {
             "id": "schema:WearableSizeSystemGS1",
-            "comment": "GS1 (formerly NRF) size system for wearables.",
+            "comment": """GS1 (formerly NRF) size system for wearables.""",
             "label": "WearableSizeSystemGS1",
         },
         "WearableSizeSystemIT": {
             "id": "schema:WearableSizeSystemIT",
-            "comment": "Italian size system for wearables.",
+            "comment": """Italian size system for wearables.""",
             "label": "WearableSizeSystemIT",
         },
         "WearableSizeSystemJP": {
             "id": "schema:WearableSizeSystemJP",
-            "comment": "Japanese size system for wearables.",
+            "comment": """Japanese size system for wearables.""",
             "label": "WearableSizeSystemJP",
         },
         "WearableSizeSystemMX": {
             "id": "schema:WearableSizeSystemMX",
-            "comment": "Mexican size system for wearables.",
+            "comment": """Mexican size system for wearables.""",
             "label": "WearableSizeSystemMX",
         },
         "WearableSizeSystemUK": {
             "id": "schema:WearableSizeSystemUK",
-            "comment": "United Kingdom size system for wearables.",
+            "comment": """United Kingdom size system for wearables.""",
             "label": "WearableSizeSystemUK",
         },
         "WearableSizeSystemUS": {
             "id": "schema:WearableSizeSystemUS",
-            "comment": "United States size system for wearables.",
+            "comment": """United States size system for wearables.""",
             "label": "WearableSizeSystemUS",
         },
     }

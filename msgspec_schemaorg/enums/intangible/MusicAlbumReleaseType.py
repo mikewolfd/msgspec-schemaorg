@@ -13,22 +13,22 @@ class MusicAlbumReleaseType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "AlbumRelease": {
             "id": "schema:AlbumRelease",
-            "comment": "AlbumRelease.",
+            "comment": """AlbumRelease.""",
             "label": "AlbumRelease",
         },
         "BroadcastRelease": {
             "id": "schema:BroadcastRelease",
-            "comment": "BroadcastRelease.",
+            "comment": """BroadcastRelease.""",
             "label": "BroadcastRelease",
         },
         "EPRelease": {
             "id": "schema:EPRelease",
-            "comment": "EPRelease.",
+            "comment": """EPRelease.""",
             "label": "EPRelease",
         },
         "SingleRelease": {
             "id": "schema:SingleRelease",
-            "comment": "SingleRelease.",
+            "comment": """SingleRelease.""",
             "label": "SingleRelease",
         },
     }

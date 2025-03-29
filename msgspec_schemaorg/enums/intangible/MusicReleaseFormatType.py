@@ -16,37 +16,37 @@ class MusicReleaseFormatType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "CDFormat": {
             "id": "schema:CDFormat",
-            "comment": "CDFormat.",
+            "comment": """CDFormat.""",
             "label": "CDFormat",
         },
         "CassetteFormat": {
             "id": "schema:CassetteFormat",
-            "comment": "CassetteFormat.",
+            "comment": """CassetteFormat.""",
             "label": "CassetteFormat",
         },
         "DVDFormat": {
             "id": "schema:DVDFormat",
-            "comment": "DVDFormat.",
+            "comment": """DVDFormat.""",
             "label": "DVDFormat",
         },
         "DigitalAudioTapeFormat": {
             "id": "schema:DigitalAudioTapeFormat",
-            "comment": "DigitalAudioTapeFormat.",
+            "comment": """DigitalAudioTapeFormat.""",
             "label": "DigitalAudioTapeFormat",
         },
         "DigitalFormat": {
             "id": "schema:DigitalFormat",
-            "comment": "DigitalFormat.",
+            "comment": """DigitalFormat.""",
             "label": "DigitalFormat",
         },
         "LaserDiscFormat": {
             "id": "schema:LaserDiscFormat",
-            "comment": "LaserDiscFormat.",
+            "comment": """LaserDiscFormat.""",
             "label": "LaserDiscFormat",
         },
         "VinylFormat": {
             "id": "schema:VinylFormat",
-            "comment": "VinylFormat.",
+            "comment": """VinylFormat.""",
             "label": "VinylFormat",
         },
     }

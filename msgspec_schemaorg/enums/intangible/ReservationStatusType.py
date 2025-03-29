@@ -13,22 +13,22 @@ class ReservationStatusType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "ReservationCancelled": {
             "id": "schema:ReservationCancelled",
-            "comment": "The status for a previously confirmed reservation that is now cancelled.",
+            "comment": """The status for a previously confirmed reservation that is now cancelled.""",
             "label": "ReservationCancelled",
         },
         "ReservationConfirmed": {
             "id": "schema:ReservationConfirmed",
-            "comment": "The status of a confirmed reservation.",
+            "comment": """The status of a confirmed reservation.""",
             "label": "ReservationConfirmed",
         },
         "ReservationHold": {
             "id": "schema:ReservationHold",
-            "comment": "The status of a reservation on hold pending an update like credit card number or flight changes.",
+            "comment": """The status of a reservation on hold pending an update like credit card number or flight changes.""",
             "label": "ReservationHold",
         },
         "ReservationPending": {
             "id": "schema:ReservationPending",
-            "comment": "The status of a reservation when a request has been sent, but not confirmed.",
+            "comment": """The status of a reservation when a request has been sent, but not confirmed.""",
             "label": "ReservationPending",
         },
     }

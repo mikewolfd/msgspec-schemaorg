@@ -12,17 +12,17 @@ class DigitalDocumentPermissionType(str, enum.Enum):
     metadata: ClassVar[Dict[str, Dict[str, Any]]] = {
         "CommentPermission": {
             "id": "schema:CommentPermission",
-            "comment": "Permission to add comments to the document.",
+            "comment": """Permission to add comments to the document.""",
             "label": "CommentPermission",
         },
         "ReadPermission": {
             "id": "schema:ReadPermission",
-            "comment": "Permission to read or view the document.",
+            "comment": """Permission to read or view the document.""",
             "label": "ReadPermission",
         },
         "WritePermission": {
             "id": "schema:WritePermission",
-            "comment": "Permission to write or edit the document.",
+            "comment": """Permission to write or edit the document.""",
             "label": "WritePermission",
         },
     }
