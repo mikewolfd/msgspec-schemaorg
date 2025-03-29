@@ -63,7 +63,7 @@ jobs:
     
     - name: Generate models
       run: |
-        python scripts/generate_models.py
+        python run.py run_all 
         echo "Generated $(find msgspec_schemaorg/models -type f -name "*.py" | wc -l) model files"
     
     - name: Build package
