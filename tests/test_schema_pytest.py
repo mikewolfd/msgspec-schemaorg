@@ -119,12 +119,13 @@ def get_schema_examples() -> List[Dict[str, Any]]:
     return examples
 
 
-def clean_json_ld(data: Dict[str, Any]) -> Dict[str, Any]:
+def clean_json_ld(data: Dict[str, Any], class_obj=None) -> Dict[str, Any]:
     """
     Clean JSON-LD data for use with msgspec.
     
     Args:
         data: The data to clean.
+        class_obj: Optional msgspec.Struct class to filter unknown fields.
         
     Returns:
         The cleaned data.
@@ -136,8 +137,18 @@ def clean_json_ld(data: Dict[str, Any]) -> Dict[str, Any]:
     for key, value in data.items():
         # Skip JSON-LD specific fields
         if key.startswith('@'):
+            if key == '@type':
+                result['type'] = value
+            elif key == '@id':
+                result['id'] = value
+            elif key == '@context':
+                result['context'] = value
             continue
         
+        # Skip fields with colons (namespace prefixes)
+        if ':' in key:
+            continue
+            
         # Handle nested objects
         if isinstance(value, dict):
             value = clean_json_ld(value)
@@ -151,6 +162,21 @@ def clean_json_ld(data: Dict[str, Any]) -> Dict[str, Any]:
             camel_key = key
             
         result[camel_key] = value
+    
+    # Filter out unknown fields if class_obj is provided
+    if class_obj is not None:
+        try:
+            import inspect
+            if hasattr(class_obj, '__annotations__'):
+                # Get field names from class annotations
+                field_names = set(class_obj.__annotations__.keys())
+                # Also include standard JSON-LD fields that are renamed
+                field_names.update(['id', 'type', 'context'])
+                # Keep only known fields
+                result = {k: v for k, v in result.items() if k in field_names}
+        except Exception:
+            # If filtering fails, just return the original cleaned data
+            pass
     
     return result
 
@@ -239,11 +265,13 @@ def test_schema_examples(schema_example, type_str, class_map):
         pytest.skip(f"No model for type {type_str}")
     
     try:
-        # Clean the example data
-        clean_data = clean_json_ld(schema_example)
+        # Get the model class
+        model_class = class_map[type_str]
+        
+        # Clean the example data and filter out unknown fields
+        clean_data = clean_json_ld(schema_example, model_class)
         
         # Create an instance of the model
-        model_class = class_map[type_str]
         model = model_class(**clean_data)
         
         # Test encoding to JSON

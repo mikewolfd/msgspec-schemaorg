@@ -97,19 +97,18 @@ def generate_enum_code(enum_type: str, values: list, category: str = None):
         if ':' in value_id:
             value_id = value_id.split(':')[-1]
         
-        # Clean comment for JSON embedding
+        # Get comment and ensure it's a string
         comment = value.get('comment', '')
         if not isinstance(comment, str):
             comment = str(comment)
         
-        # Escape quotes in comment
-        comment = comment.replace('"', '\\"')
-        
+        # Use triple quotes for comment to properly handle multi-line text
         code.append(f'        "{value_id}": {{')
         code.append(f'            "id": "{value["id"]}",')
-        code.append(f'            "comment": "{comment}",')
+        code.append(f'            "comment": """{comment}""",')
         if value.get('label'):
-            code.append(f'            "label": "{value["label"]}",')
+            label = str(value["label"]).replace('"', '\\"')
+            code.append(f'            "label": "{label}",')
         code.append('        },')
     
     code.append("    }")

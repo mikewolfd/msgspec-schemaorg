@@ -4,13 +4,15 @@ Test Schema.org models against real examples from schema.org.
 """
 
 import importlib
+import importlib.util
+import pkgutil  # Import pkgutil for iterating modules
 import inspect
 import json
 import os
 import re
 import sys
 from collections.abc import Iterator
-from typing import Union, Any, Dict, List, Optional
+from typing import Union, Any, Dict, List, Optional, Set, Type, get_type_hints
 
 import requests
 from requests import Response
@@ -54,22 +56,31 @@ def get_modules_in_package(package_name: str) -> Iterator[Any]:
     # Get all modules in the package
     if hasattr(package, "__path__"):
         package_path = package.__path__
-        for _, module_name, is_pkg in importlib.iter_modules(package_path):
-            full_module_name = f"{package_name}.{module_name}"
-            try:
-                module = importlib.import_module(full_module_name)
-                
-                # If this is a package, get all classes from it
-                if is_pkg:
-                    yield from get_modules_in_package(full_module_name)
-                
-                # Get all classes from this module
-                for name in dir(module):
-                    attr = getattr(module, name)
-                    if isinstance(attr, type) and issubclass(attr, msgspec.Struct) and attr.__module__ == module.__name__:
-                        yield attr
-            except ImportError:
-                continue
+        for module_info in pkgutil.iter_modules(package_path):  # Use pkgutil.iter_modules
+            module_name = module_info.name  # Access name attribute
+            is_pkg = module_info.ispkg     # Access ispkg attribute
+            
+            if is_pkg:
+                # If module is a package, recurse into it
+                sub_package = f"{package_name}.{module_name}"
+                try:
+                    yield from get_modules_in_package(sub_package)
+                except (ImportError, ModuleNotFoundError):
+                    continue
+            else:
+                try:
+                    # Try to import the module
+                    module = importlib.import_module(f"{package_name}.{module_name}")
+                    
+                    # Find all class objects defined in the module
+                    for name, obj in inspect.getmembers(module):
+                        if inspect.isclass(obj) and obj.__module__ == module.__name__:
+                            # Skip internal classes
+                            if not name.startswith("_"):
+                                yield obj
+                except (ImportError, ModuleNotFoundError):
+                    # Skip if module can't be imported
+                    continue
     else:
         # This is a module, not a package
         for name in dir(package):

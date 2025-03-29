@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "msgspec-schemaorg"
-version = "0.2.0"
+version = "0.2.1"
 description = "Generate Python msgspec.Struct classes from the Schema.org vocabulary"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -35,6 +35,29 @@ dev = [
     "twine",
     "pytest"
 ]
+
+[tool.poetry]
+name = "msgspec-schemaorg"
+description = "Python msgspec.Struct models for Schema.org"
+authors = ["Mike Wolfson <mike@mikewolfson.com>"]
+readme = "README.md"
+homepage = "https://github.com/mikewolfd/msgspec-schemaorg"
+repository = "https://github.com/mikewolfd/msgspec-schemaorg"
+version = "0.2.1"
+packages = [{include = "msgspec_schemaorg"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+msgspec = ">=0.16.0"
+pydantic = ">=2.0.0"
+requests = ">=2.28.2"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.1"
+isort = "^5.13.2"
+pytest = "^8.0.1"
+mypy = "^1.8.0"
+ruff = "^0"
 
 [tool.setuptools]
 packages = ["msgspec_schemaorg", "msgspec_schemaorg.enums", "msgspec_schemaorg.enums.intangible"]
