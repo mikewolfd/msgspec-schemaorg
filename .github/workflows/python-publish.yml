@@ -2,11 +2,11 @@ name: Build and Publish to PyPI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     tags:
-      - 'v*'
+      - "v*"
   pull_request:
-    branches: [ main ]
+    branches: [main]
   release:
     types: [created]
 
@@ -20,106 +20,106 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.10', '3.11', '3.12']
+        python-version: ["3.10", "3.11", "3.12"]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-    
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytest
-        pip install -e .
-    
-    - name: Generate models
-      run: |
-        python scripts/generate_models.py
-    
-    - name: Run tests
-      run: |
-        python run_tests.py
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          pip install -e .
+
+      - name: Generate models
+        run: |
+          python scripts/generate_models.py
+
+      - name: Run tests
+        run: |
+          python run_tests.py
 
   build-and-publish:
     needs: test
     runs-on: ubuntu-latest
     if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
-    
+
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-    
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -e .[dev]
-    
-    - name: Generate models
-      run: |
-        python run.py run_all 
-        echo "Generated $(find msgspec_schemaorg/models -type f -name "*.py" | wc -l) model files"
-    
-    - name: Build package
-      run: |
-        # Build the package
-        python -m build
-        
-        # Verify package contents
-        echo "Verifying package contents..."
-        
-        # Check source distribution
-        mkdir -p /tmp/check-sdist
-        tar -xf dist/*.tar.gz -C /tmp/check-sdist
-        MODEL_COUNT=$(find /tmp/check-sdist -name "*.py" | grep models | wc -l)
-        echo "Source distribution contains $MODEL_COUNT model files"
-        if [ "$MODEL_COUNT" -lt 900 ]; then
-          echo "ERROR: Not enough model files in source distribution"
-          exit 1
-        fi
-        
-        # Install and verify the wheel
-        pip install dist/*.whl
-        python -c "import msgspec_schemaorg.models; count = len(msgspec_schemaorg.models.__all__); print(f'Wheel contains {count} importable models'); assert count > 900, 'Not enough models'"
-    
-    - name: Upload distributions
-      uses: actions/upload-artifact@v4
-      with:
-        name: python-package-distributions
-        path: dist/
-    
-    - name: Publish to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        password: ${{ secrets.PYPI_API_TOKEN }}
-        skip-existing: true
+      - uses: actions/checkout@v3
 
-    - name: Sign with Sigstore
-      uses: sigstore/gh-action-sigstore-python@v3.0.0
-      with:
-        inputs: ./dist/*.tar.gz ./dist/*.whl
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
 
-    - name: Upload to GitHub Release
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      run: >-
-        gh release create
-        "$GITHUB_REF_NAME"
-        --repo "$GITHUB_REPOSITORY"
-        --notes "This release was automatically created by the GitHub Actions workflow."
-    - name: Upload artifact signatures to GitHub Release
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      # Upload to GitHub Release using the `gh` CLI.
-      # `dist/` contains the built packages, and the
-      # sigstore-produced signatures and certificates.
-      run: >-
-        gh release upload
-        "$GITHUB_REF_NAME" dist/**
-        --repo "$GITHUB_REPOSITORY"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev]
+
+      - name: Generate models
+        run: |
+          python run.py all 
+          echo "Generated $(find msgspec_schemaorg/models -type f -name "*.py" | wc -l) model files"
+
+      - name: Build package
+        run: |
+          # Build the package
+          python -m build
+
+          # Verify package contents
+          echo "Verifying package contents..."
+
+          # Check source distribution
+          mkdir -p /tmp/check-sdist
+          tar -xf dist/*.tar.gz -C /tmp/check-sdist
+          MODEL_COUNT=$(find /tmp/check-sdist -name "*.py" | grep models | wc -l)
+          echo "Source distribution contains $MODEL_COUNT model files"
+          if [ "$MODEL_COUNT" -lt 900 ]; then
+            echo "ERROR: Not enough model files in source distribution"
+            exit 1
+          fi
+
+          # Install and verify the wheel
+          pip install dist/*.whl
+          python -c "import msgspec_schemaorg.models; count = len(msgspec_schemaorg.models.__all__); print(f'Wheel contains {count} importable models'); assert count > 900, 'Not enough models'"
+
+      - name: Upload distributions
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          skip-existing: true
+
+      - name: Sign with Sigstore
+        uses: sigstore/gh-action-sigstore-python@v3.0.0
+        with:
+          inputs: ./dist/*.tar.gz ./dist/*.whl
+
+      - name: Upload to GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          gh release create
+          "$GITHUB_REF_NAME"
+          --repo "$GITHUB_REPOSITORY"
+          --notes "This release was automatically created by the GitHub Actions workflow."
+      - name: Upload artifact signatures to GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        # Upload to GitHub Release using the `gh` CLI.
+        # `dist/` contains the built packages, and the
+        # sigstore-produced signatures and certificates.
+        run: >-
+          gh release upload
+          "$GITHUB_REF_NAME" dist/**
+          --repo "$GITHUB_REPOSITORY"
