@@ -66,6 +66,7 @@ __all__ = [
     'PaymentMethodType',
     'PaymentStatusType',
     'PhysicalActivityCategory',
+    'PhysicalExam',
     'PriceComponentTypeEnumeration',
     'PriceTypeEnumeration',
     'PurchaseType',

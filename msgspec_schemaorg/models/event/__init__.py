@@ -1,38 +1,37 @@
 """Generated Schema.org event models using msgspec."""
 
-from .VisualArtsEvent import VisualArtsEvent
-from .BusinessEvent import BusinessEvent
-from .ChildrensEvent import ChildrensEvent
-from .UserPlusOnes import UserPlusOnes
-from .SocialEvent import SocialEvent
-from .UserComments import UserComments
 from .UserLikes import UserLikes
-from .ScreeningEvent import ScreeningEvent
-from .UserPageVisits import UserPageVisits
-from .EventSeries import EventSeries
-from .UserPlays import UserPlays
-from .UserCheckins import UserCheckins
-from .BroadcastEvent import BroadcastEvent
-from .SaleEvent import SaleEvent
-from .MusicEvent import MusicEvent
-from .FoodEvent import FoodEvent
-from .ExhibitionEvent import ExhibitionEvent
-from .DanceEvent import DanceEvent
-from .TheaterEvent import TheaterEvent
-from .UserTweets import UserTweets
-from .SportsEvent import SportsEvent
 from .Festival import Festival
-from .ComedyEvent import ComedyEvent
 from .DeliveryEvent import DeliveryEvent
-from .EducationEvent import EducationEvent
-from .UserDownloads import UserDownloads
-from .OnDemandEvent import OnDemandEvent
-from .PublicationEvent import PublicationEvent
-from .LiteraryEvent import LiteraryEvent
-from .Hackathon import Hackathon
+from .UserPageVisits import UserPageVisits
+from .ChildrensEvent import ChildrensEvent
 from .CourseInstance import CourseInstance
+from .SportsEvent import SportsEvent
+from .BroadcastEvent import BroadcastEvent
+from .UserCheckins import UserCheckins
+from .ExhibitionEvent import ExhibitionEvent
+from .UserTweets import UserTweets
+from .UserPlays import UserPlays
+from .TheaterEvent import TheaterEvent
+from .OnDemandEvent import OnDemandEvent
 from .UserBlocks import UserBlocks
+from .VisualArtsEvent import VisualArtsEvent
+from .EducationEvent import EducationEvent
+from .SocialEvent import SocialEvent
+from .SaleEvent import SaleEvent
+from .FoodEvent import FoodEvent
+from .UserComments import UserComments
+from .UserDownloads import UserDownloads
+from .Hackathon import Hackathon
+from .PublicationEvent import PublicationEvent
+from .ScreeningEvent import ScreeningEvent
+from .UserPlusOnes import UserPlusOnes
+from .MusicEvent import MusicEvent
+from .DanceEvent import DanceEvent
 from .UserInteraction import UserInteraction
+from .LiteraryEvent import LiteraryEvent
+from .BusinessEvent import BusinessEvent
+from .ComedyEvent import ComedyEvent
 from .Event import Event
 
 __all__ = [
@@ -45,7 +44,6 @@ __all__ = [
     'DeliveryEvent',
     'EducationEvent',
     'Event',
-    'EventSeries',
     'ExhibitionEvent',
     'Festival',
     'FoodEvent',

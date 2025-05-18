@@ -21,10 +21,6 @@ dependencies = [
     "msgspec>=0.19.0",
     "requests>=2.28.0",
 ]
-
-[project.scripts]
-msgspec-schemaorg-generate = "msgspec_schemaorg.cli:generate_models_command"
-
 [project.urls]
 "Homepage" = "https://github.com/mikewolfd/msgspec-schemaorg"
 "Bug Tracker" = "https://github.com/mikewolfd/msgspec-schemaorg/issues"
@@ -45,6 +41,12 @@ homepage = "https://github.com/mikewolfd/msgspec-schemaorg"
 repository = "https://github.com/mikewolfd/msgspec-schemaorg"
 version = "0.2.1"
 packages = [{include = "msgspec_schemaorg"}]
+include = [
+    "msgspec_schemaorg/models/**/*.py",
+    "msgspec_schemaorg/enums/**/*.py",
+    "msgspec_schemaorg/enums/intangible/**/*.py",
+
+]
 
 [tool.poetry.dependencies]
 python = ">=3.10"
@@ -60,5 +62,5 @@ mypy = "^1.8.0"
 ruff = "^0"
 
 [tool.setuptools]
-packages = ["msgspec_schemaorg", "msgspec_schemaorg.enums", "msgspec_schemaorg.enums.intangible"]
+packages = ["msgspec_schemaorg", "msgspec_schemaorg.enums", "msgspec_schemaorg.enums.intangible", "msgspec_schemaorg.models"]
 include-package-data = true 

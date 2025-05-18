@@ -211,6 +211,7 @@ __all__ = [
     'ConvenienceStore',
     'Conversation',
     'CookAction',
+    'Cooperative',
     'Corporation',
     'CorrectionComment',
     'Country',
@@ -652,7 +653,7 @@ __all__ = [
     'PhotographAction',
     'PhysicalActivity',
     
-    'PhysicalExam',
+    
     'PhysicalTherapy',
     'Physician',
     'PhysiciansOffice',

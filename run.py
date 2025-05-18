@@ -35,14 +35,14 @@ def run_command(cmd, cwd=None):
         text=True,
         bufsize=1,  # Line buffered
     )
-    
+
     # Stream output
     for line in process.stdout:
         print(line, end="")
-    
+
     # Wait for process to complete
     process.wait()
-    
+
     if process.returncode != 0:
         print(f"Command failed with return code {process.returncode}")
         sys.exit(process.returncode)
@@ -64,7 +64,7 @@ def run_example(example_name="usage_example.py"):
     if not os.path.exists(example_path):
         print(f"Example not found: {example_path}")
         return False
-    
+
     print(f"Running example: {example_path}")
     result = run_command(f"python {example_path}")
     return result.returncode == 0
@@ -79,35 +79,38 @@ def run_all():
     """Run all tasks: generate models, generate enums, and run tests."""
     generate_models()
     generate_enums()
+    generate_models()
     run_tests()
 
 
 def main():
     """Main function to parse arguments and execute commands."""
-    parser = argparse.ArgumentParser(description='Run common tasks for msgspec-schemaorg.')
-    subparsers = parser.add_subparsers(dest='command', help='Command to run')
-    
+    parser = argparse.ArgumentParser(
+        description="Run common tasks for msgspec-schemaorg."
+    )
+    subparsers = parser.add_subparsers(dest="command", help="Command to run")
+
     # Generate models command
-    subparsers.add_parser('generate_models', help='Generate Schema.org models')
-    
+    subparsers.add_parser("generate_models", help="Generate Schema.org models")
+
     # Generate enums command
-    subparsers.add_parser('generate_enums', help='Generate Schema.org enum classes')
-    
+    subparsers.add_parser("generate_enums", help="Generate Schema.org enum classes")
+
     # Test command
-    subparsers.add_parser('test', help='Run unit tests')
-    
+    subparsers.add_parser("test", help="Run unit tests")
+
     # All command
-    subparsers.add_parser('all', help='Generate models, generate enums, and run tests')
-    
+    subparsers.add_parser("all", help="Generate models, generate enums, and run tests")
+
     args = parser.parse_args()
-    
-    if args.command == 'generate_models':
+
+    if args.command == "generate_models":
         generate_models()
-    elif args.command == 'generate_enums':
+    elif args.command == "generate_enums":
         generate_enums()
-    elif args.command == 'test':
+    elif args.command == "test":
         run_tests()
-    elif args.command == 'all':
+    elif args.command == "all":
         run_all()
     else:
         parser.print_help()
@@ -115,4 +118,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()

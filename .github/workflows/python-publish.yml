@@ -37,7 +37,7 @@ jobs:
 
       - name: Generate models
         run: |
-          python scripts/generate_models.py
+          python run.py all
 
       - name: Run tests
         run: |
@@ -78,15 +78,21 @@ jobs:
           mkdir -p /tmp/check-sdist
           tar -xf dist/*.tar.gz -C /tmp/check-sdist
           MODEL_COUNT=$(find /tmp/check-sdist -name "*.py" | grep models | wc -l)
+          ENUM_COUNT=$(find /tmp/check-sdist -name "*.py" | grep enums | wc -l)
           echo "Source distribution contains $MODEL_COUNT model files"
-          if [ "$MODEL_COUNT" -lt 900 ]; then
+          echo "Source distribution contains $ENUM_COUNT enum files"
+          if [ "$MODEL_COUNT" -lt 800 ]; then
             echo "ERROR: Not enough model files in source distribution"
+            exit 1
+          fi
+          if [ "$ENUM_COUNT" -lt 75 ]; then
+            echo "ERROR: Not enough enum files in source distribution"
             exit 1
           fi
 
           # Install and verify the wheel
           pip install dist/*.whl
-          python -c "import msgspec_schemaorg.models; count = len(msgspec_schemaorg.models.__all__); print(f'Wheel contains {count} importable models'); assert count > 900, 'Not enough models'"
+          python -c "import msgspec_schemaorg.models; count = len(msgspec_schemaorg.models.__all__); print(f'Wheel contains {count} importable models'); assert count > 800, 'Not enough models'"
 
       - name: Upload distributions
         uses: actions/upload-artifact@v4

@@ -1,22 +1,22 @@
 """Generated Schema.org product models using msgspec."""
 
-from .SomeProducts import SomeProducts
-from .BusOrCoach import BusOrCoach
-from .MotorizedBicycle import MotorizedBicycle
-from .IndividualProduct import IndividualProduct
-from .ProductModel import ProductModel
-from .ProductGroup import ProductGroup
-from .DietarySupplement import DietarySupplement
-from .Motorcycle import Motorcycle
 from .ProductCollection import ProductCollection
 from .Car import Car
+from .SomeProducts import SomeProducts
+from .ProductGroup import ProductGroup
+from .ProductModel import ProductModel
+from .MotorizedBicycle import MotorizedBicycle
+from .Drug import Drug
+from .BusOrCoach import BusOrCoach
+from .Motorcycle import Motorcycle
+from .IndividualProduct import IndividualProduct
 from .Vehicle import Vehicle
 from .Product import Product
 
 __all__ = [
     'BusOrCoach',
     'Car',
-    'DietarySupplement',
+    'Drug',
     'IndividualProduct',
     'Motorcycle',
     'MotorizedBicycle',

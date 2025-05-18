@@ -1,80 +1,79 @@
 """Generated Schema.org thing models using msgspec."""
 
-from .MolecularEntity import MolecularEntity
-from .MedicalCode import MedicalCode
-from .SuperficialAnatomy import SuperficialAnatomy
-from .MedicalContraindication import MedicalContraindication
-from .Diet import Diet
-from .Drug import Drug
-from .MedicalConditionStage import MedicalConditionStage
-from .Bone import Bone
-from .PhysicalActivity import PhysicalActivity
-from .PhysicalExam import PhysicalExam
-from .Muscle import Muscle
-from .LifestyleModification import LifestyleModification
-from .VitalSign import VitalSign
-from .MedicalSign import MedicalSign
-from .Taxon import Taxon
-from .MedicalTestPanel import MedicalTestPanel
-from .ImagingTest import ImagingTest
 from .MedicalObservationalStudy import MedicalObservationalStudy
+from .BrainStructure import BrainStructure
+from .Bone import Bone
+from .DrugCost import DrugCost
+from .Vein import Vein
+from .RecommendedDoseSchedule import RecommendedDoseSchedule
+from .PalliativeProcedure import PalliativeProcedure
+from .Artery import Artery
 from .Protein import Protein
-from .MedicalRiskCalculator import MedicalRiskCalculator
+from .Joint import Joint
+from .Ligament import Ligament
+from .DietarySupplement import DietarySupplement
+from .Substance import Substance
+from .MedicalDevice import MedicalDevice
+from .MaximumDoseSchedule import MaximumDoseSchedule
+from .ApprovedIndication import ApprovedIndication
+from .MolecularEntity import MolecularEntity
+from .Muscle import Muscle
 from .RadiationTherapy import RadiationTherapy
-from .DDxElement import DDxElement
-from .ReportedDoseSchedule import ReportedDoseSchedule
+from .VitalSign import VitalSign
+from .InfectiousDisease import InfectiousDisease
+from .MedicalContraindication import MedicalContraindication
+from .LymphaticVessel import LymphaticVessel
+from .MedicalCause import MedicalCause
+from .PathologyTest import PathologyTest
+from .MedicalRiskFactor import MedicalRiskFactor
+from .MedicalRiskScore import MedicalRiskScore
+from .ExercisePlan import ExercisePlan
+from .PhysicalActivity import PhysicalActivity
+from .PhysicalTherapy import PhysicalTherapy
+from .DiagnosticProcedure import DiagnosticProcedure
+from .MedicalCode import MedicalCode
+from .Taxon import Taxon
+from .MedicalGuidelineRecommendation import MedicalGuidelineRecommendation
+from .MedicalGuidelineContraindication import MedicalGuidelineContraindication
+from .MedicalGuideline import MedicalGuideline
+from .MedicalTestPanel import MedicalTestPanel
+from .MedicalSign import MedicalSign
 from .MedicalSymptom import MedicalSymptom
 from .PsychologicalTreatment import PsychologicalTreatment
-from .PreventionIndication import PreventionIndication
-from .DrugStrength import DrugStrength
-from .MedicalCause import MedicalCause
+from .DDxElement import DDxElement
+from .Vessel import Vessel
 from .Gene import Gene
-from .LymphaticVessel import LymphaticVessel
-from .Substance import Substance
-from .Joint import Joint
-from .ChemicalSubstance import ChemicalSubstance
-from .Ligament import Ligament
-from .InfectiousDisease import InfectiousDisease
-from .DrugClass import DrugClass
-from .AnatomicalSystem import AnatomicalSystem
-from .DrugCost import DrugCost
-from .MedicalRiskFactor import MedicalRiskFactor
-from .MedicalGuidelineContraindication import MedicalGuidelineContraindication
-from .MedicalDevice import MedicalDevice
-from .Artery import Artery
-from .ApprovedIndication import ApprovedIndication
-from .PhysicalTherapy import PhysicalTherapy
-from .BioChemEntity import BioChemEntity
-from .MedicalRiskScore import MedicalRiskScore
-from .MedicalRiskEstimator import MedicalRiskEstimator
+from .SuperficialAnatomy import SuperficialAnatomy
 from .MedicalSignOrSymptom import MedicalSignOrSymptom
 from .MedicalCondition import MedicalCondition
-from .MedicalGuidelineRecommendation import MedicalGuidelineRecommendation
-from .MedicalGuideline import MedicalGuideline
-from .PalliativeProcedure import PalliativeProcedure
-from .BrainStructure import BrainStructure
-from .DiagnosticProcedure import DiagnosticProcedure
-from .MaximumDoseSchedule import MaximumDoseSchedule
-from .RecommendedDoseSchedule import RecommendedDoseSchedule
-from .DoseSchedule import DoseSchedule
-from .DrugLegalStatus import DrugLegalStatus
-from .MedicalIntangible import MedicalIntangible
-from .BloodTest import BloodTest
-from .MedicalTrial import MedicalTrial
-from .MedicalStudy import MedicalStudy
-from .SurgicalProcedure import SurgicalProcedure
-from .TreatmentIndication import TreatmentIndication
-from .MedicalIndication import MedicalIndication
-from .PathologyTest import PathologyTest
-from .MedicalTest import MedicalTest
-from .Nerve import Nerve
-from .Vein import Vein
-from .Vessel import Vessel
-from .AnatomicalStructure import AnatomicalStructure
+from .ReportedDoseSchedule import ReportedDoseSchedule
+from .ChemicalSubstance import ChemicalSubstance
 from .OccupationalTherapy import OccupationalTherapy
 from .MedicalTherapy import MedicalTherapy
+from .BioChemEntity import BioChemEntity
 from .TherapeuticProcedure import TherapeuticProcedure
+from .ImagingTest import ImagingTest
+from .BloodTest import BloodTest
+from .MedicalTest import MedicalTest
+from .SurgicalProcedure import SurgicalProcedure
 from .MedicalProcedure import MedicalProcedure
+from .DrugLegalStatus import DrugLegalStatus
+from .TreatmentIndication import TreatmentIndication
+from .MedicalConditionStage import MedicalConditionStage
+from .MedicalRiskCalculator import MedicalRiskCalculator
+from .MedicalRiskEstimator import MedicalRiskEstimator
+from .PreventionIndication import PreventionIndication
+from .MedicalIndication import MedicalIndication
+from .DoseSchedule import DoseSchedule
+from .LifestyleModification import LifestyleModification
+from .DrugClass import DrugClass
+from .MedicalTrial import MedicalTrial
+from .MedicalStudy import MedicalStudy
+from .Nerve import Nerve
+from .AnatomicalStructure import AnatomicalStructure
+from .DrugStrength import DrugStrength
+from .MedicalIntangible import MedicalIntangible
+from .AnatomicalSystem import AnatomicalSystem
 from .MedicalEntity import MedicalEntity
 from .Thing import Thing
 
@@ -90,13 +89,13 @@ __all__ = [
     'ChemicalSubstance',
     'DDxElement',
     'DiagnosticProcedure',
-    'Diet',
+    'DietarySupplement',
     'DoseSchedule',
-    'Drug',
     'DrugClass',
     'DrugCost',
     'DrugLegalStatus',
     'DrugStrength',
+    'ExercisePlan',
     'Gene',
     'ImagingTest',
     'InfectiousDisease',
@@ -138,7 +137,6 @@ __all__ = [
     'PalliativeProcedure',
     'PathologyTest',
     'PhysicalActivity',
-    'PhysicalExam',
     'PhysicalTherapy',
     'PreventionIndication',
     'Protein',
